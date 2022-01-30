@@ -1,4 +1,4 @@
-# Poolet Website
+# poolet.io
 This repository contains the Next.js app that will be the main poolet.io website. It will be hosted on a ec2.
 
 ## Prerequisite

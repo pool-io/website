@@ -29,3 +29,5 @@ For each of the following prerequisites, click on the given link and follow/read
     - Next.js is a React framework meant for production web applications.
     - It allows for server-side pre-rendering & rendering which can increase load times and SEO.
     - To learn, complete the [tutorial](https://nextjs.org/learn/basics/create-nextjs-app)
+
+## Getting Started

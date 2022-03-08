@@ -1,14 +1,3 @@
-.PHONY: build run
-
-build:
-	CGO_ENABLED=0 go build -o "bin/website" .
-
-run:
-	go run main.go
-
-clean:
-	rm -rf bin
-
 .PHONY: build-docker run-docker push-docker
 
 build-docker:
@@ -19,7 +8,7 @@ build-docker:
 run-docker: build-docker
 	docker run \
 		--detach \
-		-p 8080:8080 \
+		-p 3000:3000 \
 		website
 
 push-docker: build-docker

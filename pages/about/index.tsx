@@ -1,11 +1,11 @@
 import styles from './index.module.css';
-import Layout from '../components/layout';
+import Layout from '../../components/layout';
 
-export default function Learn() {
+export default function About() {
   return (
     <Layout>
       <div className={styles.container}>
-        <h1>Learn</h1>
+        <h1>About here</h1>
       </div>
     </Layout>
   );

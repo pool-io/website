@@ -4,6 +4,7 @@ import Link from 'next/link';
 export type CardProps = {
     title: string;
     color: string;
+    link: string;
 };
 
 export default function Card(props: CardProps) {

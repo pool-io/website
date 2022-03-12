@@ -1,6 +1,6 @@
 import styles from './layout.module.css';
 import Head from 'next/head';
-import Header from './header';
+import Header from '@components/header';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (

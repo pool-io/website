@@ -2,7 +2,12 @@ import styles from './layout.module.css';
 import Head from 'next/head';
 import Header from '@components/header';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+type LayoutProps = {
+    route: string;
+    children: React.ReactNode;
+};
+
+export default function Layout(props: LayoutProps) {
     return (
         <div className={styles.container}>
             <Head>
@@ -11,7 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     rel="icon"
                     type="image/png"
                     sizes="16x16"
-                    href="/favicon.png"
+                    href="/images/favicon.png"
                 />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -20,8 +25,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     rel="stylesheet"
                 />
             </Head>
-            <Header />
-            <div>{children}</div>
+            <Header route={props.route} />
+            <div>{props.children}</div>
         </div>
     );
 }

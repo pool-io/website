@@ -5,12 +5,12 @@ import Layout from '@components/layout';
 
 export default function Home() {
     return (
-        <Layout>
+        <Layout route="/">
             <div className={styles.container}>
                 <h1>pool</h1>
             </div>
             <Image
-                src="/logo.png"
+                src="/images/logo.png"
                 alt="by Daniel Lim"
                 width={1000}
                 height={500}

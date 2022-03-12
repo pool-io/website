@@ -3,9 +3,9 @@ import Layout from '@components/layout';
 
 export default function SignIn() {
     return (
-        <Layout>
+        <Layout route="/signin">
             <div className={styles.container}>
-                <h1>SignIn</h1>
+                <h1>Sign In</h1>
             </div>
         </Layout>
     );

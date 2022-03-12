@@ -2,7 +2,22 @@ html,
 body {
     padding: 0;
     margin: 0;
-    background-color: antiquewhite;
+    background-color: var(--primary-color);
 
     font-family: 'Permanent Marker', cursive;
+
+    --primary-color: #1d648c;
+    /* --primary-color: #fdb8b8; */
+    --primary-color: rgb(29, 29, 39);
+
+    --secondary-color: pink;
+    --secondary-color: beige;
+    --secondary-color: black;
+
+    --tertiary-color: black;
+
+    --offset-color: white;
+
+    --header-color: orange;
+    --header-color: white;
 }

@@ -1,24 +1,29 @@
 import styles from './header.module.css';
 import Link from 'next/link';
 
+type TabProps = {
+    title: string;
+    url: string;
+};
+
+function Tab(props: TabProps) {
+    return (
+        <Link href={props.url}>
+            <div className={styles.tab}>
+                <a>{props.title}</a>
+            </div>
+        </Link>
+    );
+}
+
 export default function Header() {
     return (
-        <div className={styles.container}>
-            <Link href="/">
-                <a>Home</a>
-            </Link>
-            <Link href="/learn">
-                <a>Learn</a>
-            </Link>
-            <Link href="/blog">
-                <a>Blog</a>
-            </Link>
-            <Link href="/about">
-                <a>About</a>
-            </Link>
-            <Link href="/signin">
-                <a>Sign In</a>
-            </Link>
+        <div className={styles.header}>
+            <Tab title="Home" url="/" />
+            <Tab title="Learn" url="/learn" />
+            <Tab title="Blog" url="/blog" />
+            <Tab title="About" url="/about" />
+            <Tab title="Sign In" url="/signin" />
         </div>
     );
 }

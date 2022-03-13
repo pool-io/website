@@ -15,7 +15,10 @@ type TabProps = {
 function Tab(props: TabProps) {
     return (
         <Link href={props.url}>
-            <div className={styles.tab}>
+            <div
+                className={styles.tab}
+                style={props.isSelected ? { color: 'pink' } : {}}
+            >
                 {props.children ? props.children : <a>{props.title}</a>}
             </div>
         </Link>

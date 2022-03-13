@@ -9,7 +9,7 @@ type LayoutProps = {
 
 export default function Layout(props: LayoutProps) {
     return (
-        <div className={styles.container}>
+        <>
             <Head>
                 <title>poolet.io</title>
                 <link
@@ -26,7 +26,7 @@ export default function Layout(props: LayoutProps) {
                 />
             </Head>
             <Header route={props.route} />
-            <div>{props.children}</div>
-        </div>
+            <div className={styles.container}>{props.children}</div>
+        </>
     );
 }

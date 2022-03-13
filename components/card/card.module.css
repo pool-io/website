@@ -1,10 +1,4 @@
 .card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 100;
+    flex-grow: 1;
     background-color: beige;
-    width: 50%;
-    height: 50%;
 }

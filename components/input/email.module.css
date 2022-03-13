@@ -24,7 +24,5 @@
 }
 
 .form input[type='submit']:hover {
-    border-image: auto;
-    border: 100px, dashed, black;
     background-color: orange;
 }

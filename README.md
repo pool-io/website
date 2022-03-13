@@ -36,3 +36,11 @@ For each of the following prerequisites, click on the given link and follow/read
     - To learn, complete the [tutorial](https://nextjs.org/learn/basics/create-nextjs-app)
 
 ## Getting Started
+
+1. `git clone` the repository
+    - _Note: to push changes later on, you must clone using `ssh`_
+2. Download `node` & `npm` [here](https://nodejs.org/en/download/)
+3. Run `npm install --global yarn` to download yarn
+4. Run `yarn install` in the project's root directory to install `node_modules`
+5. Run `yarn run dev` to run the server
+6. Go to [http://localhost:3000](http://localhost:3000) on your browser

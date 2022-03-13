@@ -8,7 +8,15 @@ export default function EmailInput() {
     };
 
     return (
-        <form className={styles.form} onSubmit={onSubmit}>
+        <form
+            className={styles.form}
+            onSubmit={onSubmit}
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}
+        >
             <input type="text" name="email" placeholder="email" />
             <input type="submit" name="email" value="submit" />
         </form>

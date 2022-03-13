@@ -9,13 +9,26 @@ export default function Home() {
     return (
         <Layout route="/">
             <div className={styles.hero}>
-                <Card color="grey">
+                <Card color="darkblue">
                     <div style={{ width: '50%' }}>
-                        <Drop />
+                        <Drop color="white" />
                     </div>
                 </Card>
                 <Card>
-                    <h1>Welcome to POOL!</h1>
+                    <h1>
+                        Welcome to <a style={{ color: 'orange' }}>POOL</a>!
+                    </h1>
+                    <div style={{ height: '10%' }} />
+                    <p>We're currently working on bringing you</p>
+                    <h2>
+                        the <a style={{ color: 'blue' }}>only</a> finance app
+                    </h2>
+                    <p>you'll ever need</p>
+                    <div style={{ height: '10%' }} />
+                    <h2>
+                        Interested in our{' '}
+                        <a style={{ color: 'green' }}>progress</a>?
+                    </h2>
                 </Card>
             </div>
             <div className={styles.hero}>

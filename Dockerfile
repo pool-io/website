@@ -1,10 +1,12 @@
 FROM node:alpine
 
-EXPOSE 3000
-
+RUN npm install -g npm@latest
 
 WORKDIR /
 COPY . /
 
 RUN yarn --version
 RUN yarn install
+
+EXPOSE 3000
+ENTRYPOINT [ "yarn", "dev" ]

@@ -45,7 +45,12 @@ export default function Home() {
                         </Link>
                     </Card>
                     <Card color="orange">
-                        <h1>Welcome to POOL!</h1>
+                        <h1>Do everything with POOL!</h1>
+                        <ul>
+                            <li>Track your spending</li>
+                            <li>Create saving goals</li>
+                            <li>Invest your money</li>
+                        </ul>
                     </Card>
                 </div>
             </div>

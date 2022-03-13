@@ -4,23 +4,7 @@ import Image from 'next/image';
 import Layout from '@components/layout';
 import Card from '@components/card';
 import Drop from '@components/logo/drop';
-import { FormEvent, FormEventHandler } from 'react';
-
-function EmailInput() {
-    const onSubmit: FormEventHandler = (e: FormEvent) => {
-        console.log('submitted');
-        e.preventDefault(); // default reloads
-    };
-
-    return (
-        <form onSubmit={onSubmit}>
-            <label>
-                Email : <input type="text" name="email" placeholder="email" />
-            </label>
-            <input type="submit" name="email" value="Join" />
-        </form>
-    );
-}
+import EmailInput from '@components/input/email';
 
 export default function Home() {
     return (

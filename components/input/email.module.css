@@ -1,0 +1,30 @@
+.form input[type='text'] {
+    font-family: 'Permanent Marker';
+    height: 50px;
+    width: 300px;
+    margin: 10px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    font-size: x-large;
+}
+
+.form input[type='submit'] {
+    font-family: 'Permanent Marker';
+    height: 50px;
+    width: 120px;
+    margin: 10px;
+    border-radius: 15px;
+    border: none;
+    border-image: initial;
+    border: 2px, outset, black;
+    background-color: darkblue;
+    font-size: x-large;
+    color: white;
+}
+
+.form input[type='submit']:hover {
+    border-image: auto;
+    border: 100px, dashed, black;
+    background-color: orange;
+}

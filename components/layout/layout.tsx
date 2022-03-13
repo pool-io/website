@@ -25,8 +25,10 @@ export default function Layout(props: LayoutProps) {
                     rel="stylesheet"
                 />
             </Head>
-            <Header route={props.route} />
             <div className={styles.container}>{props.children}</div>
+
+            {/* Header is placed at the bottom so that it will be rendered at the top */}
+            <Header route={props.route} />
         </>
     );
 }

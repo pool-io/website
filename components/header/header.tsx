@@ -1,17 +1,9 @@
 import styles from './header.module.css';
 import Link from 'next/link';
-import Image from 'next/image';
 import Drop from '@components/svg/drop';
 import { CSSProperties, MouseEventHandler, useState } from 'react';
-import { prependOnceListener } from 'process';
-import useWindowDimensions from '@components/utils/useWindowDimensions';
 import BurgerMenu from '@components/svg/BurgerMenu';
-import { relative } from 'path';
-
-function useIsMobile() {
-    const { width } = useWindowDimensions();
-    return width < 655;
-}
+import useIsMobile from '@components/utils/useIsMobile';
 
 type TabProps = {
     url: string;

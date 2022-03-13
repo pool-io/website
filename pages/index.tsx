@@ -1,16 +1,35 @@
 import styles from './index.module.css';
 import Link from 'next/link';
-import Image from 'next/image';
 import Layout from '@components/layout';
 import Card from '@components/card';
 import Drop from '@components/svg/drop';
 import EmailInput from '@components/input/email';
+import useIsMobile from '@components/utils/useIsMobile';
+import React from 'react';
+import { prependOnceListener } from 'process';
+
+type CardContainerProps = {
+    children?: React.ReactNode;
+};
+
+function CardContainer(props: CardContainerProps) {
+    const isMobile = useIsMobile();
+
+    return (
+        <div
+            className={styles.hero}
+            style={isMobile ? { flexDirection: 'column' } : null}
+        >
+            {props.children}
+        </div>
+    );
+}
 
 export default function Home() {
     return (
         <Layout route="/">
             <div className={styles.container}>
-                <div className={styles.hero}>
+                <CardContainer>
                     <Card color="darkblue">
                         <div style={{ width: '50%' }}>
                             <Drop color="white" />
@@ -35,8 +54,8 @@ export default function Home() {
                         <p>Join our email list!</p>
                         <EmailInput />
                     </Card>
-                </div>
-                <div className={styles.hero}>
+                </CardContainer>
+                <CardContainer>
                     <Card color="white">
                         <h1>pool</h1>
                         <p>One place to manage all your finances</p>
@@ -52,7 +71,7 @@ export default function Home() {
                             <li>Invest your money</li>
                         </ul>
                     </Card>
-                </div>
+                </CardContainer>
             </div>
         </Layout>
     );

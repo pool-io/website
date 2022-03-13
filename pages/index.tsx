@@ -7,7 +7,7 @@ import Card from '@components/card';
 export default function Home() {
     return (
         <Layout route="/">
-            <div className={styles.container}>
+            <div className={styles.hero}>
                 <Card color="grey">
                     <h1>pool</h1>
                     <p>One place to manage all your finances</p>
@@ -16,6 +16,18 @@ export default function Home() {
                     </Link>
                 </Card>
                 <Card>
+                    <h1>Welcome to POOL!</h1>
+                </Card>
+            </div>
+            <div className={styles.hero}>
+                <Card color="white">
+                    <h1>pool</h1>
+                    <p>One place to manage all your finances</p>
+                    <Link href="/about">
+                        <a>learn more</a>
+                    </Link>
+                </Card>
+                <Card color="orange">
                     <h1>Welcome to POOL!</h1>
                 </Card>
             </div>

@@ -8,9 +8,10 @@ function getWindowDimensions() {
             height
         };
     }
+    console.log('undefined');
     return {
-        width: 0,
-        height: 0
+        width: undefined,
+        height: undefined
     };
 }
 

@@ -5,8 +5,8 @@ import Card from '@components/card';
 import Drop from '@components/svg/drop';
 import EmailInput from '@components/input/email';
 import useIsMobile from '@components/utils/useIsMobile';
-import React from 'react';
-import { prependOnceListener } from 'process';
+import * as CSS from 'csstype';
+import React, { useEffect, useState } from 'react';
 
 type CardContainerProps = {
     children?: React.ReactNode;
@@ -14,11 +14,19 @@ type CardContainerProps = {
 
 function CardContainer(props: CardContainerProps) {
     const isMobile = useIsMobile();
+    const [flexDirection, setFlexDirection] =
+        useState<CSS.Property.FlexDirection>('row');
+    const [height, setHeight] = useState<CSS.Property.Height>('100vh');
+
+    useEffect(() => {
+        setFlexDirection(isMobile ? 'column' : 'row');
+        setHeight(isMobile ? '200vh' : '100vh');
+    }, [isMobile]);
 
     return (
         <div
             className={styles.hero}
-            style={isMobile ? { flexDirection: 'column' } : null}
+            style={{ flexDirection: flexDirection, height: height }}
         >
             {props.children}
         </div>

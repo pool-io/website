@@ -1,10 +1,12 @@
 import styles from './header.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import Drop from '@components/logo/drop';
-import { MouseEventHandler, useState } from 'react';
+import Drop from '@components/svg/drop';
+import { CSSProperties, MouseEventHandler, useState } from 'react';
 import { prependOnceListener } from 'process';
 import useWindowDimensions from '@components/utils/useWindowDimensions';
+import BurgerMenu from '@components/svg/BurgerMenu';
+import { relative } from 'path';
 
 function useIsMobile() {
     const { width } = useWindowDimensions();
@@ -16,6 +18,7 @@ type TabProps = {
     title?: string;
     isSelected?: boolean;
     children?: React.ReactNode;
+    style?: CSSProperties;
 };
 
 function Tab(props: TabProps) {
@@ -23,11 +26,24 @@ function Tab(props: TabProps) {
         <Link href={props.url}>
             <div
                 className={styles.tab}
-                style={props.isSelected ? { color: 'pink' } : {}}
+                style={
+                    props.isSelected
+                        ? { color: 'pink', ...props.style }
+                        : { ...props.style }
+                }
             >
                 {props.children ? props.children : <a>{props.title}</a>}
             </div>
         </Link>
+    );
+}
+
+function CollapsedTabs() {
+    return (
+        <div className={styles.tab}>
+            <div style={{ width: '30vw' }} />
+            <BurgerMenu width={30} height={30} color="white" />
+        </div>
     );
 }
 
@@ -39,7 +55,7 @@ export default function Header(props: HeaderProps) {
     const isMobile = useIsMobile();
 
     const tabs = isMobile ? (
-        <h1>Hello</h1>
+        <CollapsedTabs />
     ) : (
         <>
             <Tab
@@ -67,7 +83,10 @@ export default function Header(props: HeaderProps) {
 
     return (
         <div className={styles.header}>
-            <Tab url="/">
+            <Tab
+                url="/"
+                style={{ justifyContent: 'flex-start', marginLeft: '10px' }}
+            >
                 <Drop width={80} height={80} />
                 <h1>POOL</h1>
             </Tab>

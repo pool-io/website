@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '@components/layout';
 import Card from '@components/card';
-import Drop from '@components/logo/drop';
+import Drop from '@components/svg/drop';
 import EmailInput from '@components/input/email';
 
 export default function Home() {

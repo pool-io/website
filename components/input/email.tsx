@@ -1,5 +1,7 @@
 import styles from './email.module.css';
-import { FormEvent, FormEventHandler } from 'react';
+import { FormEvent, FormEventHandler, useEffect, useState } from 'react';
+import * as CSS from 'csstype';
+import useIsMobile from '@components/utils/useIsMobile';
 
 export default function EmailInput() {
     const onSubmit: FormEventHandler = (e: FormEvent) => {
@@ -13,6 +15,7 @@ export default function EmailInput() {
             onSubmit={onSubmit}
             style={{
                 display: 'flex',
+                flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center'
             }}

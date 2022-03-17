@@ -31,10 +31,41 @@ function Tab(props: TabProps) {
 }
 
 function CollapsedTabs() {
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+    const onClick = () => {
+        console.log('expand:', !isExpanded);
+        setIsExpanded(!isExpanded);
+    };
+
     return (
-        <div className={styles.tab}>
-            <div style={{ width: '30vw' }} />
-            <BurgerMenu width={30} height={30} color="white" />
+        <div
+            className={styles.tab}
+            onClick={onClick}
+            style={{
+                justifyContent: 'flex-end',
+                alignItems: 'flex-start',
+                margin: '30px',
+                background: isExpanded ? 'white' : null
+            }}
+        >
+            {isExpanded ? (
+                <>
+                    <div
+                        style={{
+                            width: '30vw',
+                            height: '100vh',
+                            background: 'white'
+                        }}
+                    />
+                    <BurgerMenu width={30} height={30} color="black" />
+                </>
+            ) : (
+                <>
+                    <div style={{ width: '30vw' }} />
+                    <BurgerMenu width={30} height={30} color="white" />
+                </>
+            )}
         </div>
     );
 }
@@ -77,7 +108,14 @@ export default function Header(props: HeaderProps) {
         <div className={styles.header}>
             <Tab
                 url="/"
-                style={{ justifyContent: 'flex-start', marginLeft: '10px' }}
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    justifyContent: 'flex-start',
+                    marginLeft: '10px',
+                    alignItems: 'flex-start'
+                }}
             >
                 <Drop width={80} height={80} />
                 <h1>POOL</h1>

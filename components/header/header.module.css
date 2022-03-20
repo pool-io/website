@@ -5,7 +5,3 @@
 .tab {
     color: var(--header-color);
 }
-
-.tab:hover svg path {
-    fill: pink;
-}

@@ -1,7 +1,13 @@
 import styles from './header.module.css';
 import Link from 'next/link';
 import Drop from '@components/svg/drop';
-import { CSSProperties, MouseEventHandler, useState } from 'react';
+import {
+    CSSProperties,
+    MouseEventHandler,
+    ReactNode,
+    useEffect,
+    useState
+} from 'react';
 import BurgerMenu from '@components/svg/BurgerMenu';
 import useIsMobile from '@components/utils/useIsMobile';
 
@@ -76,33 +82,38 @@ type HeaderProps = {
 
 export default function Header(props: HeaderProps) {
     const isMobile = useIsMobile();
+    const [tabs, setTabs] = useState<ReactNode>(null);
 
-    const tabs = isMobile ? (
-        <CollapsedTabs />
-    ) : (
-        <>
-            <Tab
-                title="Learn"
-                url="/learn"
-                isSelected={props.route === '/learn'}
-            />
-            <Tab
-                title="Blog"
-                url="/blog"
-                isSelected={props.route === '/blog'}
-            />
-            <Tab
-                title="About"
-                url="/about"
-                isSelected={props.route === '/about'}
-            />
-            <Tab
-                title="Sign In"
-                url="/signin"
-                isSelected={props.route === '/signin'}
-            />
-        </>
-    );
+    useEffect(() => {
+        if (isMobile) {
+            setTabs(<CollapsedTabs />);
+        } else {
+            setTabs(
+                <>
+                    <Tab
+                        title="Learn"
+                        url="/learn"
+                        isSelected={props.route === '/learn'}
+                    />
+                    <Tab
+                        title="Blog"
+                        url="/blog"
+                        isSelected={props.route === '/blog'}
+                    />
+                    <Tab
+                        title="About"
+                        url="/about"
+                        isSelected={props.route === '/about'}
+                    />
+                    <Tab
+                        title="Sign In"
+                        url="/signin"
+                        isSelected={props.route === '/signin'}
+                    />
+                </>
+            );
+        }
+    }, [isMobile]);
 
     return (
         <div className={styles.header}>

@@ -24,11 +24,15 @@ function Tab(props: TabProps) {
         <Link href={props.url}>
             <div
                 className={styles.tab}
-                style={
-                    props.isSelected
-                        ? { color: 'pink', ...props.style }
-                        : { ...props.style }
-                }
+                style={{
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    ...props.style
+                }}
             >
                 {props.children ? props.children : <a>{props.title}</a>}
             </div>
@@ -47,11 +51,11 @@ function CollapsedTabs() {
     return (
         <div
             className={styles.tab}
-            onClick={onClick}
             style={{
+                flex: 1,
+                display: 'flex',
                 justifyContent: 'flex-end',
                 alignItems: 'flex-start',
-                margin: '30px',
                 background: isExpanded ? 'white' : null
             }}
         >
@@ -64,14 +68,49 @@ function CollapsedTabs() {
                             background: 'white'
                         }}
                     />
-                    <BurgerMenu width={30} height={30} color="black" />
+                    <div
+                        onClick={onClick}
+                        style={{ background: 'green', padding: 20 }}
+                    >
+                        <BurgerMenu width={30} height={30} color="black" />
+                    </div>{' '}
                 </>
             ) : (
-                <>
-                    <div style={{ width: '30vw' }} />
+                <div onClick={onClick} style={{ padding: 25 }}>
                     <BurgerMenu width={30} height={30} color="white" />
-                </>
+                </div>
             )}
+        </div>
+    );
+}
+
+type ExpandedTabsProps = {
+    route: string;
+};
+
+function ExpandedTabs(props: ExpandedTabsProps) {
+    return (
+        <div style={{ display: 'flex', flex: 4, background: 'red' }}>
+            <Tab
+                title="Learn"
+                url="/learn"
+                isSelected={props.route === '/learn'}
+            />
+            <Tab
+                title="Blog"
+                url="/blog"
+                isSelected={props.route === '/blog'}
+            />
+            <Tab
+                title="About"
+                url="/about"
+                isSelected={props.route === '/about'}
+            />
+            <Tab
+                title="Sign In"
+                url="/signin"
+                isSelected={props.route === '/signin'}
+            />
         </div>
     );
 }
@@ -88,49 +127,40 @@ export default function Header(props: HeaderProps) {
         if (isMobile) {
             setTabs(<CollapsedTabs />);
         } else {
-            setTabs(
-                <>
-                    <Tab
-                        title="Learn"
-                        url="/learn"
-                        isSelected={props.route === '/learn'}
-                    />
-                    <Tab
-                        title="Blog"
-                        url="/blog"
-                        isSelected={props.route === '/blog'}
-                    />
-                    <Tab
-                        title="About"
-                        url="/about"
-                        isSelected={props.route === '/about'}
-                    />
-                    <Tab
-                        title="Sign In"
-                        url="/signin"
-                        isSelected={props.route === '/signin'}
-                    />
-                </>
-            );
+            setTabs(<ExpandedTabs route={props.route} />);
         }
     }, [isMobile]);
 
     return (
-        <div className={styles.header}>
+        <div
+            className={styles.header}
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'stretch',
+                width: '100vw',
+                position: 'fixed',
+                top: 0,
+                left: 0
+            }}
+        >
+            {/* <div style={{ position: 'fixed' }}> */}
             <Tab
                 url="/"
                 style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
+                    flex: 0,
+                    display: 'flex',
+                    flexDirection: 'row',
                     justifyContent: 'flex-start',
-                    marginLeft: '10px',
                     alignItems: 'flex-start'
+                    // background: 'yellow'
                 }}
             >
                 <Drop width={80} height={80} />
                 <h1>POOL</h1>
             </Tab>
+            {/* </div> */}
             {tabs}
         </div>
     );

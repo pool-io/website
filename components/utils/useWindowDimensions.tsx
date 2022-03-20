@@ -8,7 +8,7 @@ function getWindowDimensions() {
             height
         };
     }
-    console.log('undefined');
+    console.log('getWindowDimensions no window');
     return {
         width: undefined,
         height: undefined
@@ -26,6 +26,7 @@ export default function useWindowDimensions() {
         }
 
         window.addEventListener('resize', handleResize);
+        handleResize();
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 

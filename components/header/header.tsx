@@ -5,8 +5,23 @@ import BurgerMenu from '@components/svg/BurgerMenu';
 import Drop from '@components/svg/drop';
 import Cross from '@components/svg/Cross';
 import useIsMobile from '@components/utils/useIsMobile';
+import useIsTop from '@components/utils/useIsTop';
 
 function Logo() {
+    const isTop = useIsTop();
+
+    const LIGHT_COLOR = 'black';
+    const DARK_COLOR = 'white';
+    const [color, setColor] = useState<string>();
+
+    useEffect(() => {
+        if (isTop) {
+            setColor(LIGHT_COLOR);
+        } else {
+            setColor(DARK_COLOR);
+        }
+    }, [isTop]);
+
     return (
         <Tab
             url="/"
@@ -19,8 +34,8 @@ function Logo() {
             }}
         >
             <div style={{ width: 10 }} />
-            <Drop width={80} height={80} />
-            <h1>
+            <Drop width={80} height={80} color={color} />
+            <h1 style={{ color: color }}>
                 <a style={{ color: '#50a8c5' }}>POOL</a>FOLIO
             </h1>
         </Tab>
@@ -59,11 +74,22 @@ function Tab(props: TabProps) {
 
 function CollapsedTabs() {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
     const onClick = () => {
         console.log('expand:', !isExpanded);
         setIsExpanded(!isExpanded);
     };
+
+    const isTop = useIsTop();
+    const LIGHT_COLOR = 'black';
+    const DARK_COLOR = 'white';
+    const [color, setColor] = useState<string>();
+    useEffect(() => {
+        if (isTop) {
+            setColor(LIGHT_COLOR);
+        } else {
+            setColor(DARK_COLOR);
+        }
+    }, [isTop]);
 
     return (
         <>
@@ -81,19 +107,19 @@ function CollapsedTabs() {
                     >
                         <div onClick={onClick} style={{ padding: 25 }}>
                             {isExpanded ? (
-                                <Cross width={30} height={30} color={'white'} />
+                                <Cross width={30} height={30} color={color} />
                             ) : (
                                 <BurgerMenu
                                     width={30}
                                     height={30}
-                                    color={'white'}
+                                    color={color}
                                 />
                             )}
                         </div>
                     </div>
                 </div>
                 {isExpanded ? (
-                    <div style={{ margin: 30, color: 'white' }}>
+                    <div style={{ margin: 30, color: color }}>
                         <Link href="/learn">
                             <h1>Learn</h1>
                         </Link>
@@ -118,6 +144,18 @@ type ExpandedTabsProps = {
 };
 
 function ExpandedTabs(props: ExpandedTabsProps) {
+    const isTop = useIsTop();
+    const LIGHT_COLOR = 'black';
+    const DARK_COLOR = 'white';
+    const [color, setColor] = useState<string>();
+    useEffect(() => {
+        if (isTop) {
+            setColor(LIGHT_COLOR);
+        } else {
+            setColor(DARK_COLOR);
+        }
+    }, [isTop]);
+
     function Spacer() {
         return <div style={{ flex: 0.5 }} />;
     }
@@ -136,16 +174,19 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                     title="LEARN"
                     url="/learn"
                     isSelected={props.route === '/learn'}
+                    style={{ color: color }}
                 />
                 <Tab
                     title="NEWS"
                     url="/blog"
                     isSelected={props.route === '/blog'}
+                    style={{ color: color }}
                 />
                 <Tab
                     title="ABOUT"
                     url="/about"
                     isSelected={props.route === '/about'}
+                    style={{ color: color }}
                 />
                 <Spacer />
             </div>
@@ -161,6 +202,7 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                     title="SIGN IN"
                     url="/signin"
                     isSelected={props.route === '/signin'}
+                    style={{ color: color }}
                 />
                 <div
                     style={{
@@ -188,7 +230,13 @@ type HeaderProps = {
 
 export default function Header(props: HeaderProps) {
     const isMobile = useIsMobile();
+    const isTop = useIsTop();
+
     const [tabs, setTabs] = useState<ReactNode>(null);
+
+    const DARK_BACKGROUND = 'black';
+    const LIGHT_BACKGROUND = 'white';
+    const [background, setBackground] = useState<string>(DARK_BACKGROUND);
 
     useEffect(() => {
         if (isMobile) {
@@ -198,9 +246,16 @@ export default function Header(props: HeaderProps) {
         }
     }, [isMobile]);
 
+    useEffect(() => {
+        if (isTop) {
+            setBackground(LIGHT_BACKGROUND);
+        } else {
+            setBackground(DARK_BACKGROUND);
+        }
+    }, [isTop]);
+
     return (
         <div
-            className={styles.header}
             style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -209,7 +264,8 @@ export default function Header(props: HeaderProps) {
                 width: '100vw',
                 position: 'fixed',
                 top: 0,
-                left: 0
+                left: 0,
+                background: background
             }}
         >
             {tabs}

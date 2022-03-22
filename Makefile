@@ -1,4 +1,9 @@
-.PHONY: build-docker run-docker push-docker
+.PHONY: clean-docker build-docker run-docker push-docker
+
+clean-docker:
+	docker container prune -f
+	docker image prune -f
+	docker volume prune -f
 
 build-docker:
 	docker build \

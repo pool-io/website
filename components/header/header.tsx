@@ -18,8 +18,11 @@ function Logo() {
                 alignItems: 'flex-start'
             }}
         >
+            <div style={{ width: 10 }} />
             <Drop width={80} height={80} />
-            <h1>POOLFOLIO</h1>
+            <h1>
+                <a style={{ color: '#50a8c5' }}>POOL</a>FOLIO
+            </h1>
         </Tab>
     );
 }
@@ -164,7 +167,7 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                         display: 'flex',
                         padding: 15,
                         borderRadius: 10,
-                        background: 'blue'
+                        background: '#04b3ed'
                     }}
                 >
                     <Tab

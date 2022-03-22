@@ -126,7 +126,7 @@ export default function Home() {
                     }}
                 >
                     <h1 style={{ fontSize: 100 }}>
-                        <a style={{ color: 'blue' }}>POOL</a>
+                        <a style={{ color: '#50a8c5' }}>POOL</a>
                         FOLIO
                     </h1>
                     <h1>A SINGLE PLACE TO MANAGE ALL YOUR FINANCES</h1>

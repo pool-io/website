@@ -44,6 +44,7 @@ function Tab(props: TabProps) {
                     justifyContent: 'center',
                     alignItems: 'center',
                     textAlign: 'center',
+                    cursor: 'pointer',
                     ...props.style
                 }}
             >

@@ -33,16 +33,84 @@ function CardContainer(props: CardContainerProps) {
     );
 }
 
+function LogoCard() {
+    type RGB = { red: number; green: number; blue: number };
+
+    const [color, setColor] = useState<RGB>({
+        red: 0,
+        green: 0,
+        blue: 0
+    });
+
+    const negative = (color: RGB): RGB => {
+        const flip = (value: number) => {
+            return (value + 10) % 0xff;
+        };
+
+        return {
+            red: flip(color.red),
+            blue: flip(color.blue),
+            green: flip(color.green)
+        };
+    };
+
+    // useEffect(() => {
+    //     const colorInterval = setInterval(() => {
+    //         setColor((color) => negative(color));
+    //     }, 1000);
+    //     // setColor(negative());
+    //     return () => clearInterval(colorInterval);
+    // }, []);
+
+    console.log(
+        `linear-gradient(#${
+            color.red.toString(16) +
+            color.green.toString(16) +
+            color.blue.toString(16)
+        }, #${
+            negative(color).red.toString(16) +
+            negative(color).blue.toString(16) +
+            negative(color).green.toString(16)
+        })`
+    );
+
+    return (
+        <div
+            style={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundImage: `linear-gradient(#${
+                    color.red.toString(16) +
+                    color.green.toString(16) +
+                    color.blue.toString(16)
+                }, #${
+                    negative(color).red.toString(16) +
+                    negative(color).blue.toString(16) +
+                    negative(color).green.toString(16)
+                })`,
+                color: 'black'
+            }}
+        >
+            <h1>Take control of your money</h1>
+            <div style={{ width: '50%' }}>
+                <Drop color="white" />
+            </div>
+            <h1>Automate & Optimize</h1>
+            <h1>your finances</h1>
+            <h1>poolfolio</h1>
+        </div>
+    );
+}
+
 export default function Home() {
     return (
         <Layout route="/">
             <div className={styles.container}>
                 <CardContainer>
-                    <Card color="darkblue">
-                        <div style={{ width: '50%' }}>
-                            <Drop color="white" />
-                        </div>
-                    </Card>
+                    <LogoCard />
                     <Card>
                         <h1>
                             Welcome to <a style={{ color: 'blue' }}>POOL</a>!

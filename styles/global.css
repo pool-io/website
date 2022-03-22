@@ -4,7 +4,7 @@ body {
     margin: 0;
     background-color: var(--primary-color);
 
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Roboto Condensed', sans-serif;
 
     --primary-color: #1d648c;
     /* --primary-color: #fdb8b8; */

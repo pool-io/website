@@ -1,12 +1,6 @@
 import styles from './header.module.css';
 import Link from 'next/link';
-import {
-    CSSProperties,
-    MouseEventHandler,
-    ReactNode,
-    useEffect,
-    useState
-} from 'react';
+import { CSSProperties, ReactNode, useEffect, useState } from 'react';
 import BurgerMenu from '@components/svg/BurgerMenu';
 import Drop from '@components/svg/drop';
 import Cross from '@components/svg/Cross';
@@ -22,11 +16,10 @@ function Logo() {
                 flexDirection: 'row',
                 justifyContent: 'flex-start',
                 alignItems: 'flex-start'
-                // background: 'yellow'
             }}
         >
             <Drop width={80} height={80} />
-            <h1>POOL</h1>
+            <h1>POOLFOLIO</h1>
         </Tab>
     );
 }
@@ -121,30 +114,65 @@ type ExpandedTabsProps = {
 };
 
 function ExpandedTabs(props: ExpandedTabsProps) {
+    function Spacer() {
+        return <div style={{ flex: 0.5 }} />;
+    }
+
     return (
         <>
             <Logo />
-            <div style={{ display: 'flex', flex: 4 }}>
+            <div
+                style={{
+                    display: 'flex',
+                    flex: 1
+                }}
+            >
+                <Spacer />
                 <Tab
-                    title="Learn"
+                    title="LEARN"
                     url="/learn"
                     isSelected={props.route === '/learn'}
                 />
                 <Tab
-                    title="Blog"
+                    title="NEWS"
                     url="/blog"
                     isSelected={props.route === '/blog'}
                 />
                 <Tab
-                    title="About"
+                    title="ABOUT"
                     url="/about"
                     isSelected={props.route === '/about'}
                 />
+                <Spacer />
+            </div>
+            <div
+                style={{
+                    flex: 1,
+                    display: 'flex',
+                    alignItems: 'center'
+                }}
+            >
+                <Spacer />
                 <Tab
-                    title="Sign In"
+                    title="SIGN IN"
                     url="/signin"
                     isSelected={props.route === '/signin'}
                 />
+                <div
+                    style={{
+                        display: 'flex',
+                        padding: 15,
+                        borderRadius: 10,
+                        background: 'blue'
+                    }}
+                >
+                    <Tab
+                        title="GET STARTED"
+                        url="/signin"
+                        isSelected={props.route === '/signin'}
+                    />
+                </div>
+                <Spacer />
             </div>
         </>
     );

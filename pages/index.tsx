@@ -131,7 +131,7 @@ export default function Home() {
                     </h1>
                     <h1>A SINGLE PLACE TO MANAGE ALL YOUR FINANCES</h1>
                     <div style={{ height: 10 }} />
-                    <h2>Track, Automate, Optimtize</h2>
+                    <h2>Track. Automate. Optimtize.</h2>
                 </div>
                 <CardContainer>
                     <Card color="white">

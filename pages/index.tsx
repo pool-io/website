@@ -6,7 +6,7 @@ import Drop from '@components/svg/drop';
 import EmailInput from '@components/input/email';
 import useIsMobile from '@components/utils/useIsMobile';
 import * as CSS from 'csstype';
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
 type CardContainerProps = {
     children?: React.ReactNode;
@@ -33,74 +33,62 @@ function CardContainer(props: CardContainerProps) {
     );
 }
 
-function LogoCard() {
-    type RGB = { red: number; green: number; blue: number };
+function MainCard() {
+    const isMobile = useIsMobile();
 
-    const [color, setColor] = useState<RGB>({
-        red: 0,
-        green: 0,
-        blue: 0
-    });
-
-    const negative = (color: RGB): RGB => {
-        const flip = (value: number) => {
-            return (value + 10) % 0xff;
-        };
-
-        return {
-            red: flip(color.red),
-            blue: flip(color.blue),
-            green: flip(color.green)
-        };
+    type Elastic = {
+        fontSize: number;
+        subtitle: ReactNode;
     };
-
-    // useEffect(() => {
-    //     const colorInterval = setInterval(() => {
-    //         setColor((color) => negative(color));
-    //     }, 1000);
-    //     // setColor(negative());
-    //     return () => clearInterval(colorInterval);
-    // }, []);
-
-    console.log(
-        `linear-gradient(#${
-            color.red.toString(16) +
-            color.green.toString(16) +
-            color.blue.toString(16)
-        }, #${
-            negative(color).red.toString(16) +
-            negative(color).blue.toString(16) +
-            negative(color).green.toString(16)
-        })`
-    );
+    const ELASTIC_DESKTOP: Elastic = {
+        fontSize: 100,
+        subtitle: (
+            <h1 style={{ color: '#f0f0f0' }}>
+                THE <a style={{ color: 'orange' }}>ONE</a> PLACE TO MANAGE ALL
+                YOUR FINANCES
+            </h1>
+        )
+    };
+    const ELASTIC_MOBILE: Elastic = {
+        fontSize: 80,
+        subtitle: (
+            <>
+                <h1 style={{ color: '#f0f0f0' }}>
+                    THE <a style={{ color: 'orange' }}>ONE</a> PLACE TO MANAGE
+                </h1>
+                <h1 style={{ color: '#f0f0f0' }}> ALL YOUR FINANCES</h1>
+            </>
+        )
+    };
+    const [elastic, setElastic] = useState<Elastic>(ELASTIC_DESKTOP);
+    useEffect(() => {
+        if (isMobile) {
+            setElastic(ELASTIC_MOBILE);
+        } else {
+            setElastic(ELASTIC_DESKTOP);
+        }
+    }, [isMobile]);
 
     return (
         <div
             style={{
-                flex: 1,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundImage: `linear-gradient(#${
-                    color.red.toString(16) +
-                    color.green.toString(16) +
-                    color.blue.toString(16)
-                }, #${
-                    negative(color).red.toString(16) +
-                    negative(color).blue.toString(16) +
-                    negative(color).green.toString(16)
-                })`,
-                color: 'black'
+                height: '100vh',
+                width: '100vw',
+                // background: '#f0f0f0'
+                backgroundImage: 'linear-gradient(#f0f0f0,#1975d3)'
             }}
         >
-            <h1>Take control of your money</h1>
-            <div style={{ width: '50%' }}>
-                <Drop color="white" />
-            </div>
-            <h1>Automate & Optimize</h1>
-            <h1>your finances</h1>
-            <h1>poolfolio</h1>
+            <h1 style={{ fontSize: elastic.fontSize }}>
+                <a style={{ color: '#50a8c5' }}>POOL</a>
+                FOLIO
+            </h1>
+            {elastic.subtitle}
+            <div style={{ height: 10 }} />
+            <h2 style={{ color: '#f0f0f0' }}>Track. Automate. Optimize.</h2>
         </div>
     );
 }
@@ -114,27 +102,7 @@ export default function Home() {
                     flexDirection: 'column'
                 }}
             >
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: '100vh',
-                        width: '100vw',
-                        background: '#f0f0f0'
-                    }}
-                >
-                    <h1 style={{ fontSize: 100 }}>
-                        <a style={{ color: '#50a8c5' }}>POOL</a>
-                        FOLIO
-                    </h1>
-                    <h1>A SINGLE PLACE TO MANAGE ALL YOUR FINANCES</h1>
-                    <div style={{ height: 10 }} />
-                    <h2 style={{ fontStyle: 'italic' }}>
-                        Track. Automate. Optimize.
-                    </h2>
-                </div>
+                <MainCard />
                 <CardContainer>
                     <Card color="white">
                         <h1>pool</h1>

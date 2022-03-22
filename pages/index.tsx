@@ -108,29 +108,31 @@ function LogoCard() {
 export default function Home() {
     return (
         <Layout route="/">
-            <div className={styles.container}>
-                <CardContainer>
-                    <LogoCard />
-                    <Card>
-                        <h1>
-                            Welcome to <a style={{ color: 'blue' }}>POOL</a>!
-                        </h1>
-                        <div style={{ height: '10%' }} />
-                        <p>We're currently working on bringing you</p>
-                        <h2>
-                            the <a style={{ color: 'orange' }}>only</a> finance
-                            app
-                        </h2>
-                        <p>you'll ever need</p>
-                        <div style={{ height: '10%' }} />
-                        <h2>
-                            Interested in our{' '}
-                            <a style={{ color: 'green' }}>progress</a>?
-                        </h2>
-                        <p>Join our email list!</p>
-                        <EmailInput />
-                    </Card>
-                </CardContainer>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column'
+                }}
+            >
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '100vh',
+                        width: '100vw',
+                        background: '#f0f0f0'
+                    }}
+                >
+                    <h1 style={{ fontSize: 100 }}>
+                        <a style={{ color: 'blue' }}>POOL</a>
+                        FOLIO
+                    </h1>
+                    <h1>A SINGLE PLACE TO MANAGE ALL YOUR FINANCES</h1>
+                    <div style={{ height: 10 }} />
+                    <h2>Track, Automate, Optimtize</h2>
+                </div>
                 <CardContainer>
                     <Card color="white">
                         <h1>pool</h1>

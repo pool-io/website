@@ -73,17 +73,11 @@ function Tab(props: TabProps) {
 }
 
 type CollapsedTabsProps = {
-    onExpanded: (isExpanded: boolean) => void;
+    isExpanded: boolean;
+    onClick: () => void;
 };
 
 function CollapsedTabs(props: CollapsedTabsProps) {
-    const [isExpanded, setIsExpanded] = useState<boolean>(false);
-    const onClick = () => {
-        console.log('expand:', !isExpanded);
-        setIsExpanded(!isExpanded);
-        props.onExpanded(!isExpanded);
-    };
-
     const isTop = useIsTop();
     const LIGHT_COLOR = 'black';
     const DARK_COLOR = 'black';
@@ -110,8 +104,8 @@ function CollapsedTabs(props: CollapsedTabsProps) {
                             alignItems: 'flex-start'
                         }}
                     >
-                        <div onClick={onClick} style={{ padding: 25 }}>
-                            {isExpanded ? (
+                        <div onClick={props.onClick} style={{ padding: 25 }}>
+                            {props.isExpanded ? (
                                 <Cross width={30} height={30} color={color} />
                             ) : (
                                 <BurgerMenu
@@ -123,7 +117,7 @@ function CollapsedTabs(props: CollapsedTabsProps) {
                         </div>
                     </div>
                 </div>
-                {isExpanded ? (
+                {props.isExpanded ? (
                     <div style={{ margin: 30, color: color }}>
                         <Link href="/learn">
                             <h1>Learn</h1>
@@ -241,12 +235,26 @@ export default function Header(props: HeaderProps) {
     const isTop = useIsTop();
 
     const [tabs, setTabs] = useState<ReactNode>(null);
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
     const DARK_BACKGROUND = 'linear-gradient(#ffffff,#f0f0f0)';
     const LIGHT_BACKGROUND = '';
     const [background, setBackground] = useState<string>(LIGHT_BACKGROUND);
 
-    const handleExpanded = (isExpanded: boolean) => {
+    useEffect(() => {
+        if (isMobile) {
+            setTabs(
+                <CollapsedTabs
+                    isExpanded={isExpanded}
+                    onClick={() => setIsExpanded(!isExpanded)}
+                />
+            );
+        } else {
+            setTabs(<ExpandedTabs route={props.route} />);
+        }
+    }, [isMobile, isExpanded]);
+
+    useEffect(() => {
         if (isExpanded) {
             setBackground(DARK_BACKGROUND);
         } else if (isTop) {
@@ -254,23 +262,7 @@ export default function Header(props: HeaderProps) {
         } else {
             setBackground(DARK_BACKGROUND);
         }
-    };
-
-    useEffect(() => {
-        if (isMobile) {
-            setTabs(<CollapsedTabs onExpanded={handleExpanded} />);
-        } else {
-            setTabs(<ExpandedTabs route={props.route} />);
-        }
-    }, [isMobile]);
-
-    useEffect(() => {
-        if (isTop) {
-            setBackground(LIGHT_BACKGROUND);
-        } else {
-            setBackground(DARK_BACKGROUND);
-        }
-    }, [isTop]);
+    }, [isTop, isExpanded]);
 
     return (
         <div

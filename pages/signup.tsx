@@ -103,8 +103,8 @@ export default function SignUp() {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    height: '100%',
-                    width: '100%',
+                    height: '100vh',
+                    width: '100vw',
                     background: '#f0f0f0'
                 }}
             >

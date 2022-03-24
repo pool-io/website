@@ -9,8 +9,8 @@ export default function Learn() {
                     display: 'flex',
                     justifyContent: 'center',
                     marginTop: 100,
-                    width: '100%',
-                    height: '100%'
+                    width: '100vw',
+                    height: '100vh'
                 }}
             >
                 <h1>Learn</h1>

@@ -11,7 +11,7 @@ function Logo() {
     const isTop = useIsTop();
 
     const LIGHT_COLOR = 'black';
-    const DARK_COLOR = 'white';
+    const DARK_COLOR = 'black';
     const [color, setColor] = useState<string>();
 
     useEffect(() => {
@@ -81,7 +81,7 @@ function CollapsedTabs() {
 
     const isTop = useIsTop();
     const LIGHT_COLOR = 'black';
-    const DARK_COLOR = 'white';
+    const DARK_COLOR = 'black';
     const [color, setColor] = useState<string>();
     useEffect(() => {
         if (isTop) {
@@ -146,7 +146,7 @@ type ExpandedTabsProps = {
 function ExpandedTabs(props: ExpandedTabsProps) {
     const isTop = useIsTop();
     const LIGHT_COLOR = 'black';
-    const DARK_COLOR = 'white';
+    const DARK_COLOR = 'black';
     const [color, setColor] = useState<string>();
     useEffect(() => {
         if (isTop) {
@@ -214,8 +214,8 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                 >
                     <Tab
                         title="GET STARTED"
-                        url="/signin"
-                        isSelected={props.route === '/signin'}
+                        url="/signup"
+                        isSelected={props.route === '/signup'}
                     />
                 </div>
                 <Spacer />
@@ -234,9 +234,9 @@ export default function Header(props: HeaderProps) {
 
     const [tabs, setTabs] = useState<ReactNode>(null);
 
-    const DARK_BACKGROUND = 'black';
-    const LIGHT_BACKGROUND = 'white';
-    const [background, setBackground] = useState<string>(DARK_BACKGROUND);
+    const DARK_BACKGROUND = 'linear-gradient(#ffffff,#f0f0f0)';
+    const LIGHT_BACKGROUND = '';
+    const [background, setBackground] = useState<string>(LIGHT_BACKGROUND);
 
     useEffect(() => {
         if (isMobile) {
@@ -265,7 +265,7 @@ export default function Header(props: HeaderProps) {
                 position: 'fixed',
                 top: 0,
                 left: 0,
-                background: background
+                backgroundImage: background
             }}
         >
             {tabs}

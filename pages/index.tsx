@@ -95,6 +95,11 @@ function MainCard() {
 }
 
 export default function Home() {
+    useEffect(() => {
+        // NOTE: phones for some reason pushes it up on load
+        window.scrollTo(-10, 0);
+    }, []);
+
     return (
         <Layout route="/">
             <div

@@ -8,22 +8,45 @@ import {
 } from 'react';
 import Layout from '@components/layout';
 
+type Birthday = {
+    day: number;
+    month: number;
+    year: number;
+};
+
+type FormData = {
+    first: string;
+    last: string;
+    email: string;
+    password: string;
+    gender: string;
+    birthday: Birthday;
+};
+
 function Form() {
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const [data, setData] = useState<FormData>({
+        first: '',
+        last: '',
+        email: '',
+        password: '',
+        gender: '',
+        birthday: null
+    });
 
     const onEmail: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(`email: ${e.target.value}`);
         e.preventDefault();
-        setEmail(e.target.value);
+        console.log(`email: ${e.target.value}`);
+        data.email = e.target.value;
+        setData(data);
     };
 
     const onPassword: ChangeEventHandler = (
         e: ChangeEvent<HTMLInputElement>
     ) => {
-        console.log(`password: ${e.target.value}`);
         e.preventDefault();
-        setPassword(e.target.value);
+        console.log(`password: ${e.target.value}`);
+        data.password = e.target.value;
+        setData(data);
     };
 
     const onSubmit: FormEventHandler = (e: FormEvent) => {
@@ -44,6 +67,18 @@ function Form() {
         >
             <input
                 type="text"
+                name="first"
+                placeholder="First Name"
+                onChange={onEmail}
+            />
+            <input
+                type="text"
+                name="last"
+                placeholder="Last Name"
+                onChange={onEmail}
+            />
+            <input
+                type="text"
                 name="email"
                 placeholder="Email"
                 onChange={onEmail}
@@ -59,9 +94,9 @@ function Form() {
     );
 }
 
-export default function SignIn() {
+export default function SignUp() {
     return (
-        <Layout route="/signin">
+        <Layout route="/signup">
             <div
                 style={{
                     display: 'flex',
@@ -73,7 +108,7 @@ export default function SignIn() {
                     background: '#f0f0f0'
                 }}
             >
-                <h1>Sign In</h1>
+                <h1>Sign Up</h1>
                 <Form />
             </div>
         </Layout>

@@ -2,6 +2,7 @@ name: deploy
 on:
     push:
         branches:
+            - master
             - production
 jobs:
     deploy:
@@ -20,4 +21,5 @@ jobs:
               with:
                   username: ${{ secrets.DOCKERHUB_USERNAME }}
                   password: ${{ secrets.DOCKERHUB_PASSWORD }}
-            - run: make push-docker
+            - name: push docker
+              run: make push-docker

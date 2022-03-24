@@ -32,4 +32,6 @@ jobs:
                         User ec2-user
                         IdentityFile ~/.ssh/id
             - name: ssh
-              run: ssh poolet && cd devops/website && make run
+              run: ssh poolet
+            - name: start
+              run: cd devops/website && make run

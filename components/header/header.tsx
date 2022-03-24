@@ -214,8 +214,8 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                 >
                     <Tab
                         title="GET STARTED"
-                        url="/signin"
-                        isSelected={props.route === '/signin'}
+                        url="/signup"
+                        isSelected={props.route === '/signup'}
                     />
                 </div>
                 <Spacer />

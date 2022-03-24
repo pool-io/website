@@ -50,12 +50,13 @@ function MainCard() {
         )
     };
     const ELASTIC_MOBILE: Elastic = {
-        fontSize: 80,
+        fontSize: 70,
         subtitle: (
             <>
                 <h1 style={{ color: '#f0f0f0' }}>
-                    THE <a style={{ color: 'orange' }}>ONE</a> PLACE TO MANAGE
+                    THE <a style={{ color: 'orange' }}>ONE</a> PLACE{' '}
                 </h1>
+                <h1 style={{ color: '#f0f0f0' }}>TO MANAGE</h1>
                 <h1 style={{ color: '#f0f0f0' }}> ALL YOUR FINANCES</h1>
             </>
         )
@@ -78,7 +79,6 @@ function MainCard() {
                 alignItems: 'center',
                 height: '100vh',
                 width: '100vw',
-                // background: '#f0f0f0'
                 backgroundImage: 'linear-gradient(#f0f0f0,#1975d3)'
             }}
         >
@@ -89,6 +89,7 @@ function MainCard() {
             {elastic.subtitle}
             <div style={{ height: 10 }} />
             <h2 style={{ color: '#f0f0f0' }}>Track. Automate. Optimize.</h2>
+            <div style={{ height: 30 }} />
         </div>
     );
 }

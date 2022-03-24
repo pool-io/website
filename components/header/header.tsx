@@ -234,9 +234,9 @@ export default function Header(props: HeaderProps) {
 
     const [tabs, setTabs] = useState<ReactNode>(null);
 
-    const DARK_BACKGROUND = 'white';
+    const DARK_BACKGROUND = 'linear-gradient(#ffffff,#f0f0f0)';
     const LIGHT_BACKGROUND = '';
-    const [background, setBackground] = useState<string>(DARK_BACKGROUND);
+    const [background, setBackground] = useState<string>(LIGHT_BACKGROUND);
 
     useEffect(() => {
         if (isMobile) {
@@ -265,7 +265,7 @@ export default function Header(props: HeaderProps) {
                 position: 'fixed',
                 top: 0,
                 left: 0,
-                background: background
+                backgroundImage: background
             }}
         >
             {tabs}

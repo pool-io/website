@@ -8,18 +8,31 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - name: checkout
-              uses: actions/checkout@v2
-            - name: setup node
-              uses: actions/setup-node@v2
+            # - name: checkout
+            #   uses: actions/checkout@v2
+            # - name: setup node
+            #   uses: actions/setup-node@v2
+            #   with:
+            #       node-version: 14
+            # - name: install yarn
+            #   run: npm install --global yarn
+            # - name: docker login
+            #   uses: docker/login-action@v1
+            #   with:
+            #       username: ${{ secrets.DOCKERHUB_USERNAME }}
+            #       password: ${{ secrets.DOCKERHUB_PASSWORD }}
+            # - name: push docker
+            #   run: make push-docker
+            - name: install ssh key
+              uses: shimataro/ssh-key-action@v2
               with:
-                  node-version: 14
-            - name: install yarn
-              run: npm install --global yarn
-            - name: docker login
-              uses: docker/login-action@v1
-              with:
-                  username: ${{ secrets.DOCKERHUB_USERNAME }}
-                  password: ${{ secrets.DOCKERHUB_PASSWORD }}
-            - name: push docker
-              run: make push-docker
+                  key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+                  name: id
+                  known_hosts: ${{ secrets.EC2_SSH_PUBLIC_KEY }}
+                  config: |
+                      Host poolet
+                        HostName 52.8.107.126
+                        User ec2-user
+                        IdentityFile ~/.ssh/id
+            - name: ssh
+              run: ssh poolet

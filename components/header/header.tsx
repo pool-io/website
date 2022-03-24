@@ -72,11 +72,16 @@ function Tab(props: TabProps) {
     );
 }
 
-function CollapsedTabs() {
+type CollapsedTabsProps = {
+    onExpanded: (isExpanded: boolean) => void;
+};
+
+function CollapsedTabs(props: CollapsedTabsProps) {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const onClick = () => {
         console.log('expand:', !isExpanded);
         setIsExpanded(!isExpanded);
+        props.onExpanded(!isExpanded);
     };
 
     const isTop = useIsTop();
@@ -238,9 +243,19 @@ export default function Header(props: HeaderProps) {
     const LIGHT_BACKGROUND = '';
     const [background, setBackground] = useState<string>(LIGHT_BACKGROUND);
 
+    const handleExpanded = (isExpanded: boolean) => {
+        if (isExpanded) {
+            setBackground(DARK_BACKGROUND);
+        } else if (isTop) {
+            setBackground(LIGHT_BACKGROUND);
+        } else {
+            setBackground(DARK_BACKGROUND);
+        }
+    };
+
     useEffect(() => {
         if (isMobile) {
-            setTabs(<CollapsedTabs />);
+            setTabs(<CollapsedTabs onExpanded={handleExpanded} />);
         } else {
             setTabs(<ExpandedTabs route={props.route} />);
         }

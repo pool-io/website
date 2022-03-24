@@ -8,18 +8,18 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            # - name: checkout
-            #   uses: actions/checkout@v2
-            # - name: docker login
-            #   uses: docker/login-action@v1
-            #   with:
-            #       username: ${{ secrets.DOCKERHUB_USERNAME }}
-            #       password: ${{ secrets.DOCKERHUB_PASSWORD }}
-            # - name: build and push docker
-            #   uses: docker/build-push-action@v2
-            #   with:
-            #       push: true
-            #       tags: sbkim99/poolet:latest
+            - name: checkout
+              uses: actions/checkout@v2
+            - name: docker login
+              uses: docker/login-action@v1
+              with:
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_PASSWORD }}
+            - name: build and push docker
+              uses: docker/build-push-action@v2
+              with:
+                  push: true
+                  tags: sbkim99/poolet:latest
             - name: install ssh key
               uses: shimataro/ssh-key-action@v2
               with:
@@ -32,4 +32,4 @@ jobs:
                         User ec2-user
                         IdentityFile ~/.ssh/id
             - name: ssh
-              run: ssh poolet cd devops/website; make run
+              run: echo 'cd devops/website; make run' | ssh poolet bash --login

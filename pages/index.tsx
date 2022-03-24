@@ -126,6 +126,12 @@ export default function Home() {
                         </ul>
                     </Card>
                 </CardContainer>
+                <CardContainer>
+                    <Card color="white">
+                        <h1>Move Financial Management Beyond Pen and Paper </h1>
+                            <p><a style={{ color: 'orange' }}>Pool</a> assets according to <a style={{ color: 'orange' }}>your</a> needs</p>
+                    </Card>
+                </CardContainer>
             </div>
         </Layout>
     );

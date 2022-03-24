@@ -137,6 +137,9 @@ function CollapsedTabs(props: CollapsedTabsProps) {
                         <Link href="/signin">
                             <h1>Sign In</h1>
                         </Link>
+                        <Link href="/signup">
+                            <h1 style={{ color: '#04b3ed' }}>Get Started</h1>
+                        </Link>
                     </div>
                 ) : null}
             </div>
@@ -182,7 +185,7 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                     style={{ color: color }}
                 />
                 <Tab
-                    title="NEWS"
+                    title="BLOG"
                     url="/blog"
                     isSelected={props.route === '/blog'}
                     style={{ color: color }}

@@ -95,6 +95,11 @@ function MainCard() {
 }
 
 export default function Home() {
+    useEffect(() => {
+        // NOTE: phones for some reason pushes it up on load
+        window.scrollTo(-10, 0);
+    }, []);
+
     return (
         <Layout route="/">
             <div
@@ -119,6 +124,12 @@ export default function Home() {
                             <li>Create saving goals</li>
                             <li>Invest your money</li>
                         </ul>
+                    </Card>
+                </CardContainer>
+                <CardContainer>
+                    <Card color="white">
+                        <h1>Move Financial Management Beyond Pen and Paper </h1>
+                            <p><a style={{ color: 'orange' }}>Pool</a> assets according to <a style={{ color: 'orange' }}>your</a> needs</p>
                     </Card>
                 </CardContainer>
             </div>

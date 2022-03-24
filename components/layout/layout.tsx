@@ -1,6 +1,7 @@
 import styles from './layout.module.css';
 import Head from 'next/head';
 import Header from '@components/header';
+import Footer from '@components/Footer';
 
 type LayoutProps = {
     route: string;
@@ -26,8 +27,10 @@ export default function Layout(props: LayoutProps) {
                 />
             </Head>
             {/* <div className={styles.margin} /> */}
-            <div className={styles.container}>{props.children}</div>
-
+            <div className={styles.container}>
+                {props.children}
+                {/* <Footer /> */}
+            </div>
             {/* Header is placed at the bottom so that it will be rendered at the top */}
             <Header route={props.route} />
         </>

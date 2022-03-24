@@ -11,7 +11,7 @@ function Logo() {
     const isTop = useIsTop();
 
     const LIGHT_COLOR = 'black';
-    const DARK_COLOR = 'white';
+    const DARK_COLOR = 'black';
     const [color, setColor] = useState<string>();
 
     useEffect(() => {
@@ -81,7 +81,7 @@ function CollapsedTabs() {
 
     const isTop = useIsTop();
     const LIGHT_COLOR = 'black';
-    const DARK_COLOR = 'white';
+    const DARK_COLOR = 'black';
     const [color, setColor] = useState<string>();
     useEffect(() => {
         if (isTop) {
@@ -146,7 +146,7 @@ type ExpandedTabsProps = {
 function ExpandedTabs(props: ExpandedTabsProps) {
     const isTop = useIsTop();
     const LIGHT_COLOR = 'black';
-    const DARK_COLOR = 'white';
+    const DARK_COLOR = 'black';
     const [color, setColor] = useState<string>();
     useEffect(() => {
         if (isTop) {
@@ -234,8 +234,8 @@ export default function Header(props: HeaderProps) {
 
     const [tabs, setTabs] = useState<ReactNode>(null);
 
-    const DARK_BACKGROUND = 'black';
-    const LIGHT_BACKGROUND = 'white';
+    const DARK_BACKGROUND = 'white';
+    const LIGHT_BACKGROUND = '';
     const [background, setBackground] = useState<string>(DARK_BACKGROUND);
 
     useEffect(() => {

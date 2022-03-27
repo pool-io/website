@@ -15,6 +15,7 @@ import {
 } from 'firebase/auth';
 import { prependOnceListener } from 'process';
 import { setUserProperties } from 'firebase/analytics';
+import { AuthErrorCodes, AuthError } from 'firebase/auth';
 
 type Credentials = {
     email: string;
@@ -77,15 +78,29 @@ function Form(props: FormProps) {
 
 function SignUp() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [message, setMessage] = useState<string>('');
 
     const onSubmit = ({ email, password }: Credentials) => {
         console.log('SignUp:onSubmit', { email, password });
+
         setIsLoading(true);
-        createUserWithEmailAndPassword(Firebase.auth, email, password).then(
-            (userCredential: UserCredential) => {
+        createUserWithEmailAndPassword(Firebase.auth, email, password)
+            .then((userCredential: UserCredential) => {
                 console.log('SignUp:onSubmit', { userCredential });
-            }
-        );
+            })
+            .catch((err: AuthError) => {
+                switch (err.code) {
+                    case AuthErrorCodes.INVALID_EMAIL:
+                        setMessage('invalid email');
+                        break;
+                    case AuthErrorCodes.EMAIL_EXISTS:
+                        setMessage('email is already in use');
+                        break;
+                    default:
+                        console.log('SignUp:onSubmit', { err });
+                }
+                setIsLoading(false);
+            });
     };
 
     return (
@@ -102,6 +117,7 @@ function SignUp() {
         >
             <h1>SIGN UP</h1>
             <Form onSubmit={onSubmit} />
+            <p style={{ color: 'red' }}>{message}</p>
             <p>Already have an account?</p>
             <Link href="/portal">
                 <p>SIGN IN</p>

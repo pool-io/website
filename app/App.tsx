@@ -1,29 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { onAuthStateChanged, User } from 'firebase/auth';
 import { Firebase } from './firebase';
 import Portal from 'pages/portal';
-import SignIn from '@app/SignIn';
+import Auth from './Auth';
 
-export type AppProps = {};
+export type AppProps = {
+    isSignUp: boolean;
+};
 
 export default function App(props: AppProps) {
-    const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
-
-    const handleIsSignedIn = (isSignedIn: boolean) => {
-        setIsSignedIn(isSignedIn);
-    };
+    const [authUser, setAuthUser] = useState<User>(null);
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(Firebase.auth, (user: User) => {
+            console.log('firebase user:', user);
+            setAuthUser(user);
+        });
+        return unsubscribe;
+    }, []);
 
     return (
         <div
+            className="app"
             style={{
                 display: 'flex',
+                flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '100vh',
-                width: '100vw'
+                width: '100vw',
+                background: '#f0f0f0'
             }}
         >
-            {isSignedIn ? <Portal /> : <SignIn />}
+            {authUser ? <Portal /> : <Auth isSignUp={props.isSignUp} />}
         </div>
     );
 }

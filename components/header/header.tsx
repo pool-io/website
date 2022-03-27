@@ -131,7 +131,7 @@ function CollapsedTabs(props: CollapsedTabsProps) {
                         <Link href="/portal">
                             <h1>Sign In</h1>
                         </Link>
-                        <Link href="/portal">
+                        <Link href="/portal?signup">
                             <h1 style={{ color: '#04b3ed' }}>Get Started</h1>
                         </Link>
                     </div>
@@ -209,7 +209,7 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                         background: '#04b3ed'
                     }}
                 >
-                    <Tab title="GET STARTED" url="/portal" />
+                    <Tab title="GET STARTED" url="/portal?signup" />
                 </div>
                 <Spacer />
             </div>

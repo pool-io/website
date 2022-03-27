@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { Firebase } from './Firebase';
 import Portal from './Portal';
 import Auth from './Auth';
+import { Firebase } from './Firebase';
 
 function Loading() {
     return <h1>LOADING...</h1>;

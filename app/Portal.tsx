@@ -1,4 +1,4 @@
-import SignOutButton from './components/SignOut';
+import { SignOutButton } from './Auth';
 
 export default function Portal() {
     return (

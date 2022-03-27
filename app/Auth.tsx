@@ -6,8 +6,13 @@ import {
     ChangeEventHandler
 } from 'react';
 import Link from 'next/link';
-import { Firebase } from './firebase';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { Firebase } from './Firebase';
+import {
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    User,
+    UserCredential
+} from 'firebase/auth';
 import { prependOnceListener } from 'process';
 import { setUserProperties } from 'firebase/analytics';
 
@@ -71,8 +76,16 @@ function Form(props: FormProps) {
 }
 
 function SignUp() {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
     const onSubmit = ({ email, password }: Credentials) => {
         console.log('SignUp:onSubmit', { email, password });
+        setIsLoading(true);
+        createUserWithEmailAndPassword(Firebase.auth, email, password).then(
+            (userCredential: UserCredential) => {
+                console.log('SignUp:onSubmit', { userCredential });
+            }
+        );
     };
 
     return (

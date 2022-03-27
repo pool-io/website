@@ -1,24 +1,31 @@
 import { useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { Firebase } from './firebase';
-import Portal from 'pages/portal';
+import { Firebase } from './Firebase';
+import Portal from './Portal';
 import Auth from './Auth';
+
+function Loading() {
+    return <h1>LOADING...</h1>;
+}
 
 export type AppProps = {
     isSignUp: boolean;
 };
 
 export default function App(props: AppProps) {
-    const [authUser, setAuthUser] = useState<User>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [authUser, setAuthUser] = useState<User>(undefined);
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(Firebase.auth, (user: User) => {
-            console.log('firebase user:', user);
+            console.log('App:firebase user:', { user });
             setAuthUser(user);
+            setIsLoading(false);
         });
         return unsubscribe;
     }, []);
 
+    console.log('App:return');
     return (
         <div
             className="app"
@@ -32,7 +39,13 @@ export default function App(props: AppProps) {
                 background: '#f0f0f0'
             }}
         >
-            {authUser ? <Portal /> : <Auth isSignUp={props.isSignUp} />}
+            {isLoading ? (
+                <Loading />
+            ) : authUser ? (
+                <Portal />
+            ) : (
+                <Auth isSignUp={props.isSignUp} />
+            )}
         </div>
     );
 }

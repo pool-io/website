@@ -1,7 +1,10 @@
+import SignOutButton from './components/SignOut';
+
 export default function Portal() {
     return (
-        <div>
-            <h1>portal</h1>
-        </div>
+        <>
+            <h1>Welcome to your portal</h1>
+            <SignOutButton />
+        </>
     );
 }

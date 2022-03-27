@@ -1,4 +1,4 @@
-import App from '@app/app';
+import App from '@app/App';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 

@@ -10,6 +10,7 @@ import { Firebase } from './Firebase';
 import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
+    signInWithEmailAndPassword,
     User,
     UserCredential
 } from 'firebase/auth';
@@ -127,8 +128,31 @@ function SignUp() {
 }
 
 function SignIn() {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [message, setMessage] = useState<string>('');
+
     const onSubmit = ({ email, password }: Credentials) => {
-        console.log('SignUp:onSubmit', { email, password });
+        console.log('SignIn:onSubmit', { email, password });
+        signInWithEmailAndPassword(Firebase.auth, email, password)
+            .then((userCredentials: UserCredential) => {
+                console.log('SignIn:onSubmit', { userCredentials });
+            })
+            .catch((err: AuthError) => {
+                switch (err.code) {
+                    case AuthErrorCodes.INVALID_PASSWORD:
+                        setMessage('wrong email/password');
+                        break;
+                    case AuthErrorCodes.INVALID_EMAIL:
+                        setMessage('invalid email');
+                        break;
+                    case AuthErrorCodes.TOO_MANY_ATTEMPTS_TRY_LATER:
+                        setMessage('too many attempts');
+                        break;
+                    default:
+                        console.log('SignUp:onSubmit', { err });
+                }
+                setIsLoading(false);
+            });
     };
 
     return (
@@ -142,6 +166,7 @@ function SignIn() {
         >
             <h1>SIGN IN</h1>
             <Form onSubmit={onSubmit} />
+            <p style={{ color: 'red' }}>{message}</p>
             <p>Don't have an account?</p>
             <Link href="/portal?signup">
                 <p>SIGN UP</p>

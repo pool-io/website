@@ -128,10 +128,10 @@ function CollapsedTabs(props: CollapsedTabsProps) {
                         <Link href="/about">
                             <h1>About</h1>
                         </Link>
-                        <Link href="/signin">
+                        <Link href="/portal">
                             <h1>Sign In</h1>
                         </Link>
-                        <Link href="/signup">
+                        <Link href="/portal">
                             <h1 style={{ color: '#04b3ed' }}>Get Started</h1>
                         </Link>
                     </div>
@@ -200,12 +200,7 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                 }}
             >
                 <Spacer />
-                <Tab
-                    title="SIGN IN"
-                    url="/signin"
-                    isSelected={props.route === '/signin'}
-                    style={{ color: color }}
-                />
+                <Tab title="SIGN IN" url="/portal" style={{ color: color }} />
                 <div
                     style={{
                         display: 'flex',
@@ -214,11 +209,7 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                         background: '#04b3ed'
                     }}
                 >
-                    <Tab
-                        title="GET STARTED"
-                        url="/signup"
-                        isSelected={props.route === '/signup'}
-                    />
+                    <Tab title="GET STARTED" url="/portal" />
                 </div>
                 <Spacer />
             </div>

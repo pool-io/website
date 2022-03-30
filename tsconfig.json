@@ -16,7 +16,7 @@
         "jsx": "preserve",
         "baseUrl": ".",
         "paths": {
-            "@portal/*": ["portal/*"],
+            "@app/*": ["app/*"],
             "@components/*": ["components/*"]
         }
     },

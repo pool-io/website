@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import Portal from './Portal';
 import Auth from './Auth';
-import { Firebase } from './Firebase';
+import { Firebase } from '@app/Firebase';
 
 function Loading() {
     return <h1>LOADING...</h1>;

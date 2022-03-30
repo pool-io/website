@@ -7,7 +7,7 @@ import {
     MouseEventHandler
 } from 'react';
 import Link from 'next/link';
-import { Firebase } from './Firebase';
+import { Firebase } from '@app/Firebase';
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,

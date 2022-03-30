@@ -1,4 +1,4 @@
-import App from '@app/App';
+import App from '@portal/App';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Duplex } from 'stream';

@@ -41,7 +41,7 @@ export default function App(props: AppProps) {
             {isLoading ? (
                 <Loading />
             ) : authUser ? (
-                <Portal />
+                <Portal user={authUser} />
             ) : (
                 <Auth isSignUp={props.isSignUp} />
             )}

@@ -3,20 +3,19 @@ import {
     FormEvent,
     FormEventHandler,
     ChangeEvent,
-    ChangeEventHandler
+    ChangeEventHandler,
+    MouseEventHandler
 } from 'react';
 import Link from 'next/link';
 import { Firebase } from './Firebase';
 import {
     createUserWithEmailAndPassword,
-    onAuthStateChanged,
     signInWithEmailAndPassword,
-    User,
-    UserCredential
+    updateCurrentUser,
+    UserCredential,
+    AuthError,
+    AuthErrorCodes
 } from 'firebase/auth';
-import { prependOnceListener } from 'process';
-import { setUserProperties } from 'firebase/analytics';
-import { AuthErrorCodes, AuthError } from 'firebase/auth';
 
 type Credentials = {
     email: string;
@@ -173,6 +172,15 @@ function SignIn() {
             </Link>
         </div>
     );
+}
+
+export function SignOutButton() {
+    const handleSignOut: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault();
+        updateCurrentUser(Firebase.auth, null);
+    };
+
+    return <button onClick={handleSignOut}>Sign Out</button>;
 }
 
 export type AuthProps = {

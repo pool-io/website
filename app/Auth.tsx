@@ -96,7 +96,11 @@ function SignUp() {
                     case AuthErrorCodes.EMAIL_EXISTS:
                         setMessage('email is already in use');
                         break;
+                    case AuthErrorCodes.WEAK_PASSWORD:
+                        setMessage('password must be at least 6 characters');
+                        break;
                     default:
+                        setMessage(err.message);
                         console.log('SignUp:onSubmit', { err });
                 }
                 setIsLoading(false);
@@ -148,6 +152,7 @@ function SignIn() {
                         setMessage('too many attempts');
                         break;
                     default:
+                        setMessage(err.message);
                         console.log('SignUp:onSubmit', { err });
                 }
                 setIsLoading(false);

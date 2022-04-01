@@ -47,37 +47,74 @@ type TabProps = {
     title?: string;
     isSelected?: boolean;
     children?: React.ReactNode;
+    expanded?: React.ReactNode;
     style?: CSSProperties;
 };
 
 function Tab(props: TabProps) {
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+    useEffect(() => {
+        console.log('Tab', { isExpanded });
+    }, [isExpanded]);
+
     return (
-        <Link href={props.url}>
-            <div
-                className={styles.tab}
-                style={{
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    ...props.style
-                }}
-            >
-                {props.children ? props.children : <a>{props.title}</a>}
-            </div>
-        </Link>
+        <div
+            style={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                ...props.style
+            }}
+            onMouseEnter={() => setIsExpanded(true)}
+            onMouseLeave={() => setIsExpanded(false)}
+        >
+            <Link href={props.url}>
+                <div
+                    className={styles.tab}
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                        cursor: 'pointer',
+                        ...props.style
+                    }}
+                >
+                    {props.children ? props.children : <a>{props.title}</a>}
+                </div>
+            </Link>
+            {props.expanded && isExpanded ? (
+                <div
+                    style={{
+                        position: 'absolute',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        top: 70,
+                        height: 100,
+                        width: 100,
+                        margin: 10,
+                        color: 'black',
+                        background: 'white'
+                    }}
+                >
+                    {props.expanded}
+                </div>
+            ) : null}
+        </div>
     );
 }
 
-type CollapsedTabsProps = {
+type MobileTabsProps = {
     isExpanded: boolean;
     onClick: () => void;
 };
 
-function CollapsedTabs(props: CollapsedTabsProps) {
+function MobileTabs(props: MobileTabsProps) {
     const isTop = useIsTop();
     const LIGHT_COLOR = 'black';
     const DARK_COLOR = 'black';
@@ -141,11 +178,11 @@ function CollapsedTabs(props: CollapsedTabsProps) {
     );
 }
 
-type ExpandedTabsProps = {
+type DesktopTabsProps = {
     route: string;
 };
 
-function ExpandedTabs(props: ExpandedTabsProps) {
+function DesktopTabs(props: DesktopTabsProps) {
     const isTop = useIsTop();
     const LIGHT_COLOR = 'black';
     const DARK_COLOR = 'black';
@@ -162,6 +199,24 @@ function ExpandedTabs(props: ExpandedTabsProps) {
         return <div style={{ flex: 0.5 }} />;
     }
 
+    const ExpandedLearn = (
+        <>
+            <h1>learn</h1>
+        </>
+    );
+
+    const ExpandedBlog = (
+        <>
+            <h1>blog</h1>
+        </>
+    );
+
+    const ExpandedAbout = (
+        <>
+            <h1>about</h1>
+        </>
+    );
+
     return (
         <>
             <Logo />
@@ -177,18 +232,21 @@ function ExpandedTabs(props: ExpandedTabsProps) {
                     url="/learn"
                     isSelected={props.route === '/learn'}
                     style={{ color: color }}
+                    expanded={ExpandedLearn}
                 />
                 <Tab
                     title="BLOG"
                     url="/blog"
                     isSelected={props.route === '/blog'}
                     style={{ color: color }}
+                    expanded={ExpandedBlog}
                 />
                 <Tab
                     title="ABOUT"
                     url="/about"
                     isSelected={props.route === '/about'}
                     style={{ color: color }}
+                    expanded={ExpandedAbout}
                 />
                 <Spacer />
             </div>
@@ -235,13 +293,13 @@ export default function Header(props: HeaderProps) {
     useEffect(() => {
         if (isMobile) {
             setTabs(
-                <CollapsedTabs
+                <MobileTabs
                     isExpanded={isExpanded}
                     onClick={() => setIsExpanded(!isExpanded)}
                 />
             );
         } else {
-            setTabs(<ExpandedTabs route={props.route} />);
+            setTabs(<DesktopTabs route={props.route} />);
         }
     }, [isMobile, isExpanded]);
 

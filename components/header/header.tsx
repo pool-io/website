@@ -99,7 +99,8 @@ function Tab(props: TabProps) {
                         width: '50vw',
                         margin: 10,
                         color: 'black',
-                        background: 'white'
+                        background: 'white',
+                        cursor: 'pointer'
                     }}
                 >
                     {props.expanded}

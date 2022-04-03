@@ -227,7 +227,8 @@ function DesktopTabs(props: DesktopTabsProps) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    padding: 30
+                    paddingRight: 20,
+                    paddingLeft: 20
                 }}
             >
                 <h1>Meet the Team Members</h1>
@@ -252,7 +253,8 @@ function DesktopTabs(props: DesktopTabsProps) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    padding: 30
+                    paddingLeft: 20,
+                    paddingRight: 20
                 }}
             >
                 <h1>Why Use Pool?</h1>

@@ -95,8 +95,8 @@ function Tab(props: TabProps) {
                         flexDirection: 'column',
                         alignItems: 'center',
                         top: 70,
-                        height: "50vh",
-                        width: "50vw",
+                        height: '50vh',
+                        width: '50vw',
                         margin: 10,
                         color: 'black',
                         background: 'white'
@@ -216,6 +216,14 @@ function DesktopTabs(props: DesktopTabsProps) {
             <h1>Meet the Team Members</h1>
             <Link href="/soungbaekim">
                 <p>Soung Bae Kim</p>
+            </Link>
+
+            <Link href="/caleb">
+                <p>Caleb</p>
+            </Link>
+
+            <Link href="/bralley">
+                <p>BR Alley</p>
             </Link>
         </>
     );

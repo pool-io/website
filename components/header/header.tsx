@@ -95,11 +95,12 @@ function Tab(props: TabProps) {
                         flexDirection: 'column',
                         alignItems: 'center',
                         top: 70,
-                        height: 100,
-                        width: 100,
+                        height: '50vh',
+                        width: '50vw',
                         margin: 10,
                         color: 'black',
-                        background: 'white'
+                        background: 'white',
+                        cursor: 'pointer'
                     }}
                 >
                     {props.expanded}
@@ -213,7 +214,18 @@ function DesktopTabs(props: DesktopTabsProps) {
 
     const ExpandedAbout = (
         <>
-            <h1>about</h1>
+            <h1>Meet the Team Members</h1>
+            <Link href="/soungbaekim">
+                <p>Soung Bae Kim</p>
+            </Link>
+
+            <Link href="/caleb">
+                <p>Caleb</p>
+            </Link>
+
+            <Link href="/bralley">
+                <p>BR Alley</p>
+            </Link>
         </>
     );
 

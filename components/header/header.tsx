@@ -6,6 +6,7 @@ import Drop from '@components/svg/drop';
 import Cross from '@components/svg/Cross';
 import useIsMobile from '@components/utils/useIsMobile';
 import useIsTop from '@components/utils/useIsTop';
+import { base64urlEncodeWithoutPadding } from '@firebase/util';
 
 function Logo() {
     const isTop = useIsTop();
@@ -95,8 +96,6 @@ function Tab(props: TabProps) {
                         flexDirection: 'column',
                         alignItems: 'center',
                         top: 70,
-                        // height: '50vh',
-                        // width: '50vw',
                         borderRadius: 30,
                         margin: 10,
                         color: 'black',
@@ -218,16 +217,17 @@ function DesktopTabs(props: DesktopTabsProps) {
             style={{
                 display: 'flex',
                 flexDirection: 'row',
-                justifyContent: 'space-around',
-                height: '32vh',
-                width: '70vw'
+                justifyContent: 'space-around'
+                // height: '32vh',
+                // width: '70vw'
             }}
         >
             <div
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    padding: 30
                 }}
             >
                 <h1>Meet the Team Members</h1>
@@ -251,7 +251,8 @@ function DesktopTabs(props: DesktopTabsProps) {
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    padding: 30
                 }}
             >
                 <h1>Why Use Pool?</h1>

@@ -3,6 +3,8 @@ import { useState } from 'react';
 import SideBar from './components/SideBar';
 import Overview from './pages/Overview';
 import Profile from './pages/Profile';
+import Tanks from './pages/Tanks';
+import Pools from './pages/Pools';
 import Error from './pages/Error';
 
 type PortalProps = {
@@ -11,6 +13,9 @@ type PortalProps = {
 
 export enum Page {
     OVERVIEW,
+    POOLS,
+    TANKS,
+    REGISTRY,
     PROFILE
 }
 
@@ -37,6 +42,8 @@ export default function Portal(props: PortalProps) {
                 switch (page) {
                     case Page.OVERVIEW:
                         return <Overview user={props.user} />;
+                    case Page.POOLS:
+                        return <Pools />;
                     case Page.PROFILE:
                         return <Profile user={props.user} />;
                     default:

@@ -19,6 +19,12 @@ export default function SideBar(props: SideBarProps) {
             <button onClick={() => props.handlePage(Page.OVERVIEW)}>
                 <h1>Overview</h1>
             </button>
+            <button onClick={() => props.handlePage(Page.POOLS)}>
+                <h1>Pools</h1>
+            </button>
+            <button onClick={() => props.handlePage(Page.TANKS)}>
+                <h1>Tanks</h1>
+            </button>
             <button onClick={() => props.handlePage(Page.PROFILE)}>
                 <h1>Profile</h1>
             </button>

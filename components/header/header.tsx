@@ -6,6 +6,7 @@ import Drop from '@components/svg/drop';
 import Cross from '@components/svg/Cross';
 import useIsMobile from '@components/utils/useIsMobile';
 import useIsTop from '@components/utils/useIsTop';
+import { base64urlEncodeWithoutPadding } from '@firebase/util';
 
 function Logo() {
     const isTop = useIsTop();
@@ -95,8 +96,7 @@ function Tab(props: TabProps) {
                         flexDirection: 'column',
                         alignItems: 'center',
                         top: 70,
-                        height: '50vh',
-                        width: '50vw',
+                        borderRadius: 30,
                         margin: 10,
                         color: 'black',
                         background: 'white',
@@ -213,20 +213,56 @@ function DesktopTabs(props: DesktopTabsProps) {
     );
 
     const ExpandedAbout = (
-        <>
-            <h1>Meet the Team Members</h1>
-            <Link href="/soungbaekim">
-                <p>Soung Bae Kim</p>
-            </Link>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-around'
+                // height: '32vh',
+                // width: '70vw'
+            }}
+        >
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    paddingRight: 20,
+                    paddingLeft: 20
+                }}
+            >
+                <h1>Meet the Team Members</h1>
+                <Link href="/soungbaekim">
+                    <p>Soung Bae Kim</p>
+                </Link>
 
-            <Link href="/caleb">
-                <p>Caleb</p>
-            </Link>
+                <Link href="/caleb">
+                    <p>Caleb</p>
+                </Link>
 
-            <Link href="/bralley">
-                <p>BR Alley</p>
-            </Link>
-        </>
+                <Link href="/bralley">
+                    <p>BR Alley</p>
+                </Link>
+
+                <Link href="/austin">
+                    <p>Faggot</p>
+                </Link>
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    paddingLeft: 20,
+                    paddingRight: 20
+                }}
+            >
+                <h1>Why Use Pool?</h1>
+                <Link href="/pitch">
+                    <p>Pitch</p>
+                </Link>
+            </div>
+        </div>
     );
 
     return (

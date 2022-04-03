@@ -1,12 +1,13 @@
+import { useState } from 'react';
 import Layout from '@components/layout';
-import Image from 'next/image';
 
-export default function Caleb() {
+export default function SoungBaeKim() {
     return (
         <Layout route="/learn">
             <div
                 style={{
                     display: 'flex',
+                    color: '#8E5572',
                     flexDirection: 'column',
                     justifyContent: 'flex-start',
                     alignItems: 'center',
@@ -15,24 +16,28 @@ export default function Caleb() {
                     height: '100vh'
                 }}
             >
-                <h1>CALEB PARK</h1>
-                <h2>GIMME YO MOONEY</h2>
+                <h1>All with Pool</h1>
+                <h2>Learn your money</h2>
                 <div
                     style={{
                         display: 'flex',
                         flexDirection: 'row',
-                        color: 'white',
-                        background: 'rgb(4 179 237)',
                         justifyContent: 'space-between',
-                        width: '70vw'
+                        width: '50vw'
                     }}
                 >
-                    <h3>Pool</h3>
-                    <h3>then</h3>
-                    <h3>Bool</h3>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column'
+                        }}
+                    >
+                        <h2>Social finance</h2>
+                    </div>
+                    <div>
+                        <h2>Collective spending</h2>
+                    </div>
                 </div>
-                <div style={{ height: 100 }} />
-                <Image src="/images/IMG_1559.PNG" width={300} height={600} />
             </div>
         </Layout>
     );

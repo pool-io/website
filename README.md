@@ -17,7 +17,8 @@ The code in this repository is hosted on:
 
 ## Getting Started
 
-1. `git clone` the repository
+1. `git clone GITHUB_ENDPOINT` the repository
+    - Replace `GITHUB_ENDPOINT` with the endpoint you want (https/ssh) under the green **Code** button
     - _Note: to push changes later on, you must clone using `ssh`_
         - Setup ssh by following [this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
         - Be sure finish **all** of the following steps:
@@ -75,8 +76,8 @@ _NOTE: In order to push changes to this repository, you must be connected using 
 
 The following steps are for making _quick_ changes to the website. For bigger changes, create a new **branch**.
 
-1. Run `git clone git@github.com:pool-io/website.git`
-    - If it does not work, be sure to follow [Getting Started](#getting-started)
+1. Complete [Getting Started](#getting-started)
+    - Make sure you ran cloned the repository with **ssh**
 2. Make sure you are on the `master` branch
     - Run `git status`, it should have a line saying what branch you are on
     - Run `git checkout master` to ensure you are on the `master` branch
@@ -104,4 +105,4 @@ The following steps are for making _quick_ changes to the website. For bigger ch
     3. Ensure `production <- master`
 8. Merge Pull Request **ONLY IF YOU ARE SURE**
     - The act of merging will initiate a GitHub Action which will deploy the code in the `production`
-      branch to the EC2. In about 2 -3 minutes, your changes will be available on our main website.
+      branch to the EC2. In about 2 -3 minutes, your changes will be available on our hosted websites.

@@ -10,8 +10,8 @@ export default function SideBar(props: SideBarProps) {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                height: '100vh',
-                width: '200px',
+                height: '100%',
+                width: '250px',
                 // backgroundImage: 'linear-gradient(#f0f0f0,#1975d3)'
                 background: '#1975d3'
             }}

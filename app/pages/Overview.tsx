@@ -8,8 +8,17 @@ export type OverviewProps = {
 
 export default function Overview(props: OverviewProps) {
     return (
-        <div style={{}}>
-            <h1>Welcome to your portal</h1>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                marginLeft: 50
+            }}
+        >
+            <div style={{ marginTop: 100 }}>
+                <h1>Welcome to your portal</h1>
+            </div>
         </div>
     );
 }

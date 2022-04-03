@@ -1,6 +1,7 @@
 import { SignOutButton } from './Auth';
 import { User } from 'firebase/auth';
 import { useEffect, useState } from 'react';
+import SideBar from './components/SideBar';
 
 type PortalProps = {
     user: User;
@@ -17,19 +18,31 @@ export default function Portal(props: PortalProps) {
         <div
             style={{
                 display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                height: '100vh',
+                width: '100vw'
             }}
         >
-            <h1>Welcome to your portal</h1>
-            <p>
-                ID Token:
-                <p style={{ width: '80vw', overflowWrap: 'break-word' }}>
-                    {idToken}
+            <SideBar />
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >
+                <h1>Welcome to your portal</h1>
+                <p>
+                    ID Token:
+                    <p style={{ width: '80vw', overflowWrap: 'break-word' }}>
+                        {idToken}
+                    </p>
                 </p>
-            </p>
-            <SignOutButton />
+                <SignOutButton />
+            </div>
         </div>
     );
 }

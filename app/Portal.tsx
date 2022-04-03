@@ -1,18 +1,25 @@
-import { SignOutButton } from './Auth';
 import { User } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SideBar from './components/SideBar';
+import Overview from './pages/Overview';
+import Profile from './pages/Profile';
+import Error from './pages/Error';
 
 type PortalProps = {
     user: User;
 };
 
-export default function Portal(props: PortalProps) {
-    const [idToken, setIdToken] = useState<string>('');
+export enum Page {
+    OVERVIEW,
+    PROFILE
+}
 
-    useEffect(() => {
-        props.user.getIdToken().then(setIdToken);
-    }, []);
+export default function Portal(props: PortalProps) {
+    const [page, setPage] = useState<Page>(Page.OVERVIEW);
+
+    const handlePage = (page: Page) => {
+        setPage(page);
+    };
 
     return (
         <div
@@ -25,24 +32,17 @@ export default function Portal(props: PortalProps) {
                 width: '100vw'
             }}
         >
-            <SideBar />
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}
-            >
-                <h1>Welcome to your portal</h1>
-                <p>
-                    ID Token:
-                    <p style={{ width: '80vw', overflowWrap: 'break-word' }}>
-                        {idToken}
-                    </p>
-                </p>
-                <SignOutButton />
-            </div>
+            <SideBar handlePage={handlePage} />
+            {(() => {
+                switch (page) {
+                    case Page.OVERVIEW:
+                        return <Overview user={props.user} />;
+                    case Page.PROFILE:
+                        return <Profile user={props.user} />;
+                    default:
+                        return <Error handlePage={handlePage} />;
+                }
+            })()}
         </div>
     );
 }

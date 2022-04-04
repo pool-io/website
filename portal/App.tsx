@@ -32,7 +32,9 @@ export default function App(props: AppProps) {
 
     const authUser = useAuthUser();
     useEffect(() => {
-        setIsLoading(false);
+        if (authUser !== undefined) {
+            setIsLoading(false);
+        }
     }, [authUser]);
 
     const [page, setPage] = useState<Page>(

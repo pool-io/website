@@ -22,11 +22,9 @@ export default function Profile() {
             }}
         >
             <h1>Profile</h1>
-            <p>
-                ID Token:
-                <p style={{ width: '50vw', overflowWrap: 'break-word' }}>
-                    {idToken}
-                </p>
+            <p>ID Token:</p>
+            <p style={{ width: '50vw', overflowWrap: 'break-word' }}>
+                {idToken}
             </p>
             <SignOutButton />
         </div>

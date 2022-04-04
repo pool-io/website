@@ -14,6 +14,7 @@ export default function Overview() {
         >
             <div style={{ marginTop: 100 }}>
                 <h1>Welcome to your portal</h1>
+                <h2>Announcements</h2>
             </div>
         </div>
     );

@@ -2,9 +2,7 @@ import styles from './index.module.css';
 import Link from 'next/link';
 import Layout from '@components/layout';
 import Card from '@components/card';
-import Drop from '@components/svg/drop';
-import EmailInput from '@components/input/email';
-import useIsMobile from '@components/utils/useIsMobile';
+import useIsMobile from '@hooks/useIsMobile';
 import * as CSS from 'csstype';
 import React, { ReactNode, useEffect, useState } from 'react';
 

@@ -11,7 +11,15 @@ export default function Card(props: CardProps) {
     return (
         <div
             className={style.card}
-            style={props.color ? { background: props.color } : null}
+            style={{
+                flex: 1,
+
+                display: 'flext',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                background: props.color ? props.color : 'beige'
+            }}
         >
             {props.children}
         </div>

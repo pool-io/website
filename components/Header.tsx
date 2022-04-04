@@ -1,12 +1,10 @@
-import styles from './header.module.css';
-import Link from 'next/link';
 import { CSSProperties, ReactNode, useEffect, useState } from 'react';
-import BurgerMenu from '@components/svg/BurgerMenu';
-import Drop from '@components/svg/drop';
-import Cross from '@components/svg/Cross';
-import useIsMobile from '@components/utils/useIsMobile';
-import useIsTop from '@components/utils/useIsTop';
-import { base64urlEncodeWithoutPadding } from '@firebase/util';
+import Link from 'next/link';
+import BurgerMenu from '@components/BurgerMenu';
+import Drop from '@components/Drop';
+import Cross from '@components/Cross';
+import useIsMobile from '@hooks/useIsMobile';
+import useIsTop from '@hooks/useIsTop';
 
 function Logo() {
     const isTop = useIsTop();
@@ -74,7 +72,6 @@ function Tab(props: TabProps) {
         >
             <Link href={props.url}>
                 <div
-                    className={styles.tab}
                     style={{
                         display: 'flex',
                         flexDirection: 'row',
@@ -134,7 +131,6 @@ function MobileTabs(props: MobileTabsProps) {
                 <div style={{ display: 'flex' }}>
                     <Logo />
                     <div
-                        className={styles.tab}
                         style={{
                             flex: 1,
                             display: 'flex',

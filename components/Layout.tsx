@@ -1,6 +1,5 @@
-import styles from './layout.module.css';
 import Head from 'next/head';
-import Header from '@components/header';
+import Header from '@components/Header';
 import Footer from '@components/Footer';
 
 type LayoutProps = {
@@ -27,7 +26,14 @@ export default function Layout(props: LayoutProps) {
                 />
             </Head>
             {/* <div className={styles.margin} /> */}
-            <div className={styles.container}>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    background: 'wheat'
+                }}
+            >
                 {props.children}
                 {/* <Footer /> */}
             </div>

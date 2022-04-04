@@ -1,5 +1,3 @@
-import style from './card.module.css';
-import Link from 'next/link';
 import React from 'react';
 
 export type CardProps = {
@@ -10,7 +8,6 @@ export type CardProps = {
 export default function Card(props: CardProps) {
     return (
         <div
-            className={style.card}
             style={{
                 flex: 1,
 

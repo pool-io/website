@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import Layout from '@components/layout';
+import Layout from '@components/Layout';
+import Image from 'next/image';
 
-export default function SoungBaeKim() {
+export default function Caleb() {
     return (
         <Layout route="/learn">
             <div
@@ -15,28 +15,24 @@ export default function SoungBaeKim() {
                     height: '100vh'
                 }}
             >
-                <h1>Soung Bae Kim</h1>
-                <p>sbkim@berkeley.edu</p>
+                <h1>CALEB PARK</h1>
+                <h2>GIMME YO MOONEY</h2>
                 <div
                     style={{
                         display: 'flex',
                         flexDirection: 'row',
+                        color: 'white',
+                        background: 'rgb(4 179 237)',
                         justifyContent: 'space-between',
-                        width: '50vw'
+                        width: '70vw'
                     }}
                 >
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column'
-                        }}
-                    >
-                        <h2>fwaygo</h2>
-                    </div>
-                    <div>
-                        <h2>projectulterior</h2>
-                    </div>
+                    <h3>Pool</h3>
+                    <h3>then</h3>
+                    <h3>Bool</h3>
                 </div>
+                <div style={{ height: 100 }} />
+                <Image src="/images/IMG_1559.PNG" width={300} height={600} />
             </div>
         </Layout>
     );

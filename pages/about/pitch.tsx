@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import Layout from '@components/layout';
+import Layout from '@components/Layout';
 
 export default function SoungBaeKim() {
     return (
@@ -7,6 +6,7 @@ export default function SoungBaeKim() {
             <div
                 style={{
                     display: 'flex',
+                    color: '#8E5572',
                     flexDirection: 'column',
                     justifyContent: 'flex-start',
                     alignItems: 'center',
@@ -15,8 +15,8 @@ export default function SoungBaeKim() {
                     height: '100vh'
                 }}
             >
-                <h1>Austin Im</h1>
-                <p>austinim99@gmail.com</p>
+                <h1>All with Pool</h1>
+                <h2>Learn your money</h2>
                 <div
                     style={{
                         display: 'flex',
@@ -31,14 +31,13 @@ export default function SoungBaeKim() {
                             flexDirection: 'column'
                         }}
                     >
-                        <h2>fwaygo</h2>
+                        <h2>Social finance</h2>
                     </div>
                     <div>
-                        <h2>projectulterior</h2>
+                        <h2>Collective spending</h2>
                     </div>
                 </div>
             </div>
         </Layout>
     );
 }
-

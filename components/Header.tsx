@@ -228,19 +228,19 @@ function DesktopTabs(props: DesktopTabsProps) {
                 }}
             >
                 <h1>Meet the Team Members</h1>
-                <Link href="/soungbaekim">
+                <Link href="/about/soungbaekim">
                     <p>Soung Bae Kim</p>
                 </Link>
 
-                <Link href="/caleb">
+                <Link href="/about/caleb">
                     <p>Caleb</p>
                 </Link>
 
-                <Link href="/bralley">
+                <Link href="/about/bralley">
                     <p>BR Alley</p>
                 </Link>
 
-                <Link href="/austin">
+                <Link href="/about/austin">
                     <p>Faggot</p>
                 </Link>
             </div>
@@ -254,7 +254,7 @@ function DesktopTabs(props: DesktopTabsProps) {
                 }}
             >
                 <h1>Why Use Pool?</h1>
-                <Link href="/pitch">
+                <Link href="/about/pitch">
                     <p>Pitch</p>
                 </Link>
             </div>

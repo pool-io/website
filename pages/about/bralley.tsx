@@ -1,7 +1,7 @@
-import Layout from '@components/layout';
+import Layout from '@components/Layout';
 import Image from 'next/image';
 
-export default function Caleb() {
+export default function Learn() {
     return (
         <Layout route="/learn">
             <div
@@ -15,24 +15,24 @@ export default function Caleb() {
                     height: '100vh'
                 }}
             >
-                <h1>CALEB PARK</h1>
-                <h2>GIMME YO MOONEY</h2>
+                <h1>cum bucket</h1>
+                <p>lemme get a sip</p>
                 <div
                     style={{
                         display: 'flex',
                         flexDirection: 'row',
-                        color: 'white',
-                        background: 'rgb(4 179 237)',
-                        justifyContent: 'space-between',
-                        width: '70vw'
+                        justifyContent: 'flex-start',
+                        alignItems: 'center',
+                        marginTop: 100,
+                        width: '100vw',
+                        height: '100vh'
                     }}
                 >
-                    <h3>Pool</h3>
-                    <h3>then</h3>
-                    <h3>Bool</h3>
+                    <h1>mmmmm pEniS</h1>
                 </div>
                 <div style={{ height: 100 }} />
-                <Image src="/images/IMG_1559.PNG" width={300} height={600} />
+                <h1>you looked gayass</h1>
+                <Image src="/images/penis.jpg" width={400} height={1000} />
             </div>
         </Layout>
     );

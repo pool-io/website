@@ -1,8 +1,5 @@
-import styles from './index.module.css';
 import Image from 'next/image';
-import Card from '@components/card';
-import Layout from '@components/layout';
-import React, { ReactNode, useEffect, useState } from 'react';
+import Layout from '@components/Layout';
 
 export default function About() {
     return (

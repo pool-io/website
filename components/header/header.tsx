@@ -202,14 +202,18 @@ function DesktopTabs(props: DesktopTabsProps) {
     const ExpandedLearn = (
         <>
             <h1>learn</h1>
-            <Link href="/learn"></Link>
+            <Link href="/learn">
+                <p>blog</p>
+            </Link>
         </>
     );
 
     const ExpandedBlog = (
         <>
             <h1>blog</h1>
-            <Link href="/blog"></Link>
+            <Link href="/blog">
+                <p>learn</p>
+            </Link>
         </>
     );
 

@@ -16,8 +16,10 @@
         "jsx": "preserve",
         "baseUrl": ".",
         "paths": {
-            "@app/*": ["app/*"],
-            "@components/*": ["components/*"]
+            "@consts/*": ["consts/*"],
+            "@portal/*": ["portal/*"],
+            "@components/*": ["components/*"],
+            "@hooks/*": ["hooks/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -1,10 +1,7 @@
-import styles from './index.module.css';
 import Link from 'next/link';
-import Layout from '@components/layout';
-import Card from '@components/card';
-import Drop from '@components/svg/drop';
-import EmailInput from '@components/input/email';
-import useIsMobile from '@components/utils/useIsMobile';
+import Layout from '@components/Layout';
+import Card from '@components/Card';
+import useIsMobile from '@hooks/useIsMobile';
 import * as CSS from 'csstype';
 import React, { ReactNode, useEffect, useState } from 'react';
 
@@ -25,8 +22,12 @@ function CardContainer(props: CardContainerProps) {
 
     return (
         <div
-            className={styles.hero}
-            style={{ flexDirection: flexDirection, height: height }}
+            style={{
+                display: 'flex',
+                flexDirection: flexDirection,
+                height: height,
+                width: '100%'
+            }}
         >
             {props.children}
         </div>

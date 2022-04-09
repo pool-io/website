@@ -241,7 +241,10 @@ function DesktopTabs(props: DesktopTabsProps) {
                 </Link>
 
                 <Link href="/about/austin">
-                    <p>Faggot</p>
+                    <p>Austin</p>
+                </Link>
+                <Link href="/about/samuelyoon">
+                    <p>Samuel Yoon</p>
                 </Link>
             </div>
             <div

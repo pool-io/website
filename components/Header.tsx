@@ -197,17 +197,25 @@ function DesktopTabs(props: DesktopTabsProps) {
     }
 
     const ExpandedLearn = (
-        <>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-around'
+                // height: '32vh',
+                // width: '70vw'
+            }}
+        >
             <Link href="/learn">
-                <h1 style={{cursor: 'pointer',}}>learn</h1>
+                <h1 style={{ cursor: 'pointer' }}>learn</h1>
             </Link>
-        </>
+        </div>
     );
 
     const ExpandedBlog = (
         <>
             <Link href="/blog">
-                <h1 style={{cursor: 'pointer'}}>blog</h1>
+                <h1 style={{ cursor: 'pointer' }}>blog</h1>
             </Link>
         </>
     );

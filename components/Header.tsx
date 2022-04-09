@@ -198,13 +198,17 @@ function DesktopTabs(props: DesktopTabsProps) {
 
     const ExpandedLearn = (
         <>
-            <h1>learn</h1>
+            <Link href="/learn">
+                <h1 style={{cursor: 'pointer',}}>learn</h1>
+            </Link>
         </>
     );
 
     const ExpandedBlog = (
         <>
-            <h1>blog</h1>
+            <Link href="/blog">
+                <h1 style={{cursor: 'pointer'}}>blog</h1>
+            </Link>
         </>
     );
 
@@ -236,7 +240,7 @@ function DesktopTabs(props: DesktopTabsProps) {
                     <p>Caleb</p>
                 </Link>
 
-                <Link href="/about/bralley">
+                <Link href="https://www.youtube.com/watch?v=eN5mG_yMDiM">
                     <p>BR Alley</p>
                 </Link>
 

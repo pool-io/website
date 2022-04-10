@@ -232,16 +232,8 @@ function DesktopTabs(props: DesktopTabsProps) {
                     <p>Soung Bae Kim</p>
                 </Link>
 
-                <Link href="/about/caleb">
-                    <p>Caleb</p>
-                </Link>
-
-                <Link href="/about/bralley">
-                    <p>BR Alley</p>
-                </Link>
-
                 <Link href="/about/austin">
-                    <p>Faggot</p>
+                    <p>Austin</p>
                 </Link>
             </div>
             <div

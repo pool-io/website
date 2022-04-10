@@ -28,3 +28,57 @@ export default function Drop(props: DropProps) {
         </svg>
     );
 }
+
+export function LogoTop(props: DropProps) {
+    return (
+        <svg
+            width={props.width}
+            height={props.height}
+            // viewBox="0 0 800 800"
+            viewBox="0 0 2651 4145"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M2461.64 2051.23L1325.4 0L189.162 2051.23C69.0749 2259.07 0 2502.56 0 2762.86C0 3525.81 593.4 4144.3 1325.4 4144.3C2057.39 4144.3 2650.79 3525.81 2650.79 2762.86C2650.79 2502.56 2581.72 2259.08 2461.64 2051.23Z"
+                fill={props.color ? props.color : '#5FCCE4'}
+            />
+
+            {/* <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M484.084 290.831L412.5 176L340.915 290.831C333.351 302.466 329 316.096 329 330.666C329 373.376 366.384 408 412.5 408C458.616 408 496 373.376 496 330.666C496 316.095 491.649 302.466 484.084 290.831Z"
+                fill={props.color ? props.color : 'white'}
+            /> */}
+        </svg>
+    );
+}
+
+export function LogoBottom(props: DropProps) {
+    return (
+        <svg
+            width={props.width}
+            height={props.height}
+            viewBox="0 0 10000 2394"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <ellipse
+                cx="5000"
+                cy="1196.95"
+                rx="5000"
+                ry="1196.85"
+                fill={props.color ? props.color : 'white'}
+            />
+            <ellipse
+                cx="5007.94"
+                cy="866.48"
+                rx="3039.68"
+                ry="509.107"
+                fill="#5FCCE4"
+            />
+        </svg>
+    );
+}

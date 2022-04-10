@@ -4,6 +4,7 @@ import Footer from '@components/Footer';
 
 type LayoutProps = {
     route: string;
+    header?: React.ReactNode;
     children: React.ReactNode;
 };
 
@@ -38,7 +39,7 @@ export default function Layout(props: LayoutProps) {
                 {/* <Footer /> */}
             </div>
             {/* Header is placed at the bottom so that it will be rendered at the top */}
-            <Header route={props.route} />
+            {props.header ? props.header : <Header route={props.route} />} 
         </>
     );
 }

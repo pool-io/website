@@ -31,8 +31,6 @@ export default function Caleb() {
                     <h3>then</h3>
                     <h3>Bool</h3>
                 </div>
-                <div style={{ height: 100 }} />
-                <Image src="/images/IMG_1559.PNG" width={300} height={600} />
             </div>
         </Layout>
     );

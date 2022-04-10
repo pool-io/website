@@ -5,6 +5,7 @@ import Drop from '@components/Drop';
 import Cross from '@components/Cross';
 import useIsMobile from '@hooks/useIsMobile';
 import useIsTop from '@hooks/useIsTop';
+import { builtinModules } from 'module';
 
 function Logo() {
     const isTop = useIsTop();
@@ -201,23 +202,45 @@ function DesktopTabs(props: DesktopTabsProps) {
             style={{
                 display: 'flex',
                 flexDirection: 'row',
-                justifyContent: 'space-around'
-                // height: '32vh',
-                // width: '70vw'
+                justifyContent: 'space-around',
+                margin: 10
             }}
         >
             <Link href="/learn">
-                <h1 style={{ cursor: 'pointer' }}>learn</h1>
+                <h1
+                    style={{
+                        cursor: 'pointer',
+                        fontSize: 20,
+                        fontStyle: 'normal'
+                    }}
+                >
+                    Learn
+                </h1>
             </Link>
         </div>
     );
 
     const ExpandedBlog = (
-        <>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                margin: 10
+            }}
+        >
             <Link href="/blog">
-                <h1 style={{ cursor: 'pointer' }}>blog</h1>
+                <h1
+                    style={{
+                        cursor: 'pointer',
+                        fontSize: 20,
+                        fontFamily: 'FoundersGrotesk'
+                    }}
+                >
+                    Blog
+                </h1>
             </Link>
-        </>
+        </div>
     );
 
     const ExpandedAbout = (

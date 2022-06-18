@@ -1,0 +1,7 @@
+make.exe --dry-run --always-make --keep-going --print-directory
+make: Entering directory 'c:/Users/sbkim/Desktop/pool-io/website'
+docker container prune -f
+docker image prune -f
+docker volume prune -f
+make: Leaving directory 'c:/Users/sbkim/Desktop/pool-io/website'
+ 

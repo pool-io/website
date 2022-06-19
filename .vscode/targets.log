@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 18 16:24:55 2022
+# Make data base, printed on Sat Jun 18 23:01:00 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ USERPROFILE = C:\Users\sbkim
 # environment
 LOCALAPPDATA = C:\Users\sbkim\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3db2aba7-e3cf-4091-9fb0-d7c2766d0aec-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-34961cf9-c181-4815-bfeb-f20ad9fcd309-sock
 # environment
 VSCODE_CWD = C:\Users\sbkim\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -39,7 +39,7 @@ GOPATH = C:\Users\sbkim\go
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_18784_FHSNUNZNHOAZPCYD
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19280_ASTWJAWSVZUCANCD
 # environment
 CLOUDSDK_METRICS_ENVIRONMENT_VERSION = 1.18.3
 # environment
@@ -95,7 +95,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 18784
+VSCODE_PID = 19280
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -184,7 +184,8 @@ PROCESSOR_ARCHITECTURE = x86
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
-# environment
+# environment 
+
 ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\sbkim\AppData\Local\Temp
@@ -203,7 +204,8 @@ SESSIONNAME = Console
 # environment
 CLOUDSDK_METRICS_ENVIRONMENT = cloudcode.vscode
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomme 
+nt grouped-target extra-prereqs archives jobserver output-sync load
 # environment
 PROCESSOR_REVISION = 7100
 # environment
@@ -217,10 +219,9 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 
 # Directories
 
-# . (key c:/Users/sbkim/Desktop/pool-io/website, mtime 1649044354): 23 files, no impossibilities.
+# . (key c:/Users/sbkim/Desktop/pool-io/website, mtime 1655595519): 23 files, no impossibilities.
 
-# 23 files, no impossibilities in 1 direct 
-ories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -284,7 +285,8 @@ run-docker: build-docker
 #  File has not been updated.
 
 build-docker:
-#  Phony target (prerequisite of .PHONY).
+#  Phony target (prerequis 
+ite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -302,11 +304,12 @@ build-docker:
 # No general ('VPATH' variable) search path.
 
 # strcache buffers: 1 (0) / strings = 31 / storage = 279 B / avg = 9 B
-# current buf: size = 8174 B / used = 279 B / count = 31 / avg = 9 B
+# current buf: size = 8174 B / used = 279 B / count = 31 / avg =  
+9 B
 
 # strcache performance: lookups = 46 / hit rate = 32%
 # hash-table stats:
 # Load=31/8192=0%, Rehash=0, Collisions=0/46=0%
-# Finished Make data base on Sat Jun 18 16:24:55 2022
+# Finished Make data base on Sat Jun 18 23:01:00 2022
 
  

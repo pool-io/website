@@ -18,7 +18,7 @@ function Header() {
                 left: 0
             }}
         >
-            <div
+            <a
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -26,11 +26,13 @@ function Header() {
                     background: 'black',
                     color: 'white'
                 }}
+                href="/learn"
             >
                 <h1 style={{ textAlign: 'right', fontSize: 20 }}>Learn</h1>
-            </div>
+            </a>
             <div style={{ width: '8vw' }}></div>
-            <div
+            {/* wrap div with onclick link to about/austin */}
+            <a
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -38,11 +40,12 @@ function Header() {
                     background: 'black',
                     color: 'white'
                 }}
+                href="/main"
             >
                 <h1 style={{ textAlign: 'right', fontSize: 20 }}>About</h1>
-            </div>
+            </a>
             <div style={{ width: '8vw' }}></div>
-            <div
+            <a
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -50,9 +53,10 @@ function Header() {
                     background: 'black',
                     color: 'white'
                 }}
+                href="/portal"
             >
                 <h1 style={{ textAlign: 'right', fontSize: 20 }}>Log In</h1>
-            </div>
+            </a>
         </div>
     );
 }
@@ -83,11 +87,13 @@ export default function Blog() {
                 >
                     Pool It.
                 </h1>
-                <Link href="/about/pitch">
-                    <LogoTop width={1100} height={1100} />
-                </Link>
+                {/* make a onclick function that links /about/pitch */}
+                <a href="/about/pitch">
+                    <LogoTop width={420} height={420} />
+                </a>
+                {/* <Link href="/about/pitch" /> */}
                 <div style={{ height: 300 }} />
-                <LogoBottom width={700} height={700} color={'white'} />
+                <LogoBottom width={840} height={840} color={'white'} />
             </div>
         </Layout>
     );

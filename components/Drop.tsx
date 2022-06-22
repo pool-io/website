@@ -1,7 +1,7 @@
 type DropProps = {
     color?: string;
-    width?: number;
-    height?: number;
+    width?: number | string;
+    height?: number | string;
 };
 
 export default function Drop(props: DropProps) {
@@ -34,8 +34,8 @@ export function LogoTop(props: DropProps) {
         <svg
             width={props.width}
             height={props.height}
-            // viewBox="0 0 800 800"
-            viewBox="0 0 2651 4145"
+            // viewBox="0 0 2651 4145"
+            viewBox="-1230.5 -200 5000 5000"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
@@ -44,6 +44,8 @@ export function LogoTop(props: DropProps) {
                 clip-rule="evenodd"
                 d="M2461.64 2051.23L1325.4 0L189.162 2051.23C69.0749 2259.07 0 2502.56 0 2762.86C0 3525.81 593.4 4144.3 1325.4 4144.3C2057.39 4144.3 2650.79 3525.81 2650.79 2762.86C2650.79 2502.56 2581.72 2259.08 2461.64 2051.23Z"
                 fill={props.color ? props.color : '#5FCCE4'}
+                stroke="white"
+                strokeWidth="200"
             />
 
             {/* <path
@@ -73,7 +75,7 @@ export function LogoBottom(props: DropProps) {
                 fill={props.color ? props.color : 'white'}
             />
             <ellipse
-                cx="5007.94"
+                cx="5000"
                 cy="866.48"
                 rx="3039.68"
                 ry="509.107"

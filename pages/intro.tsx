@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from '@components/Layout';
+import { LogoBottom, LogoTop } from '@components/Drop';
 
 function useScrollPosition(): number {
     const [scrollPostion, setScrollPosition] = React.useState(0);
@@ -30,7 +31,7 @@ function Drop() {
                 // d="M50 10 L70 50 L50 90 L30 50 Z"
                 // d="M50 10 L70 50 Q82 75 50 90 Q18 75 30 50 Z"
                 d="M500 100 L700 450   Q900 820  500 845   Q100 820    300 450 Z"
-                fill="blue"
+                fill="#5FCCE4"
                 stroke="white"
                 strokeWidth="40"
             />
@@ -73,6 +74,27 @@ function Text(props: TextProps) {
     );
 }
 
+function SignInDrop() {
+    return (
+        <div style={{ background: 'beige' }}>
+            <svg height="100vh" width="100vw" viewBox="0 0 1000 1000">
+                <svg x="25%" height="50%" width="50%" viewBox="0 0 1000 1000">
+                    <LogoBottom />
+                </svg>
+                <svg
+                    x="45%"
+                    y="0%"
+                    height="30%"
+                    width="10%"
+                    viewBox="0 0 10000 10000"
+                >
+                    <LogoTop color="blue" />
+                </svg>
+            </svg>
+        </div>
+    );
+}
+
 type CenterCardProps = {
     children: React.ReactNode;
 };
@@ -82,7 +104,7 @@ function CenterCard(props: CenterCardProps) {
         <div
             style={{
                 position: 'sticky',
-                top: '50vh'
+                top: '40vh'
             }}
         >
             {props.children}
@@ -124,13 +146,14 @@ export default function Intro() {
                     </Text>
                 </div>
                 <CenterCard>
-                    <Drop />
+                    <SignInDrop />
                 </CenterCard>
             </div>
             <div
                 style={{
                     background: 'white',
-                    height: '100vh',
+                    height: '30vh',
+                    width: '100vw',
 
                     display: 'flex',
                     flexDirection: 'column',
@@ -138,9 +161,7 @@ export default function Intro() {
                     alignItems: 'center'
                 }}
             >
-                <h1 style={{ margin: 100, color: 'white' }}>
-                    we've been expecting you...
-                </h1>
+                <h1 style={{ margin: 100, color: 'black' }}>footer</h1>
                 {/* <CenterCard>
                     <Drop />
                 </CenterCard> */}

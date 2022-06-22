@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from '@components/Layout';
-import { LogoBottom, LogoTop } from '@components/Drop';
+import { DropBottom, LogoTop } from '@components/Drop';
 
 function useScrollPosition(): number {
     const [scrollPostion, setScrollPosition] = React.useState(0);
@@ -98,7 +98,7 @@ function SignInDrop(props: SignInDropProps) {
 
     return (
         <CenterCard>
-            <div style={{ background: 'beige' }}>
+            <div style={{ background: 'black' }}>
                 <svg
                     height="100vh"
                     width="100vw"
@@ -113,7 +113,7 @@ function SignInDrop(props: SignInDropProps) {
                         viewBox="0 0 1000 1000"
                         preserveAspectRatio="xMidYMin"
                     >
-                        <LogoBottom />
+                        <DropBottom />
                     </svg>
                     <svg
                         x="45%"

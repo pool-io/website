@@ -84,3 +84,31 @@ export function LogoBottom(props: DropProps) {
         </svg>
     );
 }
+
+type DropBottomProps = {
+    width?: number;
+    height?: number;
+    color?: string;
+};
+
+export function DropBottom(props: DropBottomProps) {
+    return (
+        <svg
+            width={props.width}
+            height={props.height}
+            // viewBox="-50 -10 100 20"
+            viewBox="-50 25 100 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <ellipse
+                cx="0"
+                cy="0"
+                rx="50"
+                ry="10"
+                fill={props.color ? props.color : 'white'}
+            />
+            <ellipse cx="0" cy="0" rx="30" ry="5" fill="#5FCCE4" />
+        </svg>
+    );
+}

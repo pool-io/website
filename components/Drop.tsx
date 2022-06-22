@@ -63,7 +63,7 @@ export function LogoBottom(props: DropProps) {
         <svg
             width={props.width}
             height={props.height}
-            viewBox="0 0 10000 2394"
+            viewBox="0 3500 10000 2394"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >

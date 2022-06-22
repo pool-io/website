@@ -74,24 +74,60 @@ function Text(props: TextProps) {
     );
 }
 
-function SignInDrop() {
+type SignInDropProps = {
+    start: number;
+    end: number;
+    margin: number;
+};
+
+function SignInDrop(props: SignInDropProps) {
+    const y = useScrollPosition();
+
+    function calcPoolHeight(): string {
+        return `${
+            y < props.start
+                ? 100
+                : y > props.end
+                ? props.margin
+                : 100 * (1 - (y - props.start) / (props.end - props.start)) +
+                  props.margin
+        }%`;
+    }
+
+    console.log(`[SignInDrop] height: ${calcPoolHeight()}`);
+
     return (
-        <div style={{ background: 'beige' }}>
-            <svg height="100vh" width="100vw" viewBox="0 0 1000 1000">
-                <svg x="25%" height="50%" width="50%" viewBox="0 0 1000 1000">
-                    <LogoBottom />
-                </svg>
+        <CenterCard>
+            <div style={{ background: 'beige' }}>
                 <svg
-                    x="45%"
-                    y="0%"
-                    height="30%"
-                    width="10%"
-                    viewBox="0 0 10000 10000"
+                    height="100vh"
+                    width="100vw"
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="xMidYMin"
                 >
-                    <LogoTop color="blue" />
+                    <svg
+                        x="25%"
+                        y={calcPoolHeight()}
+                        height="50%"
+                        width="50%"
+                        viewBox="0 0 1000 1000"
+                        preserveAspectRatio="xMidYMin"
+                    >
+                        <LogoBottom />
+                    </svg>
+                    <svg
+                        x="45%"
+                        y="0"
+                        height="30%"
+                        width="10%"
+                        viewBox="0 0 10000 10000"
+                        preserveAspectRatio="xMidYMin"
+                    >
+                        <LogoTop color="blue" />
+                    </svg>
                 </svg>
-            </svg>
-        </div>
+            </div>
+        </CenterCard>
     );
 }
 
@@ -126,7 +162,7 @@ export default function Intro() {
         >
             <div
                 style={{
-                    height: '200vh',
+                    height: '300vh',
 
                     display: 'flex',
                     flexDirection: 'column',
@@ -146,7 +182,7 @@ export default function Intro() {
                     </Text>
                 </div>
                 <CenterCard>
-                    <SignInDrop />
+                    <SignInDrop start={200} end={500} margin={30} />
                 </CenterCard>
             </div>
             <div

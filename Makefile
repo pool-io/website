@@ -1,3 +1,8 @@
+.PHONY: run
+
+run:
+	yarn run dev
+
 .PHONY: clean-docker build-docker run-docker push-docker
 
 clean-docker:

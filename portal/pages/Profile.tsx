@@ -2,20 +2,31 @@ import { useEffect, useState } from 'react';
 import { SignOutButton } from '@components/Auth';
 import useAuthUser from '@hooks/useAuthUser';
 import useMyUser from '@portal/hooks/useMyUser';
+import { useQuery } from '@apollo/client';
+import { GET_USER } from 'graphql/query';
 
 export default function Profile() {
     const authUser = useAuthUser();
     const [idToken, setIdToken] = useState<string>('');
 
-    const myUser = useMyUser();
-
     useEffect(() => {
-        if (authUser) {
+        if (authUser && !idToken) {
             authUser.getIdToken().then(setIdToken);
         }
     }, [authUser]);
 
-    useEffect(() => {}, [myUser]);
+    const { loading, error, data } = useQuery(GET_USER);
+
+    if (loading) {
+        return <div>Loading</div>;
+    }
+
+    if (error) {
+        console.log(error);
+        return <div>Error</div>;
+    }
+
+    console.log(data);
 
     return (
         <div
@@ -27,7 +38,7 @@ export default function Profile() {
             }}
         >
             <h1>Profile</h1>
-            <p>Username: {myUser?.username}</p>
+            <p>Username: {data?.user?.username}</p>
             <p>ID Token:</p>
             <p style={{ width: '50vw', overflowWrap: 'break-word' }}>
                 {idToken}

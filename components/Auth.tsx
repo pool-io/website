@@ -267,20 +267,54 @@ type ForgotPasswordProps = {
 };
 
 function ForgotPassword(props: ForgotPasswordProps) {
-    const auth = getAuth();
-    sendPasswordResetEmail(auth, email)
-        .then(() => {
-            // Password reset email sent!
-            // ..
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // ..
-        });
+    const [email, setEmail] = useState<string>('');
+
+    const onEmail: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(`email: ${e.target.value}`);
+        e.preventDefault();
+        setEmail(e.target.value);
+    };
+
+    const onSubmit: FormEventHandler = (e: FormEvent) => {
+        e.preventDefault(); // default reloads
+
+        const auth = getAuth();
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                // Password reset email sent!
+                // ..
+                console.log('password reset sent');
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(
+                    `error in password reset -- code: ${errorCode} -- message: ${errorMessage}`
+                );
+            });
+    };
+
     return (
         <div>
             <h1>Forgot Password</h1>
+            <form
+                onSubmit={onSubmit}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >
+                <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    onChange={onEmail}
+                />
+                <input type="submit" name="email" value="GO!" />
+            </form>
             <button onClick={() => props.handleSignIn()}>Sign In</button>
         </div>
     );

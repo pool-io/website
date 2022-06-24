@@ -96,8 +96,8 @@ export function DropBottom(props: DropBottomProps) {
         <svg
             width={props.width}
             height={props.height}
-            // viewBox="-50 -10 100 20"
-            viewBox="-50 25 100 20"
+            viewBox="-50 -10 100 20"
+            // viewBox="-50 25 100 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >

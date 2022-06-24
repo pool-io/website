@@ -16,6 +16,14 @@ import {
     AuthError,
     AuthErrorCodes
 } from 'firebase/auth';
+// import { FacebookAuthProvider } from "firebase/auth";
+import {
+    getAuth,
+    signInWithPopup,
+    GoogleAuthProvider,
+    sendPasswordResetEmail
+} from 'firebase/auth';
+import GoogleButton from 'react-google-button';
 
 type Credentials = {
     email: string;
@@ -114,8 +122,6 @@ function SignUp() {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: '100vh',
-                width: '100vw',
                 background: '#f0f0f0'
             }}
         >
@@ -130,7 +136,11 @@ function SignUp() {
     );
 }
 
-function SignIn() {
+type SignInProps = {
+    handleForgotPassword: () => void;
+};
+
+function SignIn(props: SignInProps) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('');
 
@@ -171,6 +181,9 @@ function SignIn() {
             <h1>SIGN IN</h1>
             <Form onSubmit={onSubmit} />
             <p style={{ color: 'red' }}>{message}</p>
+            <button onClick={() => props.handleForgotPassword()}>
+                Forgot Password
+            </button>
             <p>Don't have an account?</p>
             <Link href="/portal?signup">
                 <p>SIGN UP</p>
@@ -193,5 +206,82 @@ export type AuthProps = {
 };
 
 export default function Auth(props: AuthProps) {
-    return props.isSignUp ? <SignUp /> : <SignIn />;
+    const [isForgotPassword, setIsForgotPassword] = useState(false);
+
+    const provider = new GoogleAuthProvider();
+
+    function handleGoogleLogin() {
+        console.log('login with google');
+        // TODO: firebase login with google credentials
+        const auth = getAuth();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential =
+                    GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                // ...
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential =
+                    GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+    }
+
+    return (
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'row'
+            }}
+        >
+            {props.isSignUp ? (
+                <SignUp />
+            ) : isForgotPassword ? (
+                <ForgotPassword
+                    handleSignIn={() => setIsForgotPassword(false)}
+                />
+            ) : (
+                <SignIn
+                    handleForgotPassword={() => setIsForgotPassword(true)}
+                />
+            )}
+            {isForgotPassword ? null : (
+                <GoogleButton onClick={() => handleGoogleLogin()} />
+            )}
+        </div>
+    );
+}
+
+type ForgotPasswordProps = {
+    handleSignIn: () => void;
+};
+
+function ForgotPassword(props: ForgotPasswordProps) {
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            // Password reset email sent!
+            // ..
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+        });
+    return (
+        <div>
+            <h1>Forgot Password</h1>
+            <button onClick={() => props.handleSignIn()}>Sign In</button>
+        </div>
+    );
 }

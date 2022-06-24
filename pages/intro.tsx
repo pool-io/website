@@ -19,26 +19,6 @@ function useScrollPosition(): number {
     return scrollPostion;
 }
 
-function Drop() {
-    return (
-        <svg
-            height={100}
-            width={100}
-            viewBox="0 0 1000 1000"
-            // style={{ background: 'wheat' }}
-        >
-            <path
-                // d="M50 10 L70 50 L50 90 L30 50 Z"
-                // d="M50 10 L70 50 Q82 75 50 90 Q18 75 30 50 Z"
-                d="M500 100 L700 450   Q900 820  500 845   Q100 820    300 450 Z"
-                fill="#5FCCE4"
-                stroke="white"
-                strokeWidth="40"
-            />
-        </svg>
-    );
-}
-
 type TextProps = {
     start: number;
     limit: number;
@@ -108,12 +88,14 @@ function SignInDrop(props: SignInDropProps) {
                     <svg
                         x="25%"
                         y={calcPoolHeight()}
-                        height="50%"
+                        // height="50%"
                         width="50%"
-                        viewBox="0 0 1000 1000"
+                        viewBox="0 350 1000 1000"
                         preserveAspectRatio="xMidYMin"
                     >
-                        <DropBottom />
+                        <g transform="matrix(1 0 0 1 0 0)">
+                            <DropBottom />
+                        </g>
                     </svg>
                     <svg
                         x="45%"
@@ -182,7 +164,7 @@ export default function Intro() {
                     </Text>
                 </div>
                 <CenterCard>
-                    <SignInDrop start={200} end={500} margin={30} />
+                    <SignInDrop start={200} end={700} margin={0} />
                 </CenterCard>
             </div>
             <div

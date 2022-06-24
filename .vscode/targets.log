@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun 21 23:23:05 2022
+# Make data base, printed on Thu Jun 23 21:44:00 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ USERPROFILE = C:\Users\sbkim
 # environment
 LOCALAPPDATA = C:\Users\sbkim\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-b283cc2e-ac9b-4918-8cac-b9d8e6e09035-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-a862ef0e-de67-43eb-9905-b0e9e9bb6c76-sock
 # environment
 VSCODE_CWD = C:\Users\sbkim\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -83,8 +83,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
-PROGRA 
-MFILES = C:\Program Files (x86)
+PROGRAMFILES = C:\Program Files (x86)
 # environment
 MFLAGS = -pqrR
 # default
@@ -312,6 +311,6 @@ build-docker:
 # strcache performance: lookups = 46 / hit rate = 32%
 # hash-table stats:
 # Load=31/8192=0%, Rehash=0, Collisions=0/46=0%
-# Finished Make data base on Tue Jun 21 23:23:05 2022
+# Finished Make data base on Thu Jun 23 21:44:00 2022
 
  

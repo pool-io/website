@@ -1,6 +1,7 @@
 .PHONY: run
 
 run:
+	API_SERVICE_URL="http://localhost:8080" \
 	yarn run dev
 
 .PHONY: clean-docker build-docker run-docker push-docker
@@ -18,6 +19,7 @@ build-docker:
 run-docker: build-docker
 	docker run \
 		--detach \
+		--env API_SERVICE_URL="http://localhost:8080" \
 		-p 3000:3000 \
 		website
 

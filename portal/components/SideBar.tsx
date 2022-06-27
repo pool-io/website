@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Page } from '@portal/App';
+import { Router, useRouter } from 'next/router';
 
 type TabProps = {
     name: string;
@@ -30,6 +31,8 @@ export type SideBarProps = {
 };
 
 export default function SideBar(props: SideBarProps) {
+    const router = useRouter();
+
     return (
         <div
             style={{
@@ -71,6 +74,13 @@ export default function SideBar(props: SideBarProps) {
                 name="Profile"
                 isSeletected={props.page === Page.PROFILE}
                 onClick={() => props.handlePage(Page.PROFILE)}
+            />
+            <Tab
+                name="poolfol.io"
+                isSeletected={false}
+                onClick={() => {
+                    router.push('/');
+                }}
             />
         </div>
     );

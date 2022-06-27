@@ -4,7 +4,7 @@ import { Duplex } from 'stream';
 
 export default function Overview() {
     return (
-        <div style={{ marginTop: 100 }}>
+        <div>
             <h1>Welcome to your portal</h1>
             <h2>Announcements</h2>
         </div>

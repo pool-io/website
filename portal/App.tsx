@@ -104,10 +104,9 @@ export default function App(props: AppProps) {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'center',
-                height: '100vh',
-                width: '100vw',
-                background: '#f0f0f0'
+                alignItems: 'stretch',
+                background: '#f0f0f0',
+                height: '100vh'
             }}
         >
             {isLoading ? (
@@ -118,9 +117,8 @@ export default function App(props: AppProps) {
                         display: 'flex',
                         flexDirection: 'row',
                         justifyContent: 'flex-start',
-                        alignItems: 'center',
-                        height: '100vh',
-                        width: '100vw'
+                        alignItems: 'stretch',
+                        height: '100%'
                     }}
                 >
                     <SideBar page={page} handlePage={handlePage} />
@@ -128,8 +126,9 @@ export default function App(props: AppProps) {
                         style={{
                             display: 'flex',
                             flexDirection: 'column',
-                            height: '100%',
-                            marginLeft: 50
+                            // height: '100%',
+                            // paddingTop: 100,
+                            paddingLeft: 50
                         }}
                     >
                         {(() => {

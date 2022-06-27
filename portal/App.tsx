@@ -123,25 +123,34 @@ export default function App(props: AppProps) {
                         width: '100vw'
                     }}
                 >
-                    <SideBar handlePage={handlePage} />
-                    {(() => {
-                        switch (page) {
-                            case Page.OVERVIEW:
-                                return <Overview />;
-                            case Page.POOLS:
-                                return <Pools />;
-                            case Page.TANKS:
-                                return <Tanks />;
-                            case Page.FRIENDS:
-                                return <Friends />;
-                            case Page.EXPLORE:
-                                return <Explore />;
-                            case Page.PROFILE:
-                                return <Profile />;
-                            default:
-                                return <Loading />;
-                        }
-                    })()}
+                    <SideBar page={page} handlePage={handlePage} />
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            height: '100%',
+                            marginLeft: 50
+                        }}
+                    >
+                        {(() => {
+                            switch (page) {
+                                case Page.OVERVIEW:
+                                    return <Overview />;
+                                case Page.POOLS:
+                                    return <Pools />;
+                                case Page.TANKS:
+                                    return <Tanks />;
+                                case Page.FRIENDS:
+                                    return <Friends />;
+                                case Page.EXPLORE:
+                                    return <Explore />;
+                                case Page.PROFILE:
+                                    return <Profile />;
+                                default:
+                                    return <Loading />;
+                            }
+                        })()}
+                    </div>
                 </div>
             ) : (
                 <Auth isSignUp={isSignUp} />

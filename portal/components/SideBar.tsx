@@ -1,7 +1,31 @@
 import Link from 'next/link';
 import { Page } from '@portal/App';
 
+type TabProps = {
+    name: string;
+    isSeletected: boolean;
+    onClick(): void;
+};
+
+function Tab(props: TabProps) {
+    return (
+        <button
+            style={{
+                margin: '10px',
+                border: 'none',
+                borderRadius: '10px',
+                background: props.isSeletected ? 'lightblue' : 'white'
+            }}
+            onClick={() => props.onClick()}
+            // onMouseOver={(e) => }
+        >
+            <h2>{props.name}</h2>
+        </button>
+    );
+}
+
 export type SideBarProps = {
+    page: Page;
     handlePage: (page: Page) => void;
 };
 
@@ -14,27 +38,40 @@ export default function SideBar(props: SideBarProps) {
                 height: '100%',
                 width: '250px',
                 // backgroundImage: 'linear-gradient(#f0f0f0,#1975d3)'
-                background: '#1975d3'
+                background: 'black'
+                // background: 'white'
             }}
         >
-            <button onClick={() => props.handlePage(Page.OVERVIEW)}>
-                <h1>Home</h1>
-            </button>
-            <button onClick={() => props.handlePage(Page.POOLS)}>
-                <h1>Pools</h1>
-            </button>
-            <button onClick={() => props.handlePage(Page.TANKS)}>
-                <h1>Tanks</h1>
-            </button>
-            <button onClick={() => props.handlePage(Page.FRIENDS)}>
-                <h1>Friends</h1>
-            </button>
-            <button onClick={() => props.handlePage(Page.EXPLORE)}>
-                <h1>Explore</h1>
-            </button>
-            <button onClick={() => props.handlePage(Page.PROFILE)}>
-                <h1>Profile</h1>
-            </button>
+            <Tab
+                name="Home"
+                isSeletected={props.page === Page.OVERVIEW}
+                onClick={() => props.handlePage(Page.OVERVIEW)}
+            />
+            <Tab
+                name="Pools"
+                isSeletected={props.page === Page.POOLS}
+                onClick={() => props.handlePage(Page.POOLS)}
+            />
+            <Tab
+                name="Tanks"
+                isSeletected={props.page === Page.TANKS}
+                onClick={() => props.handlePage(Page.TANKS)}
+            />
+            <Tab
+                name="Friends"
+                isSeletected={props.page === Page.FRIENDS}
+                onClick={() => props.handlePage(Page.FRIENDS)}
+            />
+            <Tab
+                name="Explore"
+                isSeletected={props.page === Page.EXPLORE}
+                onClick={() => props.handlePage(Page.EXPLORE)}
+            />
+            <Tab
+                name="Profile"
+                isSeletected={props.page === Page.PROFILE}
+                onClick={() => props.handlePage(Page.PROFILE)}
+            />
         </div>
     );
 }

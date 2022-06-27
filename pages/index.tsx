@@ -35,32 +35,33 @@ function CardContainer(props: CardContainerProps) {
 }
 
 function MainCard() {
+    function Subtitles() {
+        return (
+            <>
+                <h1 style={{ color: '#f0f0f0' }}>
+                    <a style={{ color: 'BLACK' }}>YOUR</a> PERSONAL FINANCE APP{' '}
+                </h1>
+                <h2 style={{ color: '#f0f0f0' }}>
+                    Experience Financial Freedom
+                </h2>
+                <h2 style={{ color: '#f0f0f0' }}>
+                    {' '}
+                    With POOL, you'll be able to
+                </h2>
+            </>
+        );
+    }
+
     const isMobile = useIsMobile();
 
     type Elastic = {
         fontSize: number;
-        subtitle: ReactNode;
     };
     const ELASTIC_DESKTOP: Elastic = {
-        fontSize: 100,
-        subtitle: (
-            <h1 style={{ color: '#f0f0f0' }}>
-                THE <a style={{ color: 'orange' }}>ONE</a> PLACE TO MANAGE ALL
-                YOUR FINANCES
-            </h1>
-        )
+        fontSize: 100
     };
     const ELASTIC_MOBILE: Elastic = {
-        fontSize: 70,
-        subtitle: (
-            <>
-                <h1 style={{ color: '#f0f0f0' }}>
-                    THE <a style={{ color: 'orange' }}>ONE</a> PLACE{' '}
-                </h1>
-                <h1 style={{ color: '#f0f0f0' }}>TO MANAGE</h1>
-                <h1 style={{ color: '#f0f0f0' }}> ALL YOUR FINANCES</h1>
-            </>
-        )
+        fontSize: 70
     };
     const [elastic, setElastic] = useState<Elastic>(ELASTIC_DESKTOP);
     useEffect(() => {
@@ -87,7 +88,7 @@ function MainCard() {
                 <a style={{ color: '#50a8c5' }}>POOL</a>
                 FOLIO
             </h1>
-            {elastic.subtitle}
+            <Subtitles />
             <div style={{ height: 10 }} />
             <h2 style={{ color: '#f0f0f0' }}>Track. Automate. Optimize.</h2>
             <div style={{ height: 30 }} />
@@ -112,8 +113,11 @@ export default function Home() {
                 <MainCard />
                 <CardContainer>
                     <Card color="white">
-                        <h1>pool</h1>
-                        <p>One place to manage all your finances</p>
+                        <h1>Unify Your Finances</h1>
+                        <p>
+                            The money management solution that gives you the
+                            tools to move your capital like never before
+                        </p>
                         <Link href="/about">
                             <a>learn more</a>
                         </Link>

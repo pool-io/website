@@ -84,6 +84,64 @@ function Form(props: FormProps) {
     );
 }
 
+type ForgotPasswordProps = {
+    handleSignIn: () => void;
+};
+
+function ForgotPassword(props: ForgotPasswordProps) {
+    const [email, setEmail] = useState<string>('');
+
+    const onEmail: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(`email: ${e.target.value}`);
+        e.preventDefault();
+        setEmail(e.target.value);
+    };
+
+    const onSubmit: FormEventHandler = (e: FormEvent) => {
+        e.preventDefault(); // default reloads
+
+        const auth = getAuth();
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                // Password reset email sent!
+                // ..
+                console.log('password reset sent');
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(
+                    `error in password reset -- code: ${errorCode} -- message: ${errorMessage}`
+                );
+            });
+    };
+
+    return (
+        <div>
+            <h1>Forgot Password</h1>
+            <form
+                onSubmit={onSubmit}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >
+                <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    onChange={onEmail}
+                />
+                <input type="submit" name="email" value="GO!" />
+            </form>
+            <button onClick={() => props.handleSignIn()}>Sign In</button>
+        </div>
+    );
+}
+
 function SignUp() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('');
@@ -234,6 +292,10 @@ export default function Auth(props: AuthProps) {
                 const credential =
                     GoogleAuthProvider.credentialFromError(error);
                 // ...
+
+                console.log(
+                    `[handleGoogleLogin] error -- [${errorCode}] ${errorMessage}`
+                );
             });
     }
 
@@ -241,81 +303,49 @@ export default function Auth(props: AuthProps) {
         <div
             style={{
                 display: 'flex',
-                flexDirection: 'row'
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
             }}
         >
-            {props.isSignUp ? (
-                <SignUp />
-            ) : isForgotPassword ? (
-                <ForgotPassword
-                    handleSignIn={() => setIsForgotPassword(false)}
-                />
-            ) : (
-                <SignIn
-                    handleForgotPassword={() => setIsForgotPassword(true)}
-                />
-            )}
-            {isForgotPassword ? null : (
-                <GoogleButton onClick={() => handleGoogleLogin()} />
-            )}
-        </div>
-    );
-}
-
-type ForgotPasswordProps = {
-    handleSignIn: () => void;
-};
-
-function ForgotPassword(props: ForgotPasswordProps) {
-    const [email, setEmail] = useState<string>('');
-
-    const onEmail: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(`email: ${e.target.value}`);
-        e.preventDefault();
-        setEmail(e.target.value);
-    };
-
-    const onSubmit: FormEventHandler = (e: FormEvent) => {
-        e.preventDefault(); // default reloads
-
-        const auth = getAuth();
-        sendPasswordResetEmail(auth, email)
-            .then(() => {
-                // Password reset email sent!
-                // ..
-                console.log('password reset sent');
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
-                console.log(
-                    `error in password reset -- code: ${errorCode} -- message: ${errorMessage}`
-                );
-            });
-    };
-
-    return (
-        <div>
-            <h1>Forgot Password</h1>
-            <form
-                onSubmit={onSubmit}
+            <div
                 style={{
                     display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center'
+                    flexDirection: 'row'
                 }}
             >
-                <input
-                    type="text"
-                    name="email"
-                    placeholder="Email"
-                    onChange={onEmail}
-                />
-                <input type="submit" name="email" value="GO!" />
-            </form>
-            <button onClick={() => props.handleSignIn()}>Sign In</button>
+                {props.isSignUp ? (
+                    <SignUp />
+                ) : isForgotPassword ? (
+                    <ForgotPassword
+                        handleSignIn={() => setIsForgotPassword(false)}
+                    />
+                ) : (
+                    <SignIn
+                        handleForgotPassword={() => setIsForgotPassword(true)}
+                    />
+                )}
+                {isForgotPassword ? null : (
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            margin: '50px'
+                        }}
+                    >
+                        <GoogleButton
+                            style={
+                                {
+                                    // width: '200px'
+                                }
+                            }
+                            onClick={() => handleGoogleLogin()}
+                        />
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

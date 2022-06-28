@@ -151,13 +151,20 @@ function ForgotPassword(props: ForgotPasswordProps) {
     };
 
     return (
-        <div>
-            <h1>Forgot Password</h1>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}
+        >
+            <h1>Enter your email</h1>
             <form
                 onSubmit={onSubmit}
                 style={{
                     display: 'flex',
-                    flexDirection: 'column',
+                    flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}
@@ -167,10 +174,44 @@ function ForgotPassword(props: ForgotPasswordProps) {
                     name="email"
                     placeholder="Email"
                     onChange={onEmail}
+                    style={{
+                        fontSize: 35,
+                        border: 'none',
+                        borderBottom: '2px dashed black',
+                        color: 'black',
+                        paddingLeft: 10,
+                        margin: 10,
+                        background: 'none'
+                    }}
                 />
-                <input type="submit" name="email" value="GO!" />
+                <input
+                    type="submit"
+                    name="email"
+                    value="GO!"
+                    style={{
+                        fontSize: 35,
+                        border: '2px dashed black',
+                        borderRadius: 15,
+                        borderBottom: '2px dashed black',
+                        color: 'black',
+                        padding: 10,
+                        margin: 20,
+                        cursor: 'pointer'
+                    }}
+                />
             </form>
-            <button onClick={() => props.handleSignIn()}>Sign In</button>
+            <button
+                style={{
+                    fontSize: 35,
+                    border: 'none',
+                    padding: 10,
+                    margin: 20,
+                    cursor: 'pointer'
+                }}
+                onClick={() => props.handleSignIn()}
+            >
+                just kidding?
+            </button>
         </div>
     );
 }
@@ -351,7 +392,11 @@ export default function Auth(props: AuthProps) {
                         fontSize: 100
                     }}
                 >
-                    {props.isSignUp ? 'SIGN UP' : 'SIGN IN'}
+                    {props.isSignUp
+                        ? 'SIGN UP'
+                        : isForgotPassword
+                        ? 'STUPID'
+                        : 'SIGN IN'}
                 </h1>
 
                 {props.isSignUp ? (

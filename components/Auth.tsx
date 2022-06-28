@@ -335,14 +335,7 @@ export default function Auth(props: AuthProps) {
                             margin: '50px'
                         }}
                     >
-                        <GoogleButton
-                            style={
-                                {
-                                    // width: '200px'
-                                }
-                            }
-                            onClick={() => handleGoogleLogin()}
-                        />
+                        <GoogleButton onClick={() => handleGoogleLogin()} />
                     </div>
                 )}
             </div>

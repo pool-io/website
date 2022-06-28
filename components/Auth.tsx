@@ -24,6 +24,7 @@ import {
     sendPasswordResetEmail
 } from 'firebase/auth';
 import GoogleButton from 'react-google-button';
+import Drop from './Drop';
 
 type Credentials = {
     email: string;
@@ -72,14 +73,46 @@ function Form(props: FormProps) {
                 name="email"
                 placeholder="Email"
                 onChange={onEmail}
+                style={{
+                    fontSize: 35,
+                    border: 'none',
+                    borderBottom: '2px dashed black',
+                    color: 'black',
+                    paddingLeft: 10,
+                    margin: 10,
+                    background: 'none'
+                }}
             />
             <input
                 type="password"
                 name="password"
                 placeholder="Password"
                 onChange={onPassword}
+                style={{
+                    fontSize: 35,
+                    border: 'none',
+                    borderBottom: '2px dashed black',
+                    color: 'black',
+                    paddingLeft: 10,
+                    margin: 10,
+                    background: 'none'
+                }}
             />
-            <input type="submit" name="email" value="GO!" />
+            <input
+                type="submit"
+                name="email"
+                value="GO!"
+                style={{
+                    fontSize: 35,
+                    border: '2px dashed black',
+                    borderRadius: 15,
+                    borderBottom: '2px dashed black',
+                    color: 'black',
+                    padding: 10,
+                    margin: 20,
+                    cursor: 'pointer'
+                }}
+            />
         </form>
     );
 }
@@ -179,13 +212,12 @@ function SignUp() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'center',
-                background: '#f0f0f0'
+                alignItems: 'center'
             }}
         >
-            <h1>SIGN UP</h1>
             <Form onSubmit={onSubmit} />
             <p style={{ color: 'red' }}>{message}</p>
+            <SignInWithGoogle />
             <p>Already have an account?</p>
             <Link href="/portal">
                 <p>SIGN IN</p>
@@ -236,9 +268,10 @@ function SignIn(props: SignInProps) {
                 alignItems: 'center'
             }}
         >
-            <h1>SIGN IN</h1>
             <Form onSubmit={onSubmit} />
             <p style={{ color: 'red' }}>{message}</p>
+            <SignInWithGoogle />
+            <div style={{ height: 10 }} />
             <button onClick={() => props.handleForgotPassword()}>
                 Forgot Password
             </button>
@@ -263,15 +296,11 @@ export type AuthProps = {
     isSignUp: boolean;
 };
 
-export default function Auth(props: AuthProps) {
-    const [isForgotPassword, setIsForgotPassword] = useState(false);
-
-    const provider = new GoogleAuthProvider();
-
+function SignInWithGoogle() {
     function handleGoogleLogin() {
         console.log('login with google');
-        // TODO: firebase login with google credentials
         const auth = getAuth();
+        const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -298,22 +327,33 @@ export default function Auth(props: AuthProps) {
                 );
             });
     }
+    return <GoogleButton onClick={() => handleGoogleLogin()} />;
+}
+
+export default function Auth(props: AuthProps) {
+    const [isForgotPassword, setIsForgotPassword] = useState(false);
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
-            }}
-        >
+        <>
             <div
                 style={{
                     display: 'flex',
-                    flexDirection: 'row'
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center'
                 }}
             >
+                <h1
+                    style={{
+                        padding: '20px',
+                        border: '1px dashed black',
+                        borderRadius: 10,
+                        fontSize: 100
+                    }}
+                >
+                    {props.isSignUp ? 'SIGN UP' : 'SIGN IN'}
+                </h1>
+
                 {props.isSignUp ? (
                     <SignUp />
                 ) : isForgotPassword ? (
@@ -325,20 +365,24 @@ export default function Auth(props: AuthProps) {
                         handleForgotPassword={() => setIsForgotPassword(true)}
                     />
                 )}
-                {isForgotPassword ? null : (
+            </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '10px',
+                    left: '10px'
+                }}
+            >
+                <Link href="/">
                     <div
                         style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            margin: '50px'
+                            cursor: 'pointer'
                         }}
                     >
-                        <GoogleButton onClick={() => handleGoogleLogin()} />
+                        <Drop width={80} height={80} color="black" />
                     </div>
-                )}
+                </Link>
             </div>
-        </div>
+        </>
     );
 }

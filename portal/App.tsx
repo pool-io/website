@@ -104,9 +104,10 @@ export default function App(props: AppProps) {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'stretch',
+                alignItems: 'center',
                 background: '#f0f0f0',
-                height: '100vh'
+                height: '100vh',
+                width: '100vw'
             }}
         >
             {isLoading ? (
@@ -118,7 +119,8 @@ export default function App(props: AppProps) {
                         flexDirection: 'row',
                         justifyContent: 'flex-start',
                         alignItems: 'stretch',
-                        height: '100%'
+                        height: '100%',
+                        width: '100%'
                     }}
                 >
                     <SideBar page={page} handlePage={handlePage} />

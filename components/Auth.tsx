@@ -411,23 +411,6 @@ export default function Auth(props: AuthProps) {
                     />
                 )}
             </div>
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '10px',
-                    left: '10px'
-                }}
-            >
-                <Link href="/">
-                    <div
-                        style={{
-                            cursor: 'pointer'
-                        }}
-                    >
-                        <Drop width={80} height={80} color="black" />
-                    </div>
-                </Link>
-            </div>
         </>
     );
 }

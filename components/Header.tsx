@@ -6,6 +6,10 @@ import Cross from '@components/Cross';
 import useIsMobile from '@hooks/useIsMobile';
 import useIsTop from '@hooks/useIsTop';
 import { builtinModules } from 'module';
+import useAuthUser from '@hooks/useAuthUser';
+import { useQuery } from '@apollo/client';
+import { QUERY_GET_USER } from 'graphql/user';
+import { SignOutButton } from './Auth';
 
 function Logo() {
     const isTop = useIsTop();
@@ -39,6 +43,30 @@ function Logo() {
                 <a style={{ color: '#50a8c5' }}>POOL</a>FOLIO
             </h1>
         </Tab>
+    );
+}
+
+function Username() {
+    const { loading, error, data } = useQuery(QUERY_GET_USER);
+
+    if (loading) {
+        return <div>Loading</div>;
+    }
+
+    if (error) {
+        console.log(error);
+        return <div>Error</div>;
+    }
+    return (
+        <div
+            style={{
+                cursor: 'pointer'
+            }}
+        >
+            <Link href="/u">
+                {loading ? <p>Loading</p> : <p>@{data?.user?.username}</p>}
+            </Link>
+        </div>
     );
 }
 
@@ -171,6 +199,49 @@ function MobileTabs(props: MobileTabsProps) {
                         </Link>
                     </div>
                 ) : null}
+            </div>
+        </>
+    );
+}
+
+function AuthTab() {
+    const authUser = useAuthUser();
+
+    return authUser ? (
+        <Tab
+            url="/u"
+            expanded={
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: 100,
+                        width: 200
+                    }}
+                >
+                    <Link href="/settings/profile">
+                        <p>Edit Profile</p>
+                    </Link>
+                    <SignOutButton />
+                </div>
+            }
+        >
+            <Username />
+        </Tab>
+    ) : (
+        <>
+            <Tab title="SIGN IN" url="/portal" style={{ color: 'black' }} />
+            <div
+                style={{
+                    display: 'flex',
+                    padding: 15,
+                    borderRadius: 10,
+                    background: '#04b3ed'
+                }}
+            >
+                <Tab title="GET STARTED" url="/portal?signup" />
             </div>
         </>
     );
@@ -335,23 +406,10 @@ function DesktopTabs(props: DesktopTabsProps) {
             <div
                 style={{
                     flex: 1,
-                    display: 'flex',
-                    alignItems: 'center'
+                    display: 'flex'
                 }}
             >
-                <Spacer />
-                <Tab title="SIGN IN" url="/portal" style={{ color: color }} />
-                <div
-                    style={{
-                        display: 'flex',
-                        padding: 15,
-                        borderRadius: 10,
-                        background: '#04b3ed'
-                    }}
-                >
-                    <Tab title="GET STARTED" url="/portal?signup" />
-                </div>
-                <Spacer />
+                <AuthTab />
             </div>
         </>
     );

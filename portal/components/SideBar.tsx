@@ -31,8 +31,6 @@ export type SideBarProps = {
 };
 
 export default function SideBar(props: SideBarProps) {
-    const router = useRouter();
-
     return (
         <div
             style={{
@@ -74,13 +72,6 @@ export default function SideBar(props: SideBarProps) {
                 name="Profile"
                 isSeletected={props.page === Page.PROFILE}
                 onClick={() => props.handlePage(Page.PROFILE)}
-            />
-            <Tab
-                name="poolfol.io"
-                isSeletected={false}
-                onClick={() => {
-                    router.push('/');
-                }}
             />
         </div>
     );

@@ -10,6 +10,7 @@ import Friends from '@portal/pages/Friends';
 import Explore from '@portal/pages/Explore';
 import Profile from '@portal/pages/Profile';
 import { URL_PARAMS } from './consts';
+import Header from '@components/Header';
 
 export enum Page {
     OVERVIEW,
@@ -110,6 +111,7 @@ export default function App(props: AppProps) {
                 width: '100vw'
             }}
         >
+            <Header />
             {isLoading ? (
                 <Loading />
             ) : authUser ? (

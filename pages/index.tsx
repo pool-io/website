@@ -122,13 +122,20 @@ export default function Home() {
                             <a>learn more</a>
                         </Link>
                     </Card>
-                    <Card color="orange">
-                        <h1>Do everything with POOL!</h1>
+                </CardContainer>
+                <CardContainer>
+                    <Card color="black">
+                        <h1>Money Management Guide to the Future</h1>
                         <ul>
                             <li>Track your spending</li>
                             <li>Create saving goals</li>
                             <li>Invest your money</li>
                         </ul>
+                    </Card>
+                </CardContainer>
+                <CardContainer>
+                    <Card color="white">
+                        <h1>Where Security matters as much as Privacy</h1>
                     </Card>
                 </CardContainer>
             </div>

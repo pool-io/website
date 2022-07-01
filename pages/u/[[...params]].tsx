@@ -15,30 +15,32 @@ export default function User() {
 
     return (
         <Layout route={`/u/${userID}`}>
-            {loading ? (
-                <Loading />
-            ) : (
-                <div
-                    style={{
-                        height: '100vh',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}
-                >
-                    <image
-                        style={{
-                            height: 200,
-                            width: 200,
-                            borderRadius: 20,
-                            background: 'grey'
-                        }}
-                    />
-                    <h1>@{data?.user?.username}</h1>
-                    <p>{data?.user?.bio}</p>
-                </div>
-            )}
+            <div
+                style={{
+                    height: '100vh',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <>
+                        <image
+                            style={{
+                                height: 200,
+                                width: 200,
+                                borderRadius: 20,
+                                background: 'grey'
+                            }}
+                        />
+                        <h1>u/{data?.user?.username}</h1>
+                        <p>{data?.user?.bio}</p>
+                    </>
+                )}
+            </div>
         </Layout>
     );
 }

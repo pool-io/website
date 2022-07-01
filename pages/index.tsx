@@ -80,7 +80,6 @@ function MainCard() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '100vh',
-                width: '100vw',
                 backgroundImage: 'linear-gradient(#f0f0f0,#1975d3)'
             }}
         >

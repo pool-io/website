@@ -1,5 +1,6 @@
 import { CSSProperties, ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import BurgerMenu from '@components/BurgerMenu';
 import Drop from '@components/Drop';
 import Cross from '@components/Cross';
@@ -64,7 +65,7 @@ function Username() {
             }}
         >
             <Link href="/u">
-                {loading ? <p>Loading</p> : <p>@{data?.user?.username}</p>}
+                {loading ? <p>Loading</p> : <p>u/{data?.user?.username}</p>}
             </Link>
         </div>
     );
@@ -117,7 +118,7 @@ function Tab(props: TabProps) {
             {props.expanded && isExpanded ? (
                 <div
                     style={{
-                        position: 'absolute',
+                        position: 'fixed',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -379,6 +380,14 @@ function DesktopTabs(props: DesktopTabsProps) {
                     flex: 1
                 }}
             >
+                <Search />
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    flex: 1
+                }}
+            >
                 <Spacer />
                 <Tab
                     title="LEARN"
@@ -415,11 +424,27 @@ function DesktopTabs(props: DesktopTabsProps) {
     );
 }
 
+function Search() {
+    return (
+        <div
+            style={{
+                width: '20vw',
+                paddingLeft: 20,
+                margin: 20,
+                borderRadius: 10,
+                background: 'lightgrey'
+            }}
+        >
+            <p>Search</p>
+        </div>
+    );
+}
+
 type HeaderProps = {
     route: string;
 };
 
-export default function Header(props: HeaderProps) {
+function Header(props: HeaderProps) {
     const isMobile = useIsMobile();
     const isTop = useIsTop();
 
@@ -428,7 +453,6 @@ export default function Header(props: HeaderProps) {
 
     const DARK_BACKGROUND = 'linear-gradient(#ffffff,#f0f0f0)';
     const LIGHT_BACKGROUND = '';
-    const [background, setBackground] = useState<string>(LIGHT_BACKGROUND);
 
     useEffect(() => {
         if (isMobile) {
@@ -443,16 +467,6 @@ export default function Header(props: HeaderProps) {
         }
     }, [isMobile, isExpanded]);
 
-    useEffect(() => {
-        if (isExpanded) {
-            setBackground(DARK_BACKGROUND);
-        } else if (isTop) {
-            setBackground(LIGHT_BACKGROUND);
-        } else {
-            setBackground(DARK_BACKGROUND);
-        }
-    }, [isTop, isExpanded]);
-
     return (
         <div
             style={{
@@ -464,10 +478,18 @@ export default function Header(props: HeaderProps) {
                 position: 'fixed',
                 top: 0,
                 left: 0,
-                backgroundImage: background
+                backgroundImage: isExpanded
+                    ? DARK_BACKGROUND
+                    : isTop
+                    ? LIGHT_BACKGROUND
+                    : DARK_BACKGROUND
             }}
         >
             {tabs}
         </div>
     );
 }
+
+export default dynamic(() => Promise.resolve(Header), {
+    ssr: false
+});

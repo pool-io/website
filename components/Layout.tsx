@@ -32,7 +32,7 @@ export default function Layout(props: LayoutProps) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'stretch',
-                    background: 'wheat'
+                    background: '#f0f0f0'
                 }}
             >
                 {props.children}

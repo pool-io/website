@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import Layout from '@components/Layout';
 import Loading from '@components/Loading';
 import { URL_PARAMS } from '@portal/consts';
-import { MUTATION_USER_UPDATE, QUERY_GET_USER } from 'graphql/user';
+import { MUTATION_USER_EDIT, QUERY_GET_USER } from 'graphql/user';
 import { useRouter } from 'next/router';
 import Pencil from '@components/svg/Pencil';
 import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from 'react';
@@ -71,7 +71,7 @@ type UpdateUsernameProps = {
 function UpdateUsername(props: UpdateUsernameProps) {
     const [username, setUsername] = useState('');
     const [updateUser, { data, loading, error }] =
-        useMutation(MUTATION_USER_UPDATE);
+        useMutation(MUTATION_USER_EDIT);
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -110,7 +110,7 @@ type UpdateBioProps = {
 function UpdateBio(props: UpdateBioProps) {
     const [username, setUsername] = useState('');
     const [updateUser, { data, loading, error }] =
-        useMutation(MUTATION_USER_UPDATE);
+        useMutation(MUTATION_USER_EDIT);
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();

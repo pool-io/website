@@ -9,9 +9,9 @@ export const QUERY_GET_USER = gql`
     }
 `;
 
-export const MUTATION_USER_UPDATE = gql`
-    mutation UserUpdate($input: UserUpdateInput!) {
-        userUpdate(input: $input) {
+export const MUTATION_USER_EDIT = gql`
+    mutation UserEdit($input: UserEditInput!) {
+        userEdit(input: $input) {
             code
             success
             message

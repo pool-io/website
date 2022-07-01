@@ -10,7 +10,7 @@ import { SignOutButton } from '@components/Auth';
 import useAuthUser from '@hooks/useAuthUser';
 import useMyUser from '@portal/hooks/useMyUser';
 import { useQuery, useMutation } from '@apollo/client';
-import { MUTATION_USER_UPDATE, QUERY_GET_USER } from 'graphql/user';
+import { MUTATION_USER_EDIT, QUERY_GET_USER } from 'graphql/user';
 import Layout from '@components/Layout';
 
 type UpdateUsernameProps = {
@@ -20,7 +20,7 @@ type UpdateUsernameProps = {
 function UpdateUsername(props: UpdateUsernameProps) {
     const [username, setUsername] = useState('');
     const [updateUser, { data, loading, error }] =
-        useMutation(MUTATION_USER_UPDATE);
+        useMutation(MUTATION_USER_EDIT);
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();

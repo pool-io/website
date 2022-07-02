@@ -1,3 +1,3 @@
 export const ENDPOINTS = {
-    SERVICE: process.env.API_SERVICE_URL
+    SERVICE: 'http://localhost:8080'
 };

@@ -8,11 +8,10 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import '../styles/global.css';
 import { Firebase } from '@consts/Firebase';
-
-const LOCALHOST_ADDRESS = 'http://localhost:8080/graphql';
+import { ENDPOINTS } from '@consts/Endpoints';
 
 const httpLink = createHttpLink({
-    uri: LOCALHOST_ADDRESS
+    uri: `${ENDPOINTS.SERVICE}/graphql`
 });
 
 const authLink = setContext(async (_, { headers }) => {

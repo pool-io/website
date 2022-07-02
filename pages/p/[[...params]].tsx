@@ -249,7 +249,9 @@ function PlaidLink(props: { linkToken: string }) {
                 })
                 .catch((err) => console.log(err));
         },
-        onExit: (err, metadata) => {},
+        onExit: (err, metadata) => {
+            console.log('onExit: ', err, metadata);
+        },
         onEvent: (eventName, metadata) => {},
         token: props.linkToken
         //required for OAuth; if not using OAuth, set to null or omit:

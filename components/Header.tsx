@@ -209,28 +209,31 @@ function AuthTab() {
     const authUser = useAuthUser();
 
     return authUser ? (
-        <Tab
-            url="/u"
-            expanded={
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: 100,
-                        width: 200
-                    }}
-                >
-                    <Link href="/settings/profile">
-                        <p>Edit Profile</p>
-                    </Link>
-                    <SignOutButton />
-                </div>
-            }
-        >
-            <Username />
-        </Tab>
+        <>
+            <Tab url="/p" title="POOLS" />
+            <Tab
+                url="/u"
+                expanded={
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            height: 100,
+                            width: 200
+                        }}
+                    >
+                        <Link href="/settings/profile">
+                            <p>Edit Profile</p>
+                        </Link>
+                        <SignOutButton />
+                    </div>
+                }
+            >
+                <Username />
+            </Tab>
+        </>
     ) : (
         <>
             <Tab title="SIGN IN" url="/portal" style={{ color: 'black' }} />
@@ -448,24 +451,10 @@ function Header(props: HeaderProps) {
     const isMobile = useIsMobile();
     const isTop = useIsTop();
 
-    const [tabs, setTabs] = useState<ReactNode>(null);
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
     const DARK_BACKGROUND = 'linear-gradient(#ffffff,#f0f0f0)';
     const LIGHT_BACKGROUND = '';
-
-    useEffect(() => {
-        if (isMobile) {
-            setTabs(
-                <MobileTabs
-                    isExpanded={isExpanded}
-                    onClick={() => setIsExpanded(!isExpanded)}
-                />
-            );
-        } else {
-            setTabs(<DesktopTabs route={props.route} />);
-        }
-    }, [isMobile, isExpanded]);
 
     return (
         <div
@@ -485,7 +474,14 @@ function Header(props: HeaderProps) {
                     : DARK_BACKGROUND
             }}
         >
-            {tabs}
+            {isMobile ? (
+                <MobileTabs
+                    isExpanded={isExpanded}
+                    onClick={() => setIsExpanded(!isExpanded)}
+                />
+            ) : (
+                <DesktopTabs route={props.route} />
+            )}
         </div>
     );
 }

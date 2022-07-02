@@ -5,6 +5,7 @@ export const QUERY_GET_USER = gql`
         user(id: $id) {
             id
             username
+            bio
         }
     }
 `;
@@ -19,6 +20,7 @@ export const MUTATION_USER_EDIT = gql`
                 id
                 exists
                 username
+                bio
             }
         }
     }

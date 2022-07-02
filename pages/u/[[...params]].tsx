@@ -108,33 +108,35 @@ type UpdateBioProps = {
 };
 
 function UpdateBio(props: UpdateBioProps) {
-    const [username, setUsername] = useState('');
-    const [updateUser, { data, loading, error }] =
+    const [bio, setBio] = useState('');
+    const [updateBio, { data, loading, error }] =
         useMutation(MUTATION_USER_EDIT);
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        updateUser({ variables: { input: { username: username } } });
+        updateBio({ variables: { input: { bio: bio } } });
         props.handleClose();
     }
 
-    const onUsername: ChangeEventHandler = (
-        e: ChangeEvent<HTMLInputElement>
-    ) => {
-        console.log(`username: ${e.target.value}`);
+    const onBio: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(`bio: ${e.target.value}`);
         e.preventDefault();
-        setUsername(e.target.value);
+        setBio(e.target.value);
     };
 
     return (
         <div>
-            <h1>Update Username</h1>
+            <h1>Update Bio</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="New Username"
-                    onChange={onUsername}
+                <textarea
+                    name="bio"
+                    placeholder="New Bio (max: 100)"
+                    onChange={onBio}
+                    style={{
+                        height: '10vh',
+                        width: '30vw'
+                    }}
+                    maxLength={100}
                 />
                 <button type="submit">Submit</button>
             </form>
@@ -152,7 +154,8 @@ function EditUsernameButton() {
     ) : (
         <div
             style={{
-                margin: 10
+                margin: 10,
+                cursor: 'pointer'
             }}
             onClick={() => setIsEditing(true)}
         >
@@ -166,12 +169,13 @@ function EditBioButton() {
 
     return isEditing ? (
         <Modal onClick={() => setIsEditing(false)}>
-            <UpdateUsername handleClose={() => setIsEditing(false)} />
+            <UpdateBio handleClose={() => setIsEditing(false)} />
         </Modal>
     ) : (
         <div
             style={{
-                margin: 10
+                margin: 10,
+                cursor: 'pointer'
             }}
             onClick={() => setIsEditing(true)}
         >
@@ -232,7 +236,7 @@ export default function User() {
                             }}
                         >
                             {data?.user?.bio ? (
-                                <p>data.user.bio</p>
+                                <p>{data.user.bio}</p>
                             ) : (
                                 <p style={{ fontStyle: 'italic' }}>no bio...</p>
                             )}

@@ -1,7 +1,7 @@
+import { URL_PARAMS } from '@consts/Router';
 import { useMutation, useQuery } from '@apollo/client';
 import Layout from '@components/Layout';
 import Loading from '@components/Loading';
-import { URL_PARAMS } from '@portal/consts';
 import { MUTATION_USER_EDIT, QUERY_GET_USER } from 'graphql/user';
 import { useRouter } from 'next/router';
 import Pencil from '@components/svg/Pencil';

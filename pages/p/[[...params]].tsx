@@ -3,7 +3,7 @@ import Modal from '@components/Modal';
 import Add from '@components/svg/Add';
 import { ENDPOINTS } from '@consts/Endpoints';
 import { Firebase } from '@consts/Firebase';
-import { URL_PARAMS } from '@portal/consts';
+import { URL_PARAMS } from '@consts/Router';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
 import {

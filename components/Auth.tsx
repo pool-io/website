@@ -4,7 +4,8 @@ import {
     FormEventHandler,
     ChangeEvent,
     ChangeEventHandler,
-    MouseEventHandler
+    MouseEventHandler,
+    useEffect
 } from 'react';
 import Link from 'next/link';
 import { Firebase } from '@consts/Firebase';
@@ -25,6 +26,8 @@ import {
 } from 'firebase/auth';
 import GoogleButton from 'react-google-button';
 import Drop from './Drop';
+import useAuthUser from '@hooks/useAuthUser';
+import Router from 'next/router';
 
 type Credentials = {
     email: string;
@@ -333,10 +336,6 @@ export function SignOutButton() {
     return <button onClick={handleSignOut}>Sign Out</button>;
 }
 
-export type AuthProps = {
-    isSignUp: boolean;
-};
-
 function SignInWithGoogle() {
     function handleGoogleLogin() {
         console.log('login with google');
@@ -371,7 +370,20 @@ function SignInWithGoogle() {
     return <GoogleButton onClick={() => handleGoogleLogin()} />;
 }
 
+export type AuthProps = {
+    isSignUp: boolean;
+    redirect?: string;
+};
+
 export default function Auth(props: AuthProps) {
+    const user = useAuthUser();
+
+    useEffect(() => {
+        if (user) {
+            Router.push(props.redirect ? props.redirect : '/');
+        }
+    }, [user]);
+
     const [isForgotPassword, setIsForgotPassword] = useState(false);
 
     return (

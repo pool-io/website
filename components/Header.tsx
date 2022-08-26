@@ -14,6 +14,7 @@ import { SignOutButton } from './Auth';
 
 function Logo() {
     const isTop = useIsTop();
+    const user = useAuthUser();
 
     const LIGHT_COLOR = 'black';
     const DARK_COLOR = 'black';
@@ -29,7 +30,7 @@ function Logo() {
 
     return (
         <Tab
-            url="/"
+            url={user ? '/portal' : '/'}
             style={{
                 flex: 1,
                 display: 'flex',
@@ -192,7 +193,7 @@ function MobileTabs(props: MobileTabsProps) {
                         <Link href="/about">
                             <h1>About</h1>
                         </Link>
-                        <Link href="/portal">
+                        <Link href="/signin">
                             <h1>Sign In</h1>
                         </Link>
                         <Link href="/portal?signup">
@@ -236,7 +237,7 @@ function AuthTab() {
         </>
     ) : (
         <>
-            <Tab title="SIGN IN" url="/portal" style={{ color: 'black' }} />
+            <Tab title="SIGN IN" url="/signin" style={{ color: 'black' }} />
             <div
                 style={{
                     display: 'flex',
@@ -445,6 +446,7 @@ function Search() {
 
 type HeaderProps = {
     route: string;
+    isDark?: boolean;
 };
 
 function Header(props: HeaderProps) {
@@ -467,7 +469,9 @@ function Header(props: HeaderProps) {
                 position: 'fixed',
                 top: 0,
                 left: 0,
-                backgroundImage: isExpanded
+                backgroundImage: props.isDark
+                    ? DARK_BACKGROUND
+                    : isExpanded
                     ? DARK_BACKGROUND
                     : isTop
                     ? LIGHT_BACKGROUND

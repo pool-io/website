@@ -75,7 +75,7 @@ function CreatePool(props: CreatePoolProps) {
         </div>
     );
 }
-
+// need to add forms for pools
 function CreatePoolButton() {
     const [isCreating, setIsCreating] = useState(false);
 
@@ -99,7 +99,7 @@ function CreatePoolButton() {
             }}
             onClick={() => setIsCreating(true)}
         >
-            New
+            <Add height="10px" width="10px" />
         </button>
     );
 }

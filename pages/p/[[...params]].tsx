@@ -12,6 +12,13 @@ import {
     PlaidLinkOnSuccess,
     PlaidLinkOnSuccessMetadata
 } from 'react-plaid-link';
+import {
+    FormEvent,
+    FormEventHandler,
+    ChangeEvent,
+    ChangeEventHandler,
+    MouseEventHandler
+} from 'react';
 
 type SideBarProps = {
     setPage(page: Page): void;
@@ -69,9 +76,55 @@ type CreatePoolProps = {
 };
 
 function CreatePool(props: CreatePoolProps) {
+    const [PoolName, setPoolName] = useState<string>('');
+    const [AddAdmins, setAddAdmins] = useState<string>('');
+
+    const onPoolName: ChangeEventHandler = (
+        e: ChangeEvent<HTMLInputElement>
+    ) => {
+        console.log(`poolName: ${e.target.value}`);
+        e.preventDefault();
+        setPoolName(e.target.value);
+    };
+    const onAdmins: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(`Admins: ${e.target.value}`);
+        e.preventDefault();
+        setPoolName(e.target.value);
+    };
+
+    const onSubmit: FormEventHandler = (e: FormEvent) => {
+        e.preventDefault(); // default reloads
+        console.log('testPool');
+    };
     return (
         <div>
-            <h1>CREATE POOL</h1>
+            <form
+                onSubmit={onSubmit}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >
+                <div>
+                    <h1>CREATE POOL</h1>
+                    <input
+                        type="text"
+                        name="Pool Name"
+                        placeholder="Pool Name"
+                        onChange={onPoolName}
+                    />
+                    <input
+                        type="text"
+                        name="Add Admins"
+                        placeholder="Add Admin"
+                        onChange={onAdmins}
+                    />
+                    <input type="radio" value="Public" />
+                </div>
+            </form>
+            {/* add button */}
         </div>
     );
 }

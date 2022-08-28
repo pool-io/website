@@ -380,7 +380,7 @@ export default function Auth(props: AuthProps) {
 
     useEffect(() => {
         if (user) {
-            Router.push(props.redirect ? props.redirect : '/');
+            Router.push(props.redirect ? props.redirect : '/portal');
         }
     }, [user]);
 

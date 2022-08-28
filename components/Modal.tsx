@@ -12,7 +12,7 @@ export default function Modal(props: ModalProps) {
                 left: 0,
                 height: '100vh',
                 width: '100vw',
-
+                flexDirection: 'column',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center'

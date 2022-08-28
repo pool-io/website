@@ -70,9 +70,19 @@ type CreatePoolProps = {
 
 function CreatePool(props: CreatePoolProps) {
     return (
-        <div>
+        //<form onSubmit={this.formSubmit}>
+        //
+        <div
+            style={{
+                flexDirection: 'column'
+            }}
+        >
             <h1>CREATE POOL</h1>
+            <input type="text" name="Pool Name" placeholder="Pool Name" />
+            <input type="text" name="Add Admins" placeholder="Add Admin" />
+            <input type="radio" value="Public" />
         </div>
+        //</form>
     );
 }
 // need to add forms for pools

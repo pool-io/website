@@ -6,13 +6,12 @@ import Drop from '@components/Drop';
 import Cross from '@components/Cross';
 import useIsMobile from '@hooks/useIsMobile';
 import useIsTop from '@hooks/useIsTop';
-import { builtinModules } from 'module';
 import useAuthUser from '@hooks/useAuthUser';
 import { useQuery } from '@apollo/client';
 import { QUERY_GET_USER } from 'graphql/user';
 import { SignOutButton } from './Auth';
 
-function Logo() {
+function Icon() {
     const isTop = useIsTop();
     const user = useAuthUser();
 
@@ -32,18 +31,14 @@ function Logo() {
         <Tab
             url={user ? '/portal' : '/'}
             style={{
-                flex: 1,
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'flex-start',
-                alignItems: 'flex-start'
+                marginLeft: 10
             }}
         >
-            <div style={{ width: 10 }} />
-            <Drop width={80} height={80} color={color} />
-            <h1 style={{ color: color }}>
-                <a style={{ color: '#50a8c5' }}>POOL</a>FOLIO
-            </h1>
+            <Drop width={50} height={50} color="black" />
+            <p style={{ fontSize: 20, color: color }}>POOL</p>
         </Tab>
     );
 }
@@ -123,7 +118,7 @@ function Tab(props: TabProps) {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        top: 70,
+                        top: 50,
                         borderRadius: 30,
                         margin: 10,
                         color: 'black',
@@ -160,7 +155,7 @@ function MobileTabs(props: MobileTabsProps) {
         <>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex' }}>
-                    <Logo />
+                    <Icon />
                     <div
                         style={{
                             flex: 1,
@@ -197,7 +192,7 @@ function MobileTabs(props: MobileTabsProps) {
                             <h1>Sign In</h1>
                         </Link>
                         <Link href="/portal?signup">
-                            <h1 style={{ color: '#04b3ed' }}>Get Started</h1>
+                            <h1 style={{ color: '#71bbff' }}>Get Started</h1>
                         </Link>
                     </div>
                 ) : null}
@@ -209,54 +204,70 @@ function MobileTabs(props: MobileTabsProps) {
 function AuthTab() {
     const authUser = useAuthUser();
 
-    return authUser ? (
-        <>
-            <Tab url="/p" title="POOLS" />
-            <Tab
-                url="/u"
-                expanded={
+    return (
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+            }}
+        >
+            {authUser ? (
+                <>
+                    <Tab url="/p" title="POOLS" />
+                    <Tab
+                        url="/u"
+                        expanded={
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    height: 100,
+                                    width: 200
+                                }}
+                            >
+                                <Link href="/settings/profile">
+                                    <p>Edit Profile</p>
+                                </Link>
+                                <SignOutButton />
+                            </div>
+                        }
+                    >
+                        <Username />
+                    </Tab>
+                </>
+            ) : (
+                <>
+                    <Tab
+                        title="SIGN IN"
+                        url="/signin"
+                        style={{ color: 'black', margin: '0px 10px 0px 10px' }}
+                    />
                     <div
                         style={{
                             display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            height: 100,
-                            width: 200
+                            padding: 10,
+                            margin: '0px 10px 0px 10px',
+                            borderRadius: 10,
+                            background: '#71bbff'
                         }}
                     >
-                        <Link href="/settings/profile">
-                            <p>Edit Profile</p>
-                        </Link>
-                        <SignOutButton />
+                        <Tab title="GET STARTED" url="/portal?signup" />
                     </div>
-                }
-            >
-                <Username />
-            </Tab>
-        </>
-    ) : (
-        <>
-            <Tab title="SIGN IN" url="/signin" style={{ color: 'black' }} />
-            <div
-                style={{
-                    display: 'flex',
-                    padding: 15,
-                    borderRadius: 10,
-                    background: '#04b3ed'
-                }}
-            >
-                <Tab title="GET STARTED" url="/portal?signup" />
-            </div>
-        </>
+                </>
+            )}
+        </div>
     );
 }
 
-type DesktopTabsProps = {
-    route: string;
-};
+type DesktopTabsProps = {};
 
 function DesktopTabs(props: DesktopTabsProps) {
+    let route = '';
+
     const isTop = useIsTop();
     const LIGHT_COLOR = 'black';
     const DARK_COLOR = 'black';
@@ -377,7 +388,7 @@ function DesktopTabs(props: DesktopTabsProps) {
 
     return (
         <>
-            <Logo />
+            <Icon />
             <div
                 style={{
                     display: 'flex',
@@ -396,21 +407,21 @@ function DesktopTabs(props: DesktopTabsProps) {
                 <Tab
                     title="LEARN"
                     url="/learn"
-                    isSelected={props.route === '/learn'}
+                    isSelected={route === '/learn'}
                     style={{ color: color }}
                     expanded={ExpandedLearn}
                 />
                 <Tab
                     title="BLOG"
                     url="/blog"
-                    isSelected={props.route === '/blog'}
+                    isSelected={route === '/blog'}
                     style={{ color: color }}
                     expanded={ExpandedBlog}
                 />
                 <Tab
                     title="ABOUT"
                     url="/about"
-                    isSelected={props.route === '/about'}
+                    isSelected={route === '/about'}
                     style={{ color: color }}
                     expanded={ExpandedAbout}
                 />
@@ -419,7 +430,9 @@ function DesktopTabs(props: DesktopTabsProps) {
             <div
                 style={{
                     flex: 1,
-                    display: 'flex'
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
                 }}
             >
                 <AuthTab />
@@ -432,9 +445,9 @@ function Search() {
     return (
         <div
             style={{
-                width: '20vw',
-                paddingLeft: 20,
-                margin: 20,
+                width: '500px',
+                padding: 10,
+                margin: 10,
                 borderRadius: 10,
                 background: 'lightgrey'
             }}
@@ -444,12 +457,9 @@ function Search() {
     );
 }
 
-type HeaderProps = {
-    route: string;
-    isDark?: boolean;
-};
+type HeaderProps = {};
 
-function Header(props: HeaderProps) {
+export default function Header(props: HeaderProps) {
     const isMobile = useIsMobile();
     const isTop = useIsTop();
 
@@ -464,18 +474,13 @@ function Header(props: HeaderProps) {
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'center',
-                alignItems: 'stretch',
+                alignItems: 'center',
                 width: '100vw',
                 position: 'fixed',
                 top: 0,
                 left: 0,
-                backgroundImage: props.isDark
-                    ? DARK_BACKGROUND
-                    : isExpanded
-                    ? DARK_BACKGROUND
-                    : isTop
-                    ? LIGHT_BACKGROUND
-                    : DARK_BACKGROUND
+                height: 50,
+                backgroundImage: DARK_BACKGROUND
             }}
         >
             {isMobile ? (
@@ -484,12 +489,8 @@ function Header(props: HeaderProps) {
                     onClick={() => setIsExpanded(!isExpanded)}
                 />
             ) : (
-                <DesktopTabs route={props.route} />
+                <DesktopTabs />
             )}
         </div>
     );
 }
-
-export default dynamic(() => Promise.resolve(Header), {
-    ssr: false
-});

@@ -26,3 +26,8 @@ body {
     --header-color: orange;
     --header-color: white;
 }
+
+p {
+    margin-block-start: 0em;
+    margin-block-end: 0;
+}

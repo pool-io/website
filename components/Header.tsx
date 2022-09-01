@@ -480,7 +480,9 @@ export default function Header(props: HeaderProps) {
                 top: 0,
                 left: 0,
                 height: 50,
-                backgroundImage: DARK_BACKGROUND
+                backgroundImage: DARK_BACKGROUND,
+                boxShadow:
+                    '0 1px 10px rgba(0, 0, 0, 0.05), 0 1px 10px rgba(0, 0, 0, 0.05), 0 2px 10px rgba(0, 0, 0, 0.05)'
             }}
         >
             {isMobile ? (

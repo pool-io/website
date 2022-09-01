@@ -19,7 +19,8 @@
             "@consts/*": ["consts/*"],
             "@components/*": ["components/*"],
             "@hooks/*": ["hooks/*"],
-            "@portal/*": ["portal/*"]
+            "@portal/*": ["portal/*"],
+            "@model/*": ["model/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -34,7 +34,7 @@ export default function Layout(props: LayoutProps) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'stretch',
-                    background: '#ACC2D6',
+                    background: '#f0f0f0',
                     height: '100vh',
                     width: '100vw',
                     overflow: 'auto'
@@ -77,7 +77,7 @@ function Sidebar() {
         >
             {LABELS.map((label: string) => {
                 return (
-                    <Link href={`/${label.toLowerCase()}`}>
+                    <Link key={label} href={`/${label.toLowerCase()}`}>
                         <div
                             style={{
                                 display: 'flex',

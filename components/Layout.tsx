@@ -66,7 +66,15 @@ export default function Layout(props: LayoutProps) {
 }
 
 function Sidebar() {
-    const LABELS = ['Dashboards', 'Feed', 'Pools', 'Transactions'];
+    const LABELS = [
+        'Dashboards',
+        'Feed',
+        'Pools',
+        'Transactions',
+        'Tanks',
+        'Drains',
+        'Plaid'
+    ];
 
     return (
         <div

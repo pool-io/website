@@ -9,7 +9,7 @@ body {
     margin: 0;
     background-color: var(--primary-color);
 
-    font-family: 'FoundersGrotesk', 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
 
     --primary-color: #1d648c;
     /* --primary-color: #fdb8b8; */

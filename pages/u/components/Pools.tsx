@@ -20,7 +20,7 @@ export type PoolsProps = {
     userID: string;
 };
 
-export function Pools(props: PoolsProps) {
+export default function Pools(props: PoolsProps) {
     const { loading, data, error } = useQuery(GET_USER_POOLS_QUERY, {
         variables: { id: props.userID ? props.userID : null }
     });
@@ -76,4 +76,6 @@ type PoolEntryProps = {
     members: string[];
 };
 
-function PoolEntry(props: PoolEntryProps) {}
+function PoolEntry(props: PoolEntryProps) {
+    return <div></div>;
+}

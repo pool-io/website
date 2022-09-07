@@ -1,0 +1,45 @@
+.landing_page_container {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 30px 30px;
+    grid-template-areas: 'login info';
+}
+
+.login_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    grid-row-start: login;
+    grid-column-start: login;
+    grid-row-end: login;
+    grid-column-end: login;
+}
+
+.info_container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    position: relative;
+    grid-row-start: info;
+    grid-column-start: info;
+    grid-row-end: info;
+    grid-column-end: info;
+
+    span {
+        color: black;
+        width: 60%;
+        font-size: 45px;
+    }
+
+    .underlined_span {
+        color: #028090;
+        --extra-underlineNumber: 3;
+        --extra-underlineColor: #028090;
+        --extra-underlineWidth: 3;
+        background: paint(extra-superUnderline);
+    }
+}

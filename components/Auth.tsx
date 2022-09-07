@@ -28,6 +28,7 @@ import GoogleButton from 'react-google-button';
 import Drop from './Drop';
 import useAuthUser from '@hooks/useAuthUser';
 import Router from 'next/router';
+import Login from './Login';
 
 type Credentials = {
     email: string;
@@ -387,42 +388,14 @@ export default function Auth(props: AuthProps) {
     const [isForgotPassword, setIsForgotPassword] = useState(false);
 
     return (
-        <>
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    alignItems: 'center'
-                }}
-            >
-                <h1
-                    style={{
-                        padding: '20px',
-                        border: '1px dashed black',
-                        borderRadius: 10,
-                        fontSize: 100
-                    }}
-                >
-                    {props.isSignUp
-                        ? 'SIGN UP'
-                        : isForgotPassword
-                        ? 'STUPID'
-                        : 'SIGN IN'}
-                </h1>
-
-                {props.isSignUp ? (
-                    <SignUp />
-                ) : isForgotPassword ? (
-                    <ForgotPassword
-                        handleSignIn={() => setIsForgotPassword(false)}
-                    />
-                ) : (
-                    <SignIn
-                        handleForgotPassword={() => setIsForgotPassword(true)}
-                    />
-                )}
-            </div>
-        </>
+        <div
+            style={{
+                width: '100%',
+                justifyContent: 'center',
+                display: 'flex'
+            }}
+        >
+            <Login />
+        </div>
     );
 }

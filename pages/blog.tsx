@@ -2,7 +2,7 @@ import Layout from '@components/Layout';
 
 export default function Blog() {
     return (
-        <Layout route="/blog">
+        <Layout>
             <div
                 style={{
                     display: 'flex',

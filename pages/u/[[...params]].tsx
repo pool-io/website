@@ -194,7 +194,7 @@ export default function User() {
     });
 
     return (
-        <Layout route={`/u/${userID}`}>
+        <Layout>
             <div
                 style={{
                     height: '100vh',

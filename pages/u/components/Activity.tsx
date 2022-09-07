@@ -1,3 +1,5 @@
 export type ActivityProps = {};
 
-export function Activity(props: ActivityProps) {}
+export default function Activity(props: ActivityProps) {
+    return <div></div>;
+}

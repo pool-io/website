@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Caleb() {
     return (
-        <Layout route="/learn">
+        <Layout>
             <div
                 style={{
                     display: 'flex',

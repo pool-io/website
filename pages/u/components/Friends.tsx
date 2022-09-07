@@ -1,3 +1,5 @@
 export type FriendsProps = {};
 
-export function Friends(props: FriendsProps) {}
+export default function Friends(props: FriendsProps) {
+    return <div></div>;
+}

@@ -93,7 +93,7 @@ export default function Main() {
     );
 
     return (
-        <Layout route="main">
+        <Layout>
             <div
                 style={{
                     height: '200vh',

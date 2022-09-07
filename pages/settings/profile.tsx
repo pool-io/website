@@ -8,7 +8,6 @@ import {
 } from 'react';
 import { SignOutButton } from '@components/Auth';
 import useAuthUser from '@hooks/useAuthUser';
-import useMyUser from '@portal/hooks/useMyUser';
 import { useQuery, useMutation } from '@apollo/client';
 import { MUTATION_USER_EDIT, QUERY_GET_USER } from 'graphql/user';
 import Layout from '@components/Layout';
@@ -106,7 +105,7 @@ export default function Profile() {
     }, [authUser]);
 
     return (
-        <Layout route="/settings/profile">
+        <Layout>
             <div
                 style={{
                     display: 'flex',

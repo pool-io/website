@@ -2,7 +2,7 @@ import Layout from '@components/Layout';
 
 export default function Learn() {
     return (
-        <Layout route="/learn">
+        <Layout>
             <div
                 style={{
                     display: 'flex',

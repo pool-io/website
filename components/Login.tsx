@@ -2,7 +2,22 @@ import React, { useEffect, useRef, useState } from 'react';
 // import styles from '../../styles/components/auth/Login.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
-import firebase from 'firebase/app';
+import { Firebase } from '@consts/Firebase';
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    updateCurrentUser,
+    UserCredential,
+    AuthError,
+    AuthErrorCodes
+} from 'firebase/auth';
+// import { FacebookAuthProvider } from "firebase/auth";
+import {
+    getAuth,
+    signInWithPopup,
+    GoogleAuthProvider,
+    sendPasswordResetEmail
+} from 'firebase/auth';
 import { useRouter } from 'next/router';
 import styles from './Login.module.scss';
 
@@ -201,7 +216,7 @@ export default function Login() {
                                 width: '100%',
                                 padding: '10px',
                                 borderRadius: '30px',
-                                color: 'white',
+                                color: 'black',
                                 border: 'none',
                                 outline: 'none',
                                 backgroundColor: 'white',
@@ -212,7 +227,7 @@ export default function Login() {
                             onClick={handleSubmit}
                             name="email_login"
                         >
-                            Login
+                            Log in
                         </button>
                     </div>
                 </form>

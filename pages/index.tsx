@@ -15,8 +15,8 @@ const SECTION_STYLE = {
     width: '100%',
     height: '70vh',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'center'
+    // justifyContent: 'center'
 };
 
 const particleParams = {
@@ -82,19 +82,20 @@ export default function Home() {
             </Head>
             <Layout isHideSidebar={true}>
                 <div>
-                    <section id="section" style={SECTION_STYLE}>
-                        <div className={styles.landing_page_container}>
+                    <section id="Login" style={SECTION_STYLE}>
+                        <div className={styles.landing_page_container_1}>
                             <div className={styles.login_container}>
                                 <Login />
                             </div>
                             <div className={styles.info_container}>
                                 <span>
                                     <span className={styles.underlined_span}>
-                                        Finance Simplified.
+                                        Consolidating and Personalizing
+                                        Financial Services
                                     </span>{' '}
-                                    It is a long established fact that a reader
+                                    {/* It is a long established fact that a reader
                                     will be distracted by the readable content
-                                    of a page when looking at its layout.
+                                    of a page when looking at its layout. */}
                                 </span>
                             </div>
                         </div>
@@ -114,6 +115,32 @@ export default function Home() {
                             />
                         </div>
                     </section>
+                    <section id="Description of Pools" style={SECTION_STYLE}>
+                        <div className={styles.landing_page_container_2}>
+                            <div className={styles.description_container}>
+                                <p> Log Transaction History </p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> Check Balances in Real Time </p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p>
+                                    {' '}
+                                    Unique identifiers to fit your unique needs
+                                </p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p>
+                                    {' '}
+                                    A banking solution to the heterogeneity of
+                                    banks{' '}
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    {/* <section id="Social Media" style={SECTION_STYLE}>
+                        <div className={styles.landing}
+                    </section> */}
                 </div>
             </Layout>
         </>

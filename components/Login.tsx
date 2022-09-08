@@ -1,4 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import {
+    useState,
+    FormEvent,
+    FormEventHandler,
+    ChangeEvent,
+    ChangeEventHandler,
+    MouseEventHandler,
+    useEffect
+} from 'react';
 // import styles from '../../styles/components/auth/Login.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -18,79 +26,111 @@ import {
     GoogleAuthProvider,
     sendPasswordResetEmail
 } from 'firebase/auth';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
+import Router from 'next/router';
+import useAuthUser from '@hooks/useAuthUser';
 import styles from './Login.module.scss';
 
-export interface UserRegisterInterface {
+// export interface UserRegisterInterface {
+//     email: string;
+//     password: string;
+//     confirmPassword: string;
+//     username: string;
+// }
+
+// export interface UserLoginInterface {
+//     email: string;
+//     password: string;
+// }
+
+// export default function Login() {
+//     const router = useRouter();
+//     const formRef = useRef(null);
+//     const [errors, setErrors] = useState({ email: '', password: '' });
+//     const [passVal, setPassVal] = useState('');
+//     const [submitError, setSubmitError] = useState(null);
+
+//     useEffect(() => {}, []);
+//     const formValid = () => {
+//         if (formRef.current) {
+//             let formData = new FormData(formRef.current);
+//             return (
+//                 errors.password === '' &&
+//                 errors.email === '' &&
+//                 passVal !== '' &&
+//                 formData.get('email') !== ''
+//             );
+//         }
+//         return false;
+//     };
+
+//     const formHandler = (e) => {
+//         const { name, value } = e.target;
+//         let tempErrors = errors;
+//         switch (name) {
+//             case 'email':
+//                 const emailRegex =
+//                     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//                 tempErrors.email = emailRegex.test(value)
+//                     ? ''
+//                     : 'Email is not valid';
+//                 break;
+//             case 'password':
+//                 setPassVal(value.replace(/\s/g, ''));
+//                 tempErrors.password =
+//                     value.length < 8
+//                         ? 'Password must be at least 8 characters'
+//                         : '';
+//                 break;
+//             default:
+//                 break;
+//         }
+//         setErrors(Object.assign({}, tempErrors));
+//     };
+
+//     const handleSubmit = async (e) => {
+//         e.preventDefault();
+//         const { name } = e.target;
+//     };
+
+//     const handleSubmitGoogle = async (event) => {
+//         event.preventDefault();
+//         //@ts-ignore
+//     };
+
+//     const handleSubmitFacebook = async (event) => {
+//         event.preventDefault();
+//         //@ts-ignore
+//     };
+type Credentials = {
     email: string;
     password: string;
-    confirmPassword: string;
-    username: string;
-}
+};
 
-export interface UserLoginInterface {
-    email: string;
-    password: string;
-}
+type FormProps = {
+    onSubmit: (credentials: Credentials) => void;
+};
 
-export default function Login() {
-    const router = useRouter();
-    const formRef = useRef(null);
-    const [errors, setErrors] = useState({ email: '', password: '' });
-    const [passVal, setPassVal] = useState('');
-    const [submitError, setSubmitError] = useState(null);
+function Form(props: FormProps) {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
 
-    useEffect(() => {}, []);
-    const formValid = () => {
-        if (formRef.current) {
-            let formData = new FormData(formRef.current);
-            return (
-                errors.password === '' &&
-                errors.email === '' &&
-                passVal !== '' &&
-                formData.get('email') !== ''
-            );
-        }
-        return false;
-    };
-
-    const formHandler = (e) => {
-        const { name, value } = e.target;
-        let tempErrors = errors;
-        switch (name) {
-            case 'email':
-                const emailRegex =
-                    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                tempErrors.email = emailRegex.test(value)
-                    ? ''
-                    : 'Email is not valid';
-                break;
-            case 'password':
-                setPassVal(value.replace(/\s/g, ''));
-                tempErrors.password =
-                    value.length < 8
-                        ? 'Password must be at least 8 characters'
-                        : '';
-                break;
-            default:
-                break;
-        }
-        setErrors(Object.assign({}, tempErrors));
-    };
-
-    const handleSubmit = async (e) => {
+    const onEmail: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(`email: ${e.target.value}`);
         e.preventDefault();
-        const { name } = e.target;
+        setEmail(e.target.value);
+    };
+    const onPassword: ChangeEventHandler = (
+        e: ChangeEvent<HTMLInputElement>
+    ) => {
+        console.log(`password: ${e.target.value}`);
+        e.preventDefault();
+        setPassword(e.target.value);
     };
 
-    const handleSubmitGoogle = async (event) => {
-        event.preventDefault();
-        //@ts-ignore
-    };
-
-    const handleSubmitFacebook = async (event) => {
-        event.preventDefault();
-        //@ts-ignore
+    const onSubmit: FormEventHandler = (e: FormEvent) => {
+        e.preventDefault(); // default reloads
+        props.onSubmit({ email, password });
     };
 
     return (
@@ -127,7 +167,7 @@ export default function Login() {
                 >
                     Login
                 </h2> */}
-                {submitError && (
+                {/* {submitError && (
                     <div
                         style={{
                             width: '100%',
@@ -138,13 +178,14 @@ export default function Login() {
                     >
                         {submitError.message}
                     </div>
-                )}
+                )} */}
 
                 <form
+                    onSubmit={onSubmit}
                     style={{
                         textAlign: 'left'
                     }}
-                    ref={formRef}
+                    // ref={formRef}
                 >
                     <label
                         style={{
@@ -154,19 +195,19 @@ export default function Login() {
                         Email
                     </label>
                     <br />
-                    <span
+                    {/* <span
                         style={{
                             fontSize: '12px',
                             color: '#ff0033'
                         }}
                     >
                         {errors.email}
-                    </span>
+                    </span> */}
                     <input
-                        type="email"
+                        type="text"
                         placeholder="Email"
                         name="email"
-                        onChange={formHandler}
+                        onChange={onEmail}
                         style={{
                             border: 'none',
                             outline: 'none',
@@ -180,17 +221,19 @@ export default function Login() {
 
                     <label>Password</label>
                     <br />
-                    <span
+                    {/* <span
                         style={{
                             fontSize: '12px',
                             color: '#ff0033'
                         }}
                     >
                         {errors.password}
-                    </span>
+                    </span> */}
                     <input
                         type="password"
                         placeholder="Password"
+                        name="password"
+                        onChange={onPassword}
                         style={{
                             border: 'none',
                             outline: 'none',
@@ -200,8 +243,6 @@ export default function Login() {
                             padding: '10px'
                             //fontFamily: 'Montserrat'
                         }}
-                        name="password"
-                        onChange={formHandler}
                     />
 
                     <div
@@ -223,8 +264,8 @@ export default function Login() {
                                 fontSize: '20px',
                                 cursor: 'pointer'
                             }}
-                            disabled={!formValid()}
-                            onClick={handleSubmit}
+                            // disabled={!formValid()}
+                            onClick={onSubmit}
                             name="email_login"
                         >
                             Log in
@@ -232,14 +273,14 @@ export default function Login() {
                     </div>
                 </form>
 
-                <div
+                {/* <div
                     style={{
                         marginTop: '10px',
                         fontSize: '14px'
                     }}
-                >
-                    {/* <span className={styles.other_pages}> */}
-                    <span>
+                > */}
+                {/* <span className={styles.other_pages}> */}
+                {/* <span>
                         Don't have an account?
                         <Link href={{ pathname: '/signup' }}>
                             <a
@@ -260,9 +301,9 @@ export default function Login() {
                         flexDirection: 'column',
                         marginTop: '20px'
                     }}
-                >
-                    {/*google */}
-                    <button
+                > */}
+                {/*google */}
+                {/* <button
                         style={{
                             display: 'flex',
                             justifyContent: 'center',
@@ -309,10 +350,10 @@ export default function Login() {
                         >
                             Login with Google
                         </span>
-                    </button>
+                    </button> */}
 
-                    {/*facebook */}
-                    <button
+                {/*facebook */}
+                {/* <button
                         style={{
                             display: 'flex',
                             justifyContent: 'center',
@@ -350,9 +391,61 @@ export default function Login() {
                         >
                             Login with Facebook
                         </span>
-                    </button>
-                </div>
+                    </button> */}
+                {/* </div> */}
             </div>
         </div>
     );
 }
+export default function Auth(props: AuthProps) {
+    const user = useAuthUser();
+
+    useEffect(() => {
+        if (user) {
+            Router.push(props.redirect ? props.redirect : '/portal');
+        }
+    }, [user]);
+
+    const [isForgotPassword, setIsForgotPassword] = useState(false);
+    const onSubmit = ({ email, password }: Credentials) => {
+        console.log('SignIn:onSubmit', { email, password });
+        signInWithEmailAndPassword(Firebase.auth, email, password)
+            .then((userCredentials: UserCredential) => {
+                console.log('SignIn:onSubmit', { userCredentials });
+            })
+            .catch((err: AuthError) => {
+                console.log(err);
+                // switch (err.code) {
+                //     case AuthErrorCodes.INVALID_PASSWORD:
+                //         setMessage('wrong email/password');
+                //         break;
+                //     case AuthErrorCodes.INVALID_EMAIL:
+                //         setMessage('invalid email');
+                //         break;
+                //     case AuthErrorCodes.TOO_MANY_ATTEMPTS_TRY_LATER:
+                //         setMessage('too many attempts');
+                //         break;
+                //     default:
+                //         setMessage(err.message);
+                //         console.log('SignUp:onSubmit', { err });
+                // }
+                // setIsLoading(false);
+            });
+    };
+
+    return (
+        <div
+            style={{
+                width: '100%',
+                justifyContent: 'center',
+                display: 'flex'
+            }}
+        >
+            <Form onSubmit={onSubmit} />
+        </div>
+    );
+}
+export type AuthProps = {
+    isSignUp: boolean;
+    redirect?: string;
+};

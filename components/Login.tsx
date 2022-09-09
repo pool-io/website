@@ -31,77 +31,6 @@ import Router from 'next/router';
 import useAuthUser from '@hooks/useAuthUser';
 import styles from './Login.module.scss';
 
-// export interface UserRegisterInterface {
-//     email: string;
-//     password: string;
-//     confirmPassword: string;
-//     username: string;
-// }
-
-// export interface UserLoginInterface {
-//     email: string;
-//     password: string;
-// }
-
-// export default function Login() {
-//     const router = useRouter();
-//     const formRef = useRef(null);
-//     const [errors, setErrors] = useState({ email: '', password: '' });
-//     const [passVal, setPassVal] = useState('');
-//     const [submitError, setSubmitError] = useState(null);
-
-//     useEffect(() => {}, []);
-//     const formValid = () => {
-//         if (formRef.current) {
-//             let formData = new FormData(formRef.current);
-//             return (
-//                 errors.password === '' &&
-//                 errors.email === '' &&
-//                 passVal !== '' &&
-//                 formData.get('email') !== ''
-//             );
-//         }
-//         return false;
-//     };
-
-//     const formHandler = (e) => {
-//         const { name, value } = e.target;
-//         let tempErrors = errors;
-//         switch (name) {
-//             case 'email':
-//                 const emailRegex =
-//                     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//                 tempErrors.email = emailRegex.test(value)
-//                     ? ''
-//                     : 'Email is not valid';
-//                 break;
-//             case 'password':
-//                 setPassVal(value.replace(/\s/g, ''));
-//                 tempErrors.password =
-//                     value.length < 8
-//                         ? 'Password must be at least 8 characters'
-//                         : '';
-//                 break;
-//             default:
-//                 break;
-//         }
-//         setErrors(Object.assign({}, tempErrors));
-//     };
-
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         const { name } = e.target;
-//     };
-
-//     const handleSubmitGoogle = async (event) => {
-//         event.preventDefault();
-//         //@ts-ignore
-//     };
-
-//     const handleSubmitFacebook = async (event) => {
-//         event.preventDefault();
-//         //@ts-ignore
-//     };
 type Credentials = {
     email: string;
     password: string;
@@ -158,34 +87,11 @@ function Form(props: FormProps) {
                     zIndex: '1'
                 }}
             >
-                {/* <h2
-                    style={{
-                        //fontFamily: 'Roboto Conde',
-                        marginBottom: '20px',
-                        color: 'white'
-                    }}
-                >
-                    Login
-                </h2> */}
-                {/* {submitError && (
-                    <div
-                        style={{
-                            width: '100%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            marginTop: '20px'
-                        }}
-                    >
-                        {submitError.message}
-                    </div>
-                )} */}
-
                 <form
                     onSubmit={onSubmit}
                     style={{
                         textAlign: 'left'
                     }}
-                    // ref={formRef}
                 >
                     <label
                         style={{
@@ -195,14 +101,7 @@ function Form(props: FormProps) {
                         Email
                     </label>
                     <br />
-                    {/* <span
-                        style={{
-                            fontSize: '12px',
-                            color: '#ff0033'
-                        }}
-                    >
-                        {errors.email}
-                    </span> */}
+
                     <input
                         type="text"
                         placeholder="Email"
@@ -215,20 +114,12 @@ function Form(props: FormProps) {
                             margin: '5px 0 15px',
                             width: '100%',
                             padding: '10px'
-                            //fontFamily: 'Roboto'
                         }}
                     />
 
                     <label>Password</label>
                     <br />
-                    {/* <span
-                        style={{
-                            fontSize: '12px',
-                            color: '#ff0033'
-                        }}
-                    >
-                        {errors.password}
-                    </span> */}
+
                     <input
                         type="password"
                         placeholder="Password"
@@ -241,7 +132,6 @@ function Form(props: FormProps) {
                             margin: '5px 0 15px',
                             width: '100%',
                             padding: '10px'
-                            //fontFamily: 'Montserrat'
                         }}
                     />
 
@@ -264,7 +154,6 @@ function Form(props: FormProps) {
                                 fontSize: '20px',
                                 cursor: 'pointer'
                             }}
-                            // disabled={!formValid()}
                             onClick={onSubmit}
                             name="email_login"
                         >

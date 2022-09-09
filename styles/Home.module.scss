@@ -28,6 +28,7 @@
     grid-column-start: login;
     grid-row-end: login;
     grid-column-end: login;
+    z-index: 2;
 }
 
 .info_container {
@@ -56,6 +57,9 @@
     }
 }
 .description_container {
+    display: flex;
     width: 90%;
     height: 50%;
+    align-items: center;
+    justify-content: center;
 }

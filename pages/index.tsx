@@ -15,8 +15,8 @@ const SECTION_STYLE = {
     width: '100%',
     height: '70vh',
     display: 'flex',
-    alignItems: 'center'
-    // justifyContent: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
 };
 
 const particleParams = {

@@ -161,26 +161,92 @@ function Form(props: FormProps) {
                         </button>
                     </div>
                 </form>
+            </div>
+            <Signup></Signup>
+            <SignInWithGoogle></SignInWithGoogle>
+        </div>
+    );
+}
 
-                {/* <div
+{
+    /* sign up + google + facebook */
+}
+function Signup() {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [message, setMessage] = useState<string>('');
+
+    const onSubmit = ({ email, password }: Credentials) => {
+        console.log('SignUp:onSubmit', { email, password });
+
+        setIsLoading(true);
+        createUserWithEmailAndPassword(Firebase.auth, email, password)
+            .then((userCredential: UserCredential) => {
+                console.log('SignUp:onSubmit', { userCredential });
+            })
+            .catch((err: AuthError) => {
+                switch (err.code) {
+                    case AuthErrorCodes.INVALID_EMAIL:
+                        setMessage('invalid email');
+                        break;
+                    case AuthErrorCodes.EMAIL_EXISTS:
+                        setMessage('email is already in use');
+                        break;
+                    case AuthErrorCodes.WEAK_PASSWORD:
+                        setMessage('password must be at least 6 characters');
+                        break;
+                    default:
+                        setMessage(err.message);
+                        console.log('SignUp:onSubmit', { err });
+                }
+                setIsLoading(false);
+            });
+    };
+    return (
+        <div
+            style={{
+                marginTop: '10px',
+                fontSize: '14px'
+            }}
+        >
+            <span className={styles.other_pages}>
+                <span>
+                    Don't have an account?
+                    <Link href={{ pathname: '/portal?signup' }}>
+                        <a
+                            style={{
+                                color: 'white',
+                                marginLeft: '5px'
+                            }}
+                        >
+                            Sign up
+                        </a>
+                    </Link>
+                </span>
+            </span>
+        </div>
+    );
+}
+{
+    /* <div
                     style={{
                         marginTop: '10px',
                         fontSize: '14px'
                     }}
-                > */}
-                {/* <span className={styles.other_pages}> */}
-                {/* <span>
-                        Don't have an account?
-                        <Link href={{ pathname: '/signup' }}>
-                            <a
-                                style={{
-                                    color: 'white',
-                                    marginLeft: '5px'
-                                }}
-                            >
-                                Sign up
-                            </a>
-                        </Link>
+                >
+                    <span className={styles.other_pages}>
+                        <span>
+                            Don't have an account?
+                            <Link href={{ pathname: '/signup' }}>
+                                <a
+                                    style={{
+                                        color: 'white',
+                                        marginLeft: '5px'
+                                    }}
+                                >
+                                    Sign up
+                                </a>
+                            </Link>
+                        </span>
                     </span>
                 </div>
 
@@ -190,9 +256,97 @@ function Form(props: FormProps) {
                         flexDirection: 'column',
                         marginTop: '20px'
                     }}
-                > */}
-                {/*google */}
-                {/* <button
+                > */
+}
+{
+    /*google */
+}
+function SignInWithGoogle() {
+    function handleGoogleLogin() {
+        console.log('login with google');
+        const auth = getAuth();
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential =
+                    GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                // ...
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential =
+                    GoogleAuthProvider.credentialFromError(error);
+                // ...
+
+                console.log(
+                    `[handleGoogleLogin] error -- [${errorCode}] ${errorMessage}`
+                );
+            });
+    }
+    return (
+        <button
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                backgroundColor: 'white',
+                outline: 'none',
+                border: 'none',
+                padding: '10px 20px',
+                alignItems: 'center',
+                marginBottom: '15px',
+                marginTop: '15px',
+                cursor: 'pointer'
+            }}
+            name="google_login"
+            onClick={handleGoogleLogin}
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 533.5 544.3"
+                style={{
+                    width: '14px',
+                    height: '14px'
+                }}
+            >
+                <path
+                    d="M533.5 278.4c0-18.5-1.5-37.1-4.7-55.3H272.1v104.8h147c-6.1 33.8-25.7 63.7-54.4 82.7v68h87.7c51.5-47.4 81.1-117.4 81.1-200.2z"
+                    fill="#4285f4"
+                />
+                <path
+                    d="M272.1 544.3c73.4 0 135.3-24.1 180.4-65.7l-87.7-68c-24.4 16.6-55.9 26-92.6 26-71 0-131.2-47.9-152.8-112.3H28.9v70.1c46.2 91.9 140.3 149.9 243.2 149.9z"
+                    fill="#34a853"
+                />
+                <path
+                    d="M119.3 324.3c-11.4-33.8-11.4-70.4 0-104.2V150H28.9c-38.6 76.9-38.6 167.5 0 244.4l90.4-70.1z"
+                    fill="#fbbc04"
+                />
+                <path
+                    d="M272.1 107.7c38.8-.6 76.3 14 104.4 40.8l77.7-77.7C405 24.6 339.7-.8 272.1 0 169.2 0 75.1 58 28.9 150l90.4 70.1c21.5-64.5 81.8-112.4 152.8-112.4z"
+                    fill="#ea4335"
+                />
+            </svg>
+            <span
+                style={{
+                    marginLeft: '10px'
+                }}
+            >
+                Login with Google
+            </span>
+        </button>
+    );
+    // <GoogleButton onClick={() => handleGoogleLogin()} />;
+}
+{
+    /* <button
                         style={{
                             display: 'flex',
                             justifyContent: 'center',
@@ -239,10 +393,14 @@ function Form(props: FormProps) {
                         >
                             Login with Google
                         </span>
-                    </button> */}
+                    </button> */
+}
 
-                {/*facebook */}
-                {/* <button
+{
+    /*facebook */
+}
+{
+    /* <button
                         style={{
                             display: 'flex',
                             justifyContent: 'center',
@@ -280,12 +438,111 @@ function Form(props: FormProps) {
                         >
                             Login with Facebook
                         </span>
-                    </button> */}
-                {/* </div> */}
-            </div>
+                    </button> */
+}
+{
+    /* </div> */
+}
+
+type ForgotPasswordProps = {
+    handleSignIn: () => void;
+};
+
+function ForgotPassword(props: ForgotPasswordProps) {
+    const [email, setEmail] = useState<string>('');
+
+    const onEmail: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(`email: ${e.target.value}`);
+        e.preventDefault();
+        setEmail(e.target.value);
+    };
+
+    const onSubmit: FormEventHandler = (e: FormEvent) => {
+        e.preventDefault(); // default reloads
+
+        const auth = getAuth();
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                // Password reset email sent!
+                // ..
+                console.log('password reset sent');
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(
+                    `error in password reset -- code: ${errorCode} -- message: ${errorMessage}`
+                );
+            });
+    };
+
+    return (
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}
+        >
+            <h1>Enter your email</h1>
+            <form
+                onSubmit={onSubmit}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >
+                <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    onChange={onEmail}
+                    style={{
+                        fontSize: 35,
+                        border: 'none',
+                        borderBottom: '2px dashed black',
+                        color: 'black',
+                        paddingLeft: 10,
+                        margin: 10,
+                        background: 'none'
+                    }}
+                />
+                <input
+                    type="submit"
+                    name="email"
+                    value="GO!"
+                    style={{
+                        fontSize: 35,
+                        border: '2px dashed black',
+                        borderRadius: 15,
+                        borderBottom: '2px dashed black',
+                        color: 'black',
+                        padding: 10,
+                        margin: 20,
+                        cursor: 'pointer'
+                    }}
+                />
+            </form>
+            <button
+                style={{
+                    fontSize: 35,
+                    border: 'none',
+                    padding: 10,
+                    margin: 20,
+                    cursor: 'pointer'
+                }}
+                onClick={() => props.handleSignIn()}
+            >
+                just kidding?
+            </button>
         </div>
     );
 }
+
 export default function Auth(props: AuthProps) {
     const user = useAuthUser();
 

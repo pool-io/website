@@ -24,10 +24,10 @@ const particleParams = {
         enable: true,
         zIndex: 0
     },
-    fpsLimit: 120,
+    fpsLimit: 60,
     particles: {
         number: {
-            value: 160,
+            value: 111,
             density: {
                 enable: false
             }
@@ -41,15 +41,16 @@ const particleParams = {
             }
         },
         line_linked: {
-            enable: false
+            enable: true,
+            color: '#7CB9E8'
         },
         move: {
-            directions: 'none',
+            directions: 'bottom',
             enable: true,
             speed: 3,
             //direction: 'top',
             out_mode: 'out',
-            straight: false
+            straight: true
         },
         color: {
             value: '#7CB9E8'

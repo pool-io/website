@@ -17,6 +17,7 @@
     grid-template-rows: auto;
     gap: 20px 20px 20px 20px;
     grid-template-areas: 'primary features info';
+    z-index: 2;
 }
 
 .login_container {
@@ -41,6 +42,7 @@
     grid-column-start: info;
     grid-row-end: info;
     grid-column-end: info;
+    z-index: 2;
 
     span {
         color: black;
@@ -62,4 +64,5 @@
     height: 50%;
     align-items: center;
     justify-content: center;
+    z-index: 2;
 }

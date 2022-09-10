@@ -56,6 +56,7 @@ export default function Layout(props: LayoutProps) {
                         }}
                     >
                         {props.children}
+                        {/* <Footer/> */}
                     </div>
                 </div>
             </div>

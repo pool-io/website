@@ -10,7 +10,6 @@
 
 .landing_page_container_2 {
     position: relative;
-    height: 50vh;
     width: 100%;
     display: grid;
     // align-items: center;
@@ -31,6 +30,7 @@
     grid-row-end: login;
     grid-column-end: login;
     z-index: 2;
+    grid-template-areas: 'login';
 }
 
 .info_container {
@@ -44,7 +44,7 @@
     grid-row-end: info;
     grid-column-end: info;
     z-index: 2;
-
+    grid-template-areas: 'info';
     span {
         color: black;
         width: 60%;
@@ -66,4 +66,13 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
+    grid-template-areas: 'description';
+}
+
+@media (max-width: 700px) {
+    .landing_page_container_1 {
+        grid-template-rows:
+            'login'
+            'info';
+    }
 }

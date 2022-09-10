@@ -29,7 +29,7 @@ import {
 // import { useRouter } from 'next/router';
 import Router from 'next/router';
 import useAuthUser from '@hooks/useAuthUser';
-import styles from './Login.module.scss';
+// import styles from './Login.module.scss';
 
 type Credentials = {
     email: string;
@@ -208,20 +208,18 @@ function Signup() {
                 fontSize: '14px'
             }}
         >
-            <span className={styles.other_pages}>
-                <span>
-                    Don't have an account?
-                    <Link href={{ pathname: '/portal?signup' }}>
-                        <a
-                            style={{
-                                color: 'white',
-                                marginLeft: '5px'
-                            }}
-                        >
-                            Sign up
-                        </a>
-                    </Link>
-                </span>
+            <span>
+                Don't have an account?
+                <Link href={{ pathname: '/portal?signup' }}>
+                    <a
+                        style={{
+                            color: 'white',
+                            marginLeft: '5px'
+                        }}
+                    >
+                        Sign up
+                    </a>
+                </Link>
             </span>
         </div>
     );

@@ -3,6 +3,7 @@ import Header from '@components/Header';
 import useAuthUser from '@hooks/useAuthUser';
 import { CSSProperties } from 'react';
 import Link from 'next/link';
+import Portal from 'pages/portal/[[...params]]';
 
 type LayoutProps = {
     style?: CSSProperties;
@@ -71,10 +72,10 @@ function Sidebar() {
         'Dashboards',
         'Feed',
         'Pools',
-        'Transactions',
+        // 'Transactions',
         'Tanks',
-        'Drains',
-        'Plaid'
+        'Drains'
+        // 'Plaid'
     ];
 
     return (

@@ -94,7 +94,6 @@ function Tab(props: TabProps) {
                 ...props.style
             }}
             onMouseEnter={() => setIsExpanded(true)}
-            //onMouseLeave={() => setIsExpanded(false)}
         >
             <Link href={props.url}>
                 <div
@@ -125,6 +124,7 @@ function Tab(props: TabProps) {
                         background: 'white',
                         cursor: 'pointer'
                     }}
+                    onMouseLeave={() => setIsExpanded(false)}
                 >
                     {props.expanded}
                 </div>

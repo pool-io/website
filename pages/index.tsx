@@ -19,15 +19,23 @@ const SECTION_STYLE = {
     justifyContent: 'center'
 };
 
+const SECTION2_STYLE = {
+    width: '100%',
+    height: '50vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+};
+
 const particleParams = {
     fullScreen: {
         enable: true,
         zIndex: 0
     },
-    fpsLimit: 120,
+    fpsLimit: 60,
     particles: {
         number: {
-            value: 160,
+            value: 111,
             density: {
                 enable: false
             }
@@ -41,15 +49,16 @@ const particleParams = {
             }
         },
         line_linked: {
-            enable: false
+            enable: true,
+            color: '#7CB9E8'
         },
         move: {
-            directions: 'none',
+            directions: 'bottom',
             enable: true,
             speed: 3,
             //direction: 'top',
             out_mode: 'out',
-            straight: false
+            straight: true
         },
         color: {
             value: '#7CB9E8'
@@ -82,19 +91,20 @@ export default function Home() {
             </Head>
             <Layout isHideSidebar={true}>
                 <div>
-                    <section id="section" style={SECTION_STYLE}>
-                        <div className={styles.landing_page_container}>
+                    <section id="Login" style={SECTION_STYLE}>
+                        <div className={styles.landing_page_container_1}>
                             <div className={styles.login_container}>
                                 <Login />
                             </div>
                             <div className={styles.info_container}>
                                 <span>
                                     <span className={styles.underlined_span}>
-                                        Finance Simplified.
+                                        Consolidating and Personalizing
+                                        Financial Services
                                     </span>{' '}
-                                    It is a long established fact that a reader
+                                    {/* It is a long established fact that a reader
                                     will be distracted by the readable content
-                                    of a page when looking at its layout.
+                                    of a page when looking at its layout. */}
                                 </span>
                             </div>
                         </div>
@@ -114,6 +124,33 @@ export default function Home() {
                             />
                         </div>
                     </section>
+                    <section
+                        id="Consolidate Financial Features"
+                        style={SECTION2_STYLE}
+                    >
+                        <div className={styles.landing_page_container_2}>
+                            <div className={styles.description_container}>
+                                <p> Calculate Net Worth </p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> 2+ Banks 1 Card </p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> Pool Network Configurations</p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> Group Pools </p>
+                            </div>
+                        </div>
+                    </section>
+                    {/* <section
+                        id="Personalize Financial Features"
+                        style={SECTION2_STYLE}
+                    >
+                        <div className={styles.info_container}>
+                            <span>Pool Architecture</span>
+                        </div>
+                    </section> */}
                 </div>
             </Layout>
         </>

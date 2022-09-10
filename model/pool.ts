@@ -18,6 +18,15 @@ export type Tank = {
     members: Member[];
 };
 
+export type Drain = {
+    id: string;
+    name: string;
+    amount: string;
+    image: string;
+    isPrivate: boolean;
+    members: Member[];
+};
+
 export type Member = {
     member: User;
 };

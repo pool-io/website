@@ -590,6 +590,5 @@ export default function Auth(props: AuthProps) {
     );
 }
 export type AuthProps = {
-    isSignUp: boolean;
     redirect?: string;
 };

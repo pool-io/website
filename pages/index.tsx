@@ -19,6 +19,14 @@ const SECTION_STYLE = {
     justifyContent: 'center'
 };
 
+const SECTION2_STYLE = {
+    width: '100%',
+    height: '50vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+};
+
 const particleParams = {
     fullScreen: {
         enable: true,
@@ -116,31 +124,32 @@ export default function Home() {
                             />
                         </div>
                     </section>
-                    <section id="Description of Pools" style={SECTION_STYLE}>
+                    <section
+                        id="Consolidate Financial Features"
+                        style={SECTION2_STYLE}
+                    >
                         <div className={styles.landing_page_container_2}>
                             <div className={styles.description_container}>
-                                <p> Log Transaction History </p>
+                                <p> Calculate Net Worth </p>
                             </div>
                             <div className={styles.description_container}>
-                                <p> Check Balances in Real Time </p>
+                                <p> 2+ Banks 1 Card </p>
                             </div>
                             <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    Unique identifiers to fit your unique needs
-                                </p>
+                                <p> Pool Network Configurations</p>
                             </div>
                             <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    A banking solution to the heterogeneity of
-                                    banks{' '}
-                                </p>
+                                <p> Group Pools </p>
                             </div>
                         </div>
                     </section>
-                    {/* <section id="Social Media" style={SECTION_STYLE}>
-                        <div className={styles.landing}
+                    {/* <section
+                        id="Personalize Financial Features"
+                        style={SECTION2_STYLE}
+                    >
+                        <div className={styles.info_container}>
+                            <span>Pool Architecture</span>
+                        </div>
                     </section> */}
                 </div>
             </Layout>

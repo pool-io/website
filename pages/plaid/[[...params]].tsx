@@ -99,7 +99,11 @@ export default function Plaid() {
             ) : (
                 <>
                     <h1>Items</h1>
-                    <div>{data?.plaid.items.items.map(() => {})}</div>
+                    <div>
+                        {data?.plaid.items.items.map((item: Item) => (
+                            <Item key={item.id} item={item} />
+                        ))}
+                    </div>
                 </>
             )}
         </Layout>
@@ -112,11 +116,43 @@ type ItemProps = {
 
 function Item(props: ItemProps) {
     return (
-        <div>
-            <p>Item</p>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                margin: 10,
+                background: 'yellow'
+            }}
+        >
+            <p>
+                {props.item.institution.name} [{props.item.institution.id}]
+            </p>
             <p>item_id: {props.item.id}</p>
-            <p>ins_id: {props.item.institution.id}</p>
-            <p>ins_name: {props.item.institution.name}</p>
+            {props.item.accounts.accounts.map((account: Account) => (
+                <Account account={account} />
+            ))}
+        </div>
+    );
+}
+
+type AccountProps = {
+    account: Account;
+};
+
+function Account(props: AccountProps) {
+    return (
+        <div
+            style={{
+                margin: 10,
+                background: 'pink'
+            }}
+        >
+            <p>
+                {props.account.name} [{props.account.id}]
+            </p>
+            <p>Current: ${props.account.balance.current}</p>
+            <p>Available: ${props.account.balance.available}</p>
+            <p>Limit: ${props.account.balance.limit}</p>
         </div>
     );
 }

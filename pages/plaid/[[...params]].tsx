@@ -99,7 +99,7 @@ export default function Plaid() {
             ) : (
                 <>
                     <h1>Items</h1>
-                    <div>{data.plaid.items.items.map(() => {})}</div>
+                    <div>{data?.plaid.items.items.map(() => {})}</div>
                 </>
             )}
         </Layout>

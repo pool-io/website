@@ -8,16 +8,20 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import '../styles/global.css';
 import { Firebase } from '@consts/Firebase';
-import { ENDPOINTS } from '@consts/Endpoints';
 import initAuth from '@utils/initAuth';
 
 initAuth();
 
 const httpLink = createHttpLink({
-    uri: `${ENDPOINTS.SERVICE}/graphql`
+    uri: `${process.env.NEXT_PUBLIC_ENDPOINT}/graphql`
 });
 
 const authLink = setContext(async (_, { headers }) => {
+    console.log(
+        '[authLink] Firebase.auth.currentUser:',
+        Firebase.auth.currentUser
+    );
+
     // get the authentication token from local storage if it exists
     const token = await Firebase.auth.currentUser.getIdToken();
     // return the headers to the context so httpLink can read them

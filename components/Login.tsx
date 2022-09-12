@@ -541,7 +541,7 @@ function ForgotPassword(props: ForgotPasswordProps) {
     );
 }
 
-export default function Auth(props: AuthProps) {
+export default function Login(props: AuthProps) {
     const user = useAuthUser();
 
     useEffect(() => {

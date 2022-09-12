@@ -94,7 +94,7 @@ export default function Home() {
                     <section id="Login" style={SECTION_STYLE}>
                         <div className={styles.landing_page_container_1}>
                             <div className={styles.login_container}>
-                                <Login isSignUp={false} />
+                                <Login />
                             </div>
                             <div className={styles.info_container}>
                                 <span>

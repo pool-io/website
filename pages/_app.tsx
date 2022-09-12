@@ -9,6 +9,9 @@ import { setContext } from '@apollo/client/link/context';
 import '../styles/global.css';
 import { Firebase } from '@consts/Firebase';
 import { ENDPOINTS } from '@consts/Endpoints';
+import initAuth from '@utils/initAuth';
+
+initAuth();
 
 const httpLink = createHttpLink({
     uri: `${ENDPOINTS.SERVICE}/graphql`

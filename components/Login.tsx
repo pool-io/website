@@ -542,14 +542,6 @@ function ForgotPassword(props: ForgotPasswordProps) {
 }
 
 export default function Login(props: AuthProps) {
-    const user = useAuthUser();
-
-    useEffect(() => {
-        if (user) {
-            Router.push(props.redirect ? props.redirect : '/portal');
-        }
-    }, [user]);
-
     const [isForgotPassword, setIsForgotPassword] = useState(false);
     const onSubmit = ({ email, password }: Credentials) => {
         console.log('SignIn:onSubmit', { email, password });

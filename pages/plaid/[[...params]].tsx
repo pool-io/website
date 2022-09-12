@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import Layout from '@components/Layout';
 import Loading from '@components/Loading';
 import { useEffect } from 'react';
+import Modal from '@components/Modal';
 
 type Item = {
     id: string;
@@ -93,18 +94,34 @@ export default function Plaid() {
     console.log('plaid err: ', error);
 
     return (
-        <Layout>
+        <Layout
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+                padding: 10
+            }}
+        >
             {loading ? (
                 <Loading />
             ) : (
-                <>
-                    <h1>Items</h1>
+                <div
+                    style={{
+                        margin: 10,
+                        background: '#ACC2D6',
+                        borderRadius: 10
+                    }}
+                >
+                    <div style={{ paddingLeft: 10 }}>
+                        <h1>Items</h1>
+                    </div>
+
                     <div>
                         {data?.plaid.items.items.map((item: Item) => (
                             <Item key={item.id} item={item} />
                         ))}
                     </div>
-                </>
+                </div>
             )}
         </Layout>
     );

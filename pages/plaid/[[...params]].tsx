@@ -129,7 +129,7 @@ function Item(props: ItemProps) {
             </p>
             <p>item_id: {props.item.id}</p>
             {props.item.accounts.accounts.map((account: Account) => (
-                <Account account={account} />
+                <Account key={account.id} account={account} />
             ))}
         </div>
     );

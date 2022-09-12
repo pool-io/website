@@ -291,12 +291,16 @@ function CreateDrain() {
         Firebase.auth.currentUser
             .getIdToken()
             .then((token: string) => {
-                return fetch(ENDPOINTS.SERVICE + '/plaid/create_link_token', {
-                    method: 'POST',
-                    headers: {
-                        authorization: token
+                return fetch(
+                    process.env.NEXT_PUBLIC_ENDPOINT +
+                        '/plaid/create_link_token',
+                    {
+                        method: 'POST',
+                        headers: {
+                            authorization: token
+                        }
                     }
-                });
+                );
             })
             .then((resp: Response) => {
                 if (!resp.ok) {

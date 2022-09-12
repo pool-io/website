@@ -115,7 +115,7 @@ function Sidebar() {
                                 alignItems: 'center',
                                 padding: 10,
                                 cursor: 'pointer',
-                                border: '1px solid black',
+                                background: 'white',
                                 margin: '1px'
                             }}
                         >

@@ -41,9 +41,9 @@ export default function Modal(props: ModalProps) {
                     width: '70vw',
                     zIndex: 99,
                     display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    // flexDirection: 'column',
+                    // justifyContent: 'center',
+                    // alignItems: 'center',
                     background: 'white',
                     borderRadius: 10,
                     padding: 20

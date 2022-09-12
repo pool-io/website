@@ -27,7 +27,7 @@ export default function Pools() {
                         paddingLeft: 10
                     }}
                 >
-                    <h1>Recently Viewed</h1>
+                    <h1>Pools</h1>
                 </div>
                 <PoolList
                     pools={[

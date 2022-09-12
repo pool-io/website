@@ -35,17 +35,17 @@ const particleParams = {
     fpsLimit: 60,
     particles: {
         number: {
-            value: 111,
+            value: 137,
             density: {
                 enable: false
             }
         },
         size: {
-            value: 3,
+            value: 0,
             random: true,
             anim: {
-                speed: 10,
-                size_min: 0.3
+                speed: 7,
+                size_min: 1
             }
         },
         line_linked: {
@@ -94,7 +94,7 @@ export default function Home() {
                     <section id="Login" style={SECTION_STYLE}>
                         <div className={styles.landing_page_container_1}>
                             <div className={styles.login_container}>
-                                <Login />
+                                <Login isSignUp={false} />
                             </div>
                             <div className={styles.info_container}>
                                 <span>
@@ -122,6 +122,25 @@ export default function Home() {
                                 init={customInit}
                                 loaded={particlesLoaded}
                             />
+                        </div>
+                    </section>
+                    <section
+                        id="Consolidate Financial Features"
+                        style={SECTION2_STYLE}
+                    >
+                        <div className={styles.landing_page_container_2}>
+                            <div className={styles.description_container}>
+                                <p> Calculate Net Worth </p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> 2+ Banks 1 Card </p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> Pool Network Configurations</p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> Group Pools </p>
+                            </div>
                         </div>
                     </section>
                     <section

@@ -353,7 +353,9 @@ function DesktopTabs(props: DesktopTabsProps) {
                 <Link href="/about/soungbaekim">
                     <p>Soung Bae Kim</p>
                 </Link>
-
+                <Link href="/about/samuelyoon">
+                    <p>Samuel Yoon</p>
+                </Link>
                 <Link href="/about/caleb">
                     <p>Caleb</p>
                 </Link>
@@ -364,9 +366,6 @@ function DesktopTabs(props: DesktopTabsProps) {
 
                 <Link href="/about/austin">
                     <p>Austin</p>
-                </Link>
-                <Link href="/about/samuelyoon">
-                    <p>Samuel Yoon</p>
                 </Link>
             </div>
             <div
@@ -465,7 +464,7 @@ export default function Header(props: HeaderProps) {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-    const DARK_BACKGROUND = 'linear-gradient(#ffffff,#f0f0f0)';
+    const DARK_BACKGROUND = 'linear-gradient(#ffffff33,#f0f0f033)';
     const LIGHT_BACKGROUND = '';
 
     return (

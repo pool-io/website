@@ -247,10 +247,15 @@ function CreateTankButton() {
         <>
             <div
                 style={{
-                    background: 'white',
-
+                    display: 'flex',
+                    background: '#f0f0f0',
+                    height: '20px',
+                    width: '20px',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     padding: 7,
-                    borderRadius: 10
+                    borderRadius: 10,
+                    cursor: 'pointer'
                 }}
                 onClick={() => setIsCreating(true)}
             >

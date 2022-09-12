@@ -448,7 +448,8 @@ function Search() {
                 padding: 10,
                 margin: 10,
                 borderRadius: 10,
-                background: 'lightgrey'
+                background: 'lightgrey',
+                opacity: '70%'
             }}
         >
             <p>Search</p>

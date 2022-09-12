@@ -11,6 +11,7 @@ import Loading from './Loading';
 type LayoutProps = {
     style?: CSSProperties;
     isHideSidebar?: boolean;
+    isAuth?: boolean;
     children: React.ReactNode;
     header?: React.ReactNode;
 };
@@ -69,7 +70,11 @@ export default function Layout(props: LayoutProps) {
                             ...props.style
                         }}
                     >
-                        {isLoading ? <Loading /> : props.children}
+                        {props.isAuth && isLoading ? (
+                            <Loading />
+                        ) : (
+                            props.children
+                        )}
                         {/* <Footer/> */}
                     </div>
                 </div>

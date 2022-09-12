@@ -45,7 +45,8 @@ export default function Modal(props: ModalProps) {
                     justifyContent: 'center',
                     alignItems: 'center',
                     background: 'white',
-                    borderRadius: 10
+                    borderRadius: 10,
+                    padding: 20
                 }}
                 onClick={(e) => e.stopPropagation()}
             >

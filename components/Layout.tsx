@@ -89,10 +89,11 @@ function Sidebar() {
     const LABELS = [
         'Dashboards',
         'Feed',
-        'Pools',
-        // 'Transactions',
         'Tanks',
-        'Drains'
+        'Pools'
+        // 'Transactions',
+
+        // 'Drains'
         //'Plaid'
     ];
 
@@ -113,7 +114,9 @@ function Sidebar() {
                                 justifyContent: 'flex-start',
                                 alignItems: 'center',
                                 padding: 10,
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                border: '1px solid black',
+                                margin: '1px'
                             }}
                         >
                             <p>{label}</p>

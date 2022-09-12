@@ -1,9 +1,12 @@
 import Head from 'next/head';
 import Header from '@components/Header';
 import useAuthUser from '@hooks/useAuthUser';
-import { CSSProperties } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Portal from 'pages/portal/[[...params]]';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { Firebase } from '@consts/Firebase';
+import Loading from './Loading';
 
 type LayoutProps = {
     style?: CSSProperties;
@@ -13,6 +16,16 @@ type LayoutProps = {
 };
 
 export default function Layout(props: LayoutProps) {
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(Firebase.auth, (user: User) => {
+            console.log('App:firebase user:', { user });
+            console.log('layout', user === undefined || user === null);
+            setIsLoading(user === undefined || user === null);
+        });
+        return unsubscribe;
+    }, []);
+
     return (
         <>
             <Head>
@@ -56,7 +69,7 @@ export default function Layout(props: LayoutProps) {
                             ...props.style
                         }}
                     >
-                        {props.children}
+                        {isLoading ? <Loading /> : props.children}
                         {/* <Footer/> */}
                     </div>
                 </div>
@@ -74,8 +87,8 @@ function Sidebar() {
         'Pools',
         // 'Transactions',
         'Tanks',
-        'Drains'
-        // 'Plaid'
+        'Drains',
+        'Plaid'
     ];
 
     return (

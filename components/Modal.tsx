@@ -37,8 +37,8 @@ export default function Modal(props: ModalProps) {
             />
             <div
                 style={{
-                    height: '50vh',
-                    width: '50vw',
+                    height: '90vh',
+                    width: '70vw',
                     zIndex: 99,
                     display: 'flex',
                     flexDirection: 'column',

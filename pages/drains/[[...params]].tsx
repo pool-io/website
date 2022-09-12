@@ -1,6 +1,5 @@
 import Layout from '@components/Layout';
 import Modal from '@components/Modal';
-import { ENDPOINTS } from '@consts/Endpoints';
 import { Firebase } from '@consts/Firebase';
 import { Pool, Tank, Drain } from '@model/pool';
 import Image from 'next/image';
@@ -343,7 +342,8 @@ function PlaidLink(props: { linkToken: string }) {
                 .getIdToken()
                 .then((token: string) => {
                     return fetch(
-                        ENDPOINTS.SERVICE + '/plaid/exchange_public_token',
+                        process.env.NEXT_PUBLIC_ENDPOINT +
+                            '/plaid/exchange_public_token',
                         {
                             method: 'POST',
                             headers: {

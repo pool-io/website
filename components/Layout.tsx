@@ -92,8 +92,8 @@ function Sidebar() {
         'Pools',
         // 'Transactions',
         'Tanks',
-        'Drains',
-        'Plaid'
+        'Drains'
+        //'Plaid'
     ];
 
     return (

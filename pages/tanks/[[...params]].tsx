@@ -1,7 +1,9 @@
+import { gql, useQuery } from '@apollo/client';
 import Layout from '@components/Layout';
-import Modal from '@components/Modal';
+import Loading from '@components/Loading';
 import { Firebase } from '@consts/Firebase';
-import { Pool, Tank } from '@model/pool';
+import { Pool, Tank, Drain } from '@model/pool';
+import Modal from '@components/Modal';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import {
@@ -10,7 +12,95 @@ import {
     usePlaidLink
 } from 'react-plaid-link';
 
-export default function Tanks() {
+type Item = {
+    id: string;
+    institution: Institution;
+    accounts: Accounts;
+};
+
+type Items = {
+    items: Item[];
+    next: string;
+};
+
+type Institution = {
+    id: string;
+    name: string;
+};
+
+type Account = {
+    id: string;
+    name: string;
+    balance: Balance;
+};
+
+type Accounts = {
+    accounts: Account[];
+    next: string;
+};
+
+type Balance = {
+    current: number;
+    available: number;
+    limit: number;
+    isoCurrencyCode: string;
+    unofficialCurrencyCode: string;
+    lastUpdatedDatetime: string;
+};
+
+export default function Plaid() {
+    type Response = {
+        plaid: {
+            items: Items;
+        };
+    };
+
+    const { loading, data, error } = useQuery<Response>(
+        gql`
+            query Plaid(
+                $itemsPagination: Pagination!
+                $accountsPagination: Pagination!
+            ) {
+                plaid {
+                    items(pagination: $itemsPagination) {
+                        items {
+                            id
+                            institution {
+                                id
+                                name
+                            }
+                            accounts(pagination: $accountsPagination) {
+                                accounts {
+                                    id
+                                    name
+                                    balance {
+                                        current
+                                        available
+                                        limit
+                                        isoCurrencyCode
+                                        unofficialCurrencyCode
+                                        lastUpdatedDatetime
+                                    }
+                                }
+                                next
+                            }
+                        }
+                        next
+                    }
+                }
+            }
+        `,
+        {
+            variables: {
+                itemsPagination: { limit: 100 },
+                accountsPagination: { limit: 100 }
+            }
+        }
+    );
+
+    console.log('plaid data: ', data);
+    console.log('plaid err: ', error);
+
     return (
         <Layout
             style={{
@@ -18,236 +108,113 @@ export default function Tanks() {
                 flexDirection: 'column',
                 justifyContent: 'flex-start',
                 padding: 10
-                // background: 'green'
             }}
         >
-            <div
-                style={{
-                    margin: 10,
-                    background: '#ACC2D6',
-                    borderRadius: 10
-                }}
-            >
+            {loading ? (
+                <Loading />
+            ) : (
                 <div
                     style={{
-                        paddingLeft: 10
+                        margin: 10,
+                        background: '#ACC2D6',
+                        borderRadius: 10
                     }}
                 >
-                    <h1>Recently Viewed</h1>
-                    <CreateTankButton />
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            paddingLeft: 10,
+                            paddingRight: 50,
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h1>Tanks</h1>
+                        <CreateTankButton />
+                    </div>
+
+                    <div>
+                        {data?.plaid.items.items.map((item: Item) => (
+                            <Item key={item.id} item={item} />
+                        ))}
+                    </div>
                 </div>
-                <TankList
-                    tanks={[
-                        {
-                            id: 'ipoltest1',
-                            name: 'test1',
-                            amount: '$1.00',
-                            image: '/images/favicon.png',
-                            isPrivate: true,
-                            members: null
-                        },
-                        {
-                            id: 'ipoltest2',
-                            name: 'long name',
-                            amount: '$2.00',
-                            image: '/images/favicon.png',
-                            isPrivate: true,
-                            members: null
-                        },
-                        {
-                            id: 'ipoltest3',
-                            name: 'another long name',
-                            amount: '$3.00',
-                            image: '/images/favicon.png',
-                            isPrivate: false,
-                            members: null
-                        }
-                    ]}
-                />
-            </div>
+            )}
         </Layout>
     );
 }
 
-type TankListProps = {
-    tanks: Tank[];
+type ItemProps = {
+    item: Item;
 };
 
-function TankList(props: TankListProps) {
+function Item(props: ItemProps) {
     return (
         <div
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'center',
-                // background: 'yellow',
-                margin: 10
+                margin: 10,
+                padding: 10,
+                background: 'white',
+                borderRadius: '10px'
             }}
         >
-            {props.tanks.map((pool: Pool) => {
-                return <TankListEntry tank={pool} />;
-            })}
+            <p>
+                {props.item.institution.name}
+                {/* [{props.item.institution.id}] */}
+            </p>
+            {/* <p>item_id: {props.item.id}</p> */}
+
+            <div>
+                {props.item.accounts.accounts.map((account: Account) => (
+                    <Account key={account.id} account={account} />
+                ))}
+            </div>
         </div>
     );
 }
 
-type TankListEntryProps = {
-    tank: Tank;
+type AccountProps = {
+    account: Account;
 };
 
-function TankListEntry(props: TankListEntryProps) {
+function Account(props: AccountProps) {
     const [isModal, setIsModal] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-
     console.log('isModal', isModal);
-
     return (
         <>
             <div
                 style={{
                     display: 'flex',
-                    flexDirection: 'column',
-                    background: isModal ? 'lightgrey' : 'white',
-
-                    borderRadius: 5,
-                    padding: 5,
-                    margin: 3,
-
-                    cursor: 'pointer'
+                    background: '#f0f0f0',
+                    margin: 10,
+                    cursor: 'pointer',
+                    padding: 10,
+                    borderRadius: '10px'
                 }}
                 onClick={() => setIsModal(true)}
             >
                 <div
                     style={{
                         display: 'flex',
-                        flexDirection: 'row',
                         justifyContent: 'space-between',
-                        alignItems: 'center'
+                        flex: 1
                     }}
                 >
-                    <div
-                        style={{
-                            flex: 1
-                        }}
-                    >
-                        <Image
-                            width="30px"
-                            height="30px"
-                            src={props.tank.image}
-                        />
-                    </div>
-                    <p
-                        style={{
-                            flex: 2,
-                            padding: 5
-                            // background: 'pink'
-                        }}
-                    >
-                        {props.tank.name}
+                    <p>
+                        {props.account.name}
+                        {/* [{props.account.id}] */}
                     </p>
-                    <div
-                        style={{
-                            flex: 1,
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'flex-start',
-                            alignItems: 'center'
-                        }}
-                    >
-                        {props.tank.isPrivate ? (
-                            <Image
-                                width="15px"
-                                height="15px"
-                                src={'/images/lock.svg'}
-                            />
-                        ) : null}
-                    </div>
-                    <p style={{ flex: 1 }}>{props.tank.amount}</p>
-                    <div
-                        style={{
-                            flex: 1,
-                            display: 'flex'
-                        }}
-                    >
-                        <div
-                            style={{
-                                cursor: 'pointer'
-                            }}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setIsExpanded(!isExpanded);
-                            }}
-                        >
-                            {isExpanded ? (
-                                <Image
-                                    width="15px"
-                                    height="15px"
-                                    src={'/images/up-arrow.svg'}
-                                />
-                            ) : (
-                                <Image
-                                    width="15px"
-                                    height="15px"
-                                    src={'/images/down-arrow.svg'}
-                                />
-                            )}
-                        </div>
-                    </div>
+                    <p>${props.account.balance.available}</p>
+                    {isExpanded ? <></> : null}
                 </div>
-                {isExpanded ? (
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            margin: 10
-                        }}
-                    >
-                        <div
-                            style={{
-                                flex: 1,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'flex-start'
-                                // alignContent: 'center'
-                            }}
-                        >
-                            <div>
-                                <p>Members</p>
-                            </div>
-                            <div>
-                                <p>Last Transaction</p>
-                            </div>
-                            <div>
-                                <p>Created</p>
-                            </div>
-                        </div>
-                        <div
-                            style={{
-                                flex: 1,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'flex-start'
-                                // alignContent: 'center'
-                            }}
-                        >
-                            <div>
-                                <p>Members</p>
-                            </div>
-                            <div>
-                                <p>Last Transaction</p>
-                            </div>
-                            <div>
-                                <p>Created</p>
-                            </div>
-                        </div>
-                    </div>
-                ) : null}
             </div>
             {isModal ? (
-                <TankListEntryModal
-                    tank={props.tank}
+                <AccountModal
+                    account={props.account}
                     onClick={() => setIsModal(false)}
                 />
             ) : null}
@@ -255,25 +222,40 @@ function TankListEntry(props: TankListEntryProps) {
     );
 }
 
-type TankListEntryModal = {
-    tank: Tank;
+type AccountModalProps = {
+    account: Account;
     onClick: () => void;
 };
 
-function TankListEntryModal(props: TankListEntryModal) {
+function AccountModal(props: AccountModalProps) {
     return (
         <Modal onClick={props.onClick}>
-            <h1>{props.tank.name}</h1>
+            <div>
+                <p>Current: ${props.account.balance.current}</p>
+                <p>Available: ${props.account.balance.available}</p>
+                <p>Limit: ${props.account.balance.limit}</p>
+            </div>
         </Modal>
     );
 }
 
+// make tanks
 function CreateTankButton() {
     const [isCreating, setIsCreating] = useState(false);
 
     return (
         <>
-            <div onClick={() => setIsCreating(true)}>New</div>
+            <div
+                style={{
+                    background: 'white',
+
+                    padding: 7,
+                    borderRadius: 10
+                }}
+                onClick={() => setIsCreating(true)}
+            >
+                +
+            </div>
             {isCreating ? (
                 <Modal onClick={() => setIsCreating(false)}>
                     <CreateTank />

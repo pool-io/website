@@ -24,7 +24,8 @@ import {
     getAuth,
     signInWithPopup,
     GoogleAuthProvider,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    FacebookAuthProvider
 } from 'firebase/auth';
 // import { useRouter } from 'next/router';
 import Router from 'next/router';
@@ -163,7 +164,16 @@ function Form(props: FormProps) {
                 </form>
             </div>
             <Signup></Signup>
-            <SignInWithGoogle></SignInWithGoogle>
+            <div
+                style={{
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'row'
+                }}
+            >
+                <SignInWithGoogle></SignInWithGoogle>
+                <SignInWithFacebook></SignInWithFacebook>
+            </div>
         </div>
     );
 }
@@ -299,6 +309,7 @@ function SignInWithGoogle() {
                 outline: 'none',
                 border: 'none',
                 padding: '10px 20px',
+                borderRadius: '10px',
                 alignItems: 'center',
                 marginBottom: '15px',
                 marginTop: '15px',
@@ -397,47 +408,85 @@ function SignInWithGoogle() {
 {
     /*facebook */
 }
-{
-    /* <button
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            backgroundColor: 'white',
-                            outline: 'none',
-                            border: 'none',
-                            padding: '10px 20px',
-                            alignItems: 'center',
-                            marginBottom: '15px',
-                            cursor: 'pointer'
-                        }}
-                        name="facebook_login"
-                        onClick={handleSubmitFacebook}
-                    >
-                        <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 14 14"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            style={{
-                                width: '14px',
-                                height: '14px'
-                            }}
-                        >
-                            <path
-                                d="M14 1.5C14 1.09375 13.8438 0.75 13.5625 0.4375C13.25 0.15625 12.9062 0 12.5 0H1.5C1.0625 0 0.71875 0.15625 0.4375 0.4375C0.125 0.75 0 1.09375 0 1.5V12.5C0 12.9375 0.125 13.2812 0.4375 13.5625C0.71875 13.875 1.0625 14 1.5 14H7.65625V8.46875H5.75V6.34375H7.65625V4.78125C7.65625 3.90625 7.875 3.25 8.375 2.75C8.875 2.25 9.53125 2 10.375 2C11 2 11.5625 2.03125 12 2.09375V3.96875H10.875C10.4688 3.96875 10.1875 4.0625 10.0312 4.25C9.90625 4.4375 9.84375 4.6875 9.84375 5V6.34375H12L11.7188 8.46875H9.84375V14H12.5C12.9062 14 13.25 13.875 13.5625 13.5625C13.8438 13.2812 14 12.9375 14 12.5V1.5Z"
-                                fill="#4267B2"
-                            />
-                        </svg>
-                        <span
-                            style={{
-                                marginLeft: '10px'
-                            }}
-                        >
-                            Login with Facebook
-                        </span>
-                    </button> */
+function SignInWithFacebook() {
+    function handleFacebookLogin() {
+        console.log('login with facebook');
+        const auth = getAuth();
+        const provider = new FacebookAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // The signed-in user info.
+                const user = result.user;
+
+                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                const credential =
+                    FacebookAuthProvider.credentialFromResult(result);
+                const accessToken = credential.accessToken;
+
+                // ...
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential =
+                    FacebookAuthProvider.credentialFromError(error);
+
+                // ...
+                console.log(
+                    `[handleFacebookLogin] error [${errorCode}] ${errorMessage}`
+                );
+            });
+    }
+    return (
+        <button
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                backgroundColor: 'white',
+                outline: 'none',
+                border: 'none',
+                padding: '10px 20px',
+                borderRadius: '10px',
+                alignItems: 'center',
+                marginLeft: '1px',
+                marginTop: '15px',
+                marginBottom: '15px',
+                cursor: 'pointer'
+            }}
+            name="facebook_login"
+            onClick={handleFacebookLogin}
+        >
+            <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{
+                    width: '14px',
+                    height: '14px'
+                }}
+            >
+                <path
+                    d="M14 1.5C14 1.09375 13.8438 0.75 13.5625 0.4375C13.25 0.15625 12.9062 0 12.5 0H1.5C1.0625 0 0.71875 0.15625 0.4375 0.4375C0.125 0.75 0 1.09375 0 1.5V12.5C0 12.9375 0.125 13.2812 0.4375 13.5625C0.71875 13.875 1.0625 14 1.5 14H7.65625V8.46875H5.75V6.34375H7.65625V4.78125C7.65625 3.90625 7.875 3.25 8.375 2.75C8.875 2.25 9.53125 2 10.375 2C11 2 11.5625 2.03125 12 2.09375V3.96875H10.875C10.4688 3.96875 10.1875 4.0625 10.0312 4.25C9.90625 4.4375 9.84375 4.6875 9.84375 5V6.34375H12L11.7188 8.46875H9.84375V14H12.5C12.9062 14 13.25 13.875 13.5625 13.5625C13.8438 13.2812 14 12.9375 14 12.5V1.5Z"
+                    fill="#4267B2"
+                />
+            </svg>
+            <span
+                style={{
+                    marginLeft: '10px'
+                }}
+            >
+                Login with Facebook
+            </span>
+        </button>
+    );
 }
+
 {
     /* </div> */
 }

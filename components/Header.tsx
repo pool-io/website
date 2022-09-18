@@ -252,7 +252,8 @@ function AuthTab() {
                             padding: 10,
                             margin: '0px 10px 0px 10px',
                             borderRadius: 10,
-                            background: '#02809066',
+                            background: '#02809077',
+                            border: '1px solid #028090',
                             color: 'white'
                         }}
                     >

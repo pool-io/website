@@ -21,17 +21,9 @@ const SECTION_STYLE = {
 
 const SECTION2_STYLE = {
     width: '100%',
-    height: '7vh',
+    height: '50vh',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
-};
-
-const SECTION3_STYLE = {
-    width: '100%',
-    height: '7vh',
-    display: 'flex',
-    alignItems: 'column',
     justifyContent: 'center'
 };
 
@@ -58,7 +50,7 @@ const particleParams = {
         },
         line_linked: {
             enable: true,
-            color: '#7CB9E8'
+            color: '#ffffff'
         },
         move: {
             directions: 'bottom',
@@ -69,7 +61,7 @@ const particleParams = {
             straight: true
         },
         color: {
-            value: '#7CB9E8'
+            value: '#ffffff'
         }
     }
 } as ISourceOptions;
@@ -92,6 +84,8 @@ export default function Home() {
         []
     );
 
+    const isMoblie = useIsMobile();
+
     return (
         <>
             <Head>
@@ -100,13 +94,25 @@ export default function Home() {
             <Layout isHideSidebar={true}>
                 <div>
                     <section id="Login" style={SECTION_STYLE}>
-                        <div className={styles.landing_page_container_1}>
-                            <div className={styles.login_container}>
-                                <Login />
-                            </div>
+                        <div
+                            className={styles.landing_page_container_1}
+                            style={{
+                                flexDirection: isMoblie ? 'column' : 'row'
+                            }}
+                        >
+                            {isMoblie ? null : (
+                                <div className={styles.login_container}>
+                                    <Login />
+                                </div>
+                            )}
                             <div className={styles.info_container}>
                                 <span>
-                                    <span className={styles.underlined_span}>
+                                    <span
+                                        className={styles.underlined_span}
+                                        style={{
+                                            color: 'white'
+                                        }}
+                                    >
                                         Consolidating and Personalizing
                                         Financial Services
                                     </span>{' '}
@@ -121,88 +127,68 @@ export default function Home() {
                                 params={particleParams}
                                 style={{
                                     position: 'absolute',
+                                    zIndex: 1,
                                     top: '0',
                                     left: 0,
                                     width: '100%',
-                                    height: 'calc(100vh - 80px)',
-                                    background: 'black'
+                                    height: 'calc(100vh - 80px)'
                                 }}
                                 init={customInit}
                                 loaded={particlesLoaded}
                             />
                         </div>
                     </section>
-
+                    <section
+                        id="Consolidate Financial Features"
+                        style={SECTION2_STYLE}
+                    >
+                        <div
+                            className={styles.landing_page_container_2}
+                            style={{
+                                flexDirection: isMoblie ? 'column' : 'row'
+                            }}
+                        >
+                            <div className={styles.description_container}>
+                                <p> Calculate Net Worth </p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> 2+ Banks 1 Card </p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> Pool Network Configurations</p>
+                            </div>
+                            <div className={styles.description_container}>
+                                <p> Group Pools </p>
+                            </div>
+                        </div>
+                    </section>
                     <section
                         id="Consolidate Financial Features"
                         style={SECTION2_STYLE}
                     >
                         <div className={styles.landing_page_container_2}>
-                            {/* add images */}
-                        </div>
-                    </section>
-
-                    <section
-                        id="Consolidate Financial Features"
-                        style={SECTION2_STYLE}
-                    >
-                        <div className={styles.landing_page_container_2}>
                             <div className={styles.description_container}>
-                                <h1> Calculate Net Worth </h1>
+                                <p> Calculate Net Worth </p>
                             </div>
                             <div className={styles.description_container}>
-                                <h1> 2+ Banks 1 Card </h1>
+                                <p> 2+ Banks 1 Card </p>
                             </div>
                             <div className={styles.description_container}>
-                                <h1> Learn. Create. Earn.</h1>
+                                <p> Pool Network Configurations</p>
                             </div>
                             <div className={styles.description_container}>
-                                <h1> Group Pools </h1>
+                                <p> Group Pools </p>
                             </div>
                         </div>
                     </section>
-                    <section
-                        id="Consolidate Financial Features"
-                        style={SECTION2_STYLE}
-                    >
-                        <div className={styles.landing_page_container_3}>
-                            <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    Easily connect your financial accounts to
-                                    track your real-time net worth.{' '}
-                                </p>
-                            </div>
-                            <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    Get on-demand debit cards that split shared
-                                    payments your way, everytime.{' '}
-                                </p>
-                            </div>
-                            <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    Configure your own personalized pool network
-                                    and you decide who gets to see it.
-                                </p>
-                            </div>
-                            <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    Choose who can join and access your pool.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-                    <section
+                    {/* <section
                         id="Personalize Financial Features"
                         style={SECTION2_STYLE}
                     >
                         <div className={styles.info_container}>
                             <span>Pool Architecture</span>
                         </div>
-                    </section>
+                    </section> */}
                 </div>
             </Layout>
         </>

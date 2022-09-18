@@ -106,12 +106,7 @@ export default function Home() {
                             </div>
                             <div className={styles.info_container}>
                                 <span>
-                                    <span
-                                        className={styles.underlined_span}
-                                        style={{
-                                            color: 'white'
-                                        }}
-                                    >
+                                    <span className={styles.underlined_span}>
                                         Consolidating and Personalizing
                                         Financial Services
                                     </span>{' '}
@@ -151,12 +146,7 @@ export default function Home() {
                         id="Consolidate Financial Features"
                         style={SECTION2_STYLE}
                     >
-                        <div
-                            className={styles.landing_page_container_2}
-                            style={{
-                                color: 'white'
-                            }}
-                        >
+                        <div className={styles.landing_page_container_2}>
                             <div className={styles.description_container}>
                                 <h1> Calculate Net Worth </h1>
                             </div>
@@ -175,12 +165,7 @@ export default function Home() {
                         id="Consolidate Financial Features"
                         style={SECTION2_STYLE}
                     >
-                        <div
-                            className={styles.landing_page_container_2}
-                            style={{
-                                color: 'white'
-                            }}
-                        >
+                        <div className={styles.landing_page_container_3}>
                             <div className={styles.description_container}>
                                 <p>
                                     {' '}

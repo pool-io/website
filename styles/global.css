@@ -1,6 +1,8 @@
 @font-face {
-    font-family: FoundersGrotesk;
-    src: url('/fonts/FoundersGroteskCondensed-Bold.otf');
+    /* font-family: FoundersGrotesk;
+    src: url('/fonts/FoundersGroteskCondensed-Bold.otf'); */
+    font-family: NunitoSans;
+    src: url('/fonts/NunitoSans-Regular.ttf');
 }
 
 html,
@@ -9,7 +11,7 @@ body {
     margin: 0;
     background-color: var(--primary-color);
 
-    font-family: 'Bookman', 'URW Bookman L', serif;
+    font-family: 'NunitoSans', 'Bookman', 'URW Bookman L', serif;
 
     --primary-color: #1d648c;
     /* --primary-color: #fdb8b8; */

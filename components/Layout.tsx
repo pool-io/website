@@ -101,7 +101,7 @@ function Sidebar() {
         <div
             style={{
                 width: 150,
-                background: '#cedbe7'
+                background: 'negro'
             }}
         >
             {LABELS.map((label: string) => {

@@ -21,9 +21,17 @@ const SECTION_STYLE = {
 
 const SECTION2_STYLE = {
     width: '100%',
-    height: '50vh',
+    height: '7vh',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center'
+};
+
+const SECTION3_STYLE = {
+    width: '100%',
+    height: '7vh',
+    display: 'flex',
+    alignItems: 'column',
     justifyContent: 'center'
 };
 
@@ -124,22 +132,32 @@ export default function Home() {
                             />
                         </div>
                     </section>
+
+                    <section
+                        id="Consolidate Financial Features"
+                        style={SECTION2_STYLE}
+                    >
+                        <div className={styles.landing_page_container_2}>
+                            {/* add images */}
+                        </div>
+                    </section>
+
                     <section
                         id="Consolidate Financial Features"
                         style={SECTION2_STYLE}
                     >
                         <div className={styles.landing_page_container_2}>
                             <div className={styles.description_container}>
-                                <p> Calculate Net Worth </p>
+                                <h1> Calculate Net Worth </h1>
                             </div>
                             <div className={styles.description_container}>
-                                <p> 2+ Banks 1 Card </p>
+                                <h1> 2+ Banks 1 Card </h1>
                             </div>
                             <div className={styles.description_container}>
-                                <p> Pool Network Configurations</p>
+                                <h1> Learn. Create. Earn.</h1>
                             </div>
                             <div className={styles.description_container}>
-                                <p> Group Pools </p>
+                                <h1> Group Pools </h1>
                             </div>
                         </div>
                     </section>
@@ -147,18 +165,33 @@ export default function Home() {
                         id="Consolidate Financial Features"
                         style={SECTION2_STYLE}
                     >
-                        <div className={styles.landing_page_container_2}>
+                        <div className={styles.landing_page_container_3}>
                             <div className={styles.description_container}>
-                                <p> Calculate Net Worth </p>
+                                <p>
+                                    {' '}
+                                    Easily connect your financial accounts to
+                                    track your real-time net worth.{' '}
+                                </p>
                             </div>
                             <div className={styles.description_container}>
-                                <p> 2+ Banks 1 Card </p>
+                                <p>
+                                    {' '}
+                                    Get on-demand debit cards that split shared
+                                    payments your way, everytime.{' '}
+                                </p>
                             </div>
                             <div className={styles.description_container}>
-                                <p> Pool Network Configurations</p>
+                                <p>
+                                    {' '}
+                                    Configure your own personalized pool network
+                                    and you decide who gets to see it.
+                                </p>
                             </div>
                             <div className={styles.description_container}>
-                                <p> Group Pools </p>
+                                <p>
+                                    {' '}
+                                    Choose who can join and access your pool.
+                                </p>
                             </div>
                         </div>
                     </section>

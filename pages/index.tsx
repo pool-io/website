@@ -84,6 +84,8 @@ export default function Home() {
         []
     );
 
+    const isMoblie = useIsMobile();
+
     return (
         <>
             <Head>
@@ -92,10 +94,17 @@ export default function Home() {
             <Layout isHideSidebar={true}>
                 <div>
                     <section id="Login" style={SECTION_STYLE}>
-                        <div className={styles.landing_page_container_1}>
-                            <div className={styles.login_container}>
-                                <Login />
-                            </div>
+                        <div
+                            className={styles.landing_page_container_1}
+                            style={{
+                                flexDirection: isMoblie ? 'column' : 'row'
+                            }}
+                        >
+                            {isMoblie ? null : (
+                                <div className={styles.login_container}>
+                                    <Login />
+                                </div>
+                            )}
                             <div className={styles.info_container}>
                                 <span>
                                     <span className={styles.underlined_span}>

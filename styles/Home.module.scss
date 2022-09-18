@@ -36,6 +36,7 @@
     align-self: center;
     position: relative;
     z-index: 2;
+    color: white;
     span {
         color: black;
         width: 60%;
@@ -45,7 +46,7 @@
     .underlined_span {
         color: black;
         --extra-underlineNumber: 3;
-        --extra-underlineColor: #028090;
+        --extra-underlineColor: #c4ff78;
         --extra-underlineWidth: 2;
         background: paint(extra-superUnderline);
     }

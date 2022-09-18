@@ -44,13 +44,13 @@ const particleParams = {
             value: 0,
             random: true,
             anim: {
-                speed: 7,
+                speed: 10,
                 size_min: 1
             }
         },
         line_linked: {
             enable: true,
-            color: '#7CB9E8'
+            color: '#ffffff'
         },
         move: {
             directions: 'bottom',
@@ -61,7 +61,7 @@ const particleParams = {
             straight: true
         },
         color: {
-            value: '#7CB9E8'
+            value: '#ffffff'
         }
     }
 } as ISourceOptions;
@@ -107,7 +107,12 @@ export default function Home() {
                             )}
                             <div className={styles.info_container}>
                                 <span>
-                                    <span className={styles.underlined_span}>
+                                    <span
+                                        className={styles.underlined_span}
+                                        style={{
+                                            color: 'white'
+                                        }}
+                                    >
                                         Consolidating and Personalizing
                                         Financial Services
                                     </span>{' '}
@@ -122,11 +127,11 @@ export default function Home() {
                                 params={particleParams}
                                 style={{
                                     position: 'absolute',
+                                    zIndex: 1,
                                     top: '0',
                                     left: 0,
                                     width: '100%',
-                                    height: 'calc(100vh - 80px)',
-                                    background: 'black'
+                                    height: 'calc(100vh - 80px)'
                                 }}
                                 init={customInit}
                                 loaded={particlesLoaded}

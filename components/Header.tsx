@@ -249,12 +249,12 @@ function AuthTab() {
                     <div
                         style={{
                             display: 'flex',
-                            padding: 10,
+                            padding: '10px 30px 10px 30px',
                             margin: '0px 10px 0px 10px',
                             borderRadius: 10,
-                            background: '#02809077',
+                            background: '#c4ff78',
                             border: '1px solid #028090',
-                            color: 'white'
+                            color: 'black'
                         }}
                     >
                         <Tab title="TRY FREE" url="/portal?signup" />
@@ -366,8 +366,8 @@ function DesktopTabs(props: DesktopTabsProps) {
                     <p>BR Alley</p>
                 </Link>
 
-                <Link href="/about/austin">
-                    <p>Austin</p>
+                <Link href="/about/Isaac">
+                    <p>Isaac</p>
                 </Link>
             </div>
             <div
@@ -467,7 +467,7 @@ export default function Header(props: HeaderProps) {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-    const DARK_BACKGROUND = 'linear-gradient(#ffffff33,#f0f0f033)';
+    const DARK_BACKGROUND = 'linear-gradient(#f5f2f2c7,#f5f2f2c7)';
     const LIGHT_BACKGROUND = '';
 
     return (

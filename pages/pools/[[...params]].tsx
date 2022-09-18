@@ -18,17 +18,16 @@ export default function Pools() {
             <div
                 style={{
                     margin: 10,
-                    background: 'black',
+                    background: '#ACC2D6',
                     borderRadius: 10
                 }}
             >
                 <div
                     style={{
-                        paddingLeft: 10,
-                        color: 'white'
+                        paddingLeft: 10
                     }}
                 >
-                    <h1>Pools</h1>
+                    <h1>Recently Viewed</h1>
                 </div>
                 <PoolList
                     pools={[
@@ -165,8 +164,7 @@ function PoolListEntry(props: PoolListEntryProps) {
                     >
                         <div
                             style={{
-                                cursor: 'pointer',
-                                background: '#00ffc0'
+                                cursor: 'pointer'
                             }}
                             onClick={(e) => {
                                 e.stopPropagation();
@@ -175,14 +173,14 @@ function PoolListEntry(props: PoolListEntryProps) {
                         >
                             {isExpanded ? (
                                 <Image
-                                    width="500px"
-                                    height="30px"
+                                    width="15px"
+                                    height="15px"
                                     src={'/images/up-arrow.svg'}
                                 />
                             ) : (
                                 <Image
-                                    width="500px"
-                                    height="30px"
+                                    width="15px"
+                                    height="15px"
                                     src={'/images/down-arrow.svg'}
                                 />
                             )}
@@ -205,7 +203,6 @@ function PoolListEntry(props: PoolListEntryProps) {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 justifyContent: 'flex-start'
-                                //background: 'yellow'
                                 // alignContent: 'center'
                             }}
                         >

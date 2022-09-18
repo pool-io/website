@@ -71,7 +71,7 @@ function Form(props: FormProps) {
                 //fontFamily: 'Roboto',
                 padding: '15px',
                 borderRadius: '20px',
-                backgroundColor: '#f5f2f2c7',
+                backgroundColor: '#02809066',
                 border: '1px solid #028090',
                 //opacity: '20%'
                 zIndex: 1
@@ -96,8 +96,7 @@ function Form(props: FormProps) {
                 >
                     <label
                         style={{
-                            fontSize: '16px',
-                            color: 'black'
+                            fontSize: '16px'
                         }}
                     >
                         Email
@@ -119,13 +118,7 @@ function Form(props: FormProps) {
                         }}
                     />
 
-                    <label
-                        style={{
-                            color: 'black'
-                        }}
-                    >
-                        Password
-                    </label>
+                    <label>Password</label>
                     <br />
 
                     <input

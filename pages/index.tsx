@@ -52,7 +52,7 @@ const particleParams = {
             value: 0,
             random: true,
             anim: {
-                speed: 10,
+                speed: 7,
                 size_min: 1
             }
         },
@@ -195,14 +195,14 @@ export default function Home() {
                             </div>
                         </div>
                     </section>
-                    <section
+                    {/* <section
                         id="Personalize Financial Features"
                         style={SECTION2_STYLE}
                     >
                         <div className={styles.info_container}>
                             <span>Pool Architecture</span>
                         </div>
-                    </section>
+                    </section> */}
                 </div>
             </Layout>
         </>

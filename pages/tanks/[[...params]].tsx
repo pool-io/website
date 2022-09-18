@@ -231,35 +231,9 @@ function AccountModal(props: AccountModalProps) {
     return (
         <Modal onClick={props.onClick}>
             <div>
-                <div
-                    style={{
-                        background: 'white',
-                        display: 'flex',
-                        flex: 1,
-                        justifyContent: 'flex-start',
-                        alignItems: 'flex-start',
-                        flexDirection: 'column'
-                    }}
-                >
-                    <p>Current: ${props.account.balance.current}</p>
-                    <p>Available: ${props.account.balance.available}</p>
-                    <p>Limit: ${props.account.balance.limit}</p>
-                </div>
-                <div
-                    id="graphics"
-                    style={{
-                        display: 'flex',
-                        flex: 1,
-                        height: '50vh',
-                        width: '67vw',
-                        margin: 10,
-                        padding: 10,
-                        border: 'solid black 1px',
-                        borderRadius: '10px'
-                    }}
-                >
-                    <p>import dashboards</p>
-                </div>
+                <p>Current: ${props.account.balance.current}</p>
+                <p>Available: ${props.account.balance.available}</p>
+                <p>Limit: ${props.account.balance.limit}</p>
             </div>
         </Modal>
     );

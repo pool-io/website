@@ -140,7 +140,7 @@ function DrainListEntry(props: DrainListEntryProps) {
                         style={{
                             flex: 2,
                             padding: 5
-                            // background: 'pink'
+                            //background: 'pink'
                         }}
                     >
                         {props.drain.name}
@@ -201,7 +201,8 @@ function DrainListEntry(props: DrainListEntryProps) {
                             flexDirection: 'row',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: 10
+                            margin: 10,
+                            background: 'yellow'
                         }}
                     >
                         <div
@@ -209,7 +210,8 @@ function DrainListEntry(props: DrainListEntryProps) {
                                 flex: 1,
                                 display: 'flex',
                                 flexDirection: 'column',
-                                justifyContent: 'flex-start'
+                                justifyContent: 'flex-start',
+                                background: 'yellow'
                                 // alignContent: 'center'
                             }}
                         >

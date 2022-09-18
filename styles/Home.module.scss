@@ -1,64 +1,39 @@
 .landing_page_container_1 {
     position: relative;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 30px 30px;
-    grid-template-areas: 'login info';
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .landing_page_container_2 {
     position: relative;
-    width: 90%;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    width: 100%;
+    display: flex;
+    // align-items: center;
     gap: 20px 20px 20px 20px;
-    grid-template-areas: 'primary features info';
-    z-index: 2;
-}
-
-.landing_page_container_3 {
-    position: relative;
-    width: 90%;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 20px 20px 20px 20px;
-    grid-template-areas: 'primary features info';
     z-index: 2;
 }
 
 .login_container {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    grid-row-start: login;
-    grid-column-start: login;
-    grid-row-end: login;
-    grid-column-end: login;
     z-index: 2;
-    grid-template-areas: 'login';
 }
 
 .info_container {
+    flex: 1;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     align-self: center;
     position: relative;
-    grid-row-start: info;
-    grid-column-start: info;
-    grid-row-end: info;
-    grid-column-end: info;
     z-index: 2;
-    grid-template-areas: 'info';
+    color: white;
     span {
         color: black;
         width: 60%;
@@ -68,19 +43,19 @@
     .underlined_span {
         color: black;
         --extra-underlineNumber: 3;
-        --extra-underlineColor: #028090;
+        --extra-underlineColor: #c4ff78;
         --extra-underlineWidth: 2;
         background: paint(extra-superUnderline);
     }
 }
 .description_container {
     display: flex;
-    width: 90%;
-    height: 50%;
+    flex: 1;
+
     align-items: center;
     justify-content: center;
+    position: 'relative';
     z-index: 2;
-    grid-template-areas: 'description';
 }
 
 @media (max-width: 700px) {

@@ -49,7 +49,7 @@ export default function Layout(props: LayoutProps) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'stretch',
-                    background: '#f0f0f0',
+                    background: '#000000',
                     height: '100vh',
                     width: '100vw',
                     overflow: 'auto'
@@ -89,10 +89,11 @@ function Sidebar() {
     const LABELS = [
         'Dashboards',
         'Feed',
-        'Pools',
-        // 'Transactions',
         'Tanks',
-        'Drains'
+        'Pools'
+        // 'Transactions',
+
+        // 'Drains'
         //'Plaid'
     ];
 
@@ -100,7 +101,7 @@ function Sidebar() {
         <div
             style={{
                 width: 150,
-                background: '#cedbe7'
+                background: 'negro'
             }}
         >
             {LABELS.map((label: string) => {
@@ -113,7 +114,9 @@ function Sidebar() {
                                 justifyContent: 'flex-start',
                                 alignItems: 'center',
                                 padding: 10,
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                background: 'white',
+                                margin: '1px'
                             }}
                         >
                             <p>{label}</p>

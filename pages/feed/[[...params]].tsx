@@ -16,7 +16,7 @@ export default function Feed() {
                     color: 'grey'
                 }}
             >
-                Suck My Cock Singular
+                SMC Singular
             </p>
         </Layout>
     );

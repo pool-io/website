@@ -178,7 +178,23 @@ function MobileTabs(props: MobileTabsProps) {
                     </div>
                 </div>
                 {props.isExpanded ? (
-                    <div style={{ margin: 30, color: color }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            position: 'absolute',
+                            right: '0px',
+                            flexDirection: 'column',
+                            justifyContent: 'right',
+                            alignItems: 'right',
+                            margin: 55,
+                            borderRadius: '10px',
+                            marginTop: 60,
+                            color: color,
+                            background: '#02809010',
+                            padding: '10',
+                            fontSize: 10
+                        }}
+                    >
                         <Link href="/learn">
                             <h1>Learn</h1>
                         </Link>
@@ -192,7 +208,7 @@ function MobileTabs(props: MobileTabsProps) {
                             <h1>Sign In</h1>
                         </Link>
                         <Link href="/portal?signup">
-                            <h1 style={{ color: '#71bbff' }}>Get Started</h1>
+                            <h1 style={{ color: '#71bbff' }}>Try Free</h1>
                         </Link>
                     </div>
                 ) : null}
@@ -249,13 +265,15 @@ function AuthTab() {
                     <div
                         style={{
                             display: 'flex',
-                            padding: 10,
+                            padding: '10px 30px 10px 30px',
                             margin: '0px 10px 0px 10px',
                             borderRadius: 10,
-                            background: '#71bbff'
+                            background: '#c4ff78',
+                            border: '1px solid #028090',
+                            color: 'black'
                         }}
                     >
-                        <Tab title="GET STARTED" url="/portal?signup" />
+                        <Tab title="TRY FREE" url="/portal?signup" />
                     </div>
                 </>
             )}
@@ -364,8 +382,8 @@ function DesktopTabs(props: DesktopTabsProps) {
                     <p>BR Alley</p>
                 </Link>
 
-                <Link href="/about/austin">
-                    <p>Austin</p>
+                <Link href="/about/Isaac">
+                    <p>Isaac</p>
                 </Link>
             </div>
             <div
@@ -403,7 +421,7 @@ function DesktopTabs(props: DesktopTabsProps) {
                 }}
             >
                 <Spacer />
-                <Tab
+                {/* <Tab
                     title="LEARN"
                     url="/learn"
                     isSelected={route === '/learn'}
@@ -423,7 +441,7 @@ function DesktopTabs(props: DesktopTabsProps) {
                     isSelected={route === '/about'}
                     style={{ color: color }}
                     expanded={ExpandedAbout}
-                />
+                /> */}
                 <Spacer />
             </div>
             <div
@@ -465,7 +483,7 @@ export default function Header(props: HeaderProps) {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-    const DARK_BACKGROUND = 'linear-gradient(#ffffff33,#f0f0f033)';
+    const DARK_BACKGROUND = 'linear-gradient(#f5f2f2c7,#f5f2f2c7)';
     const LIGHT_BACKGROUND = '';
 
     return (

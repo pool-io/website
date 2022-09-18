@@ -21,17 +21,9 @@ const SECTION_STYLE = {
 
 const SECTION2_STYLE = {
     width: '100%',
-    height: '7vh',
+    height: '50vh',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
-};
-
-const SECTION3_STYLE = {
-    width: '100%',
-    height: '7vh',
-    display: 'flex',
-    alignItems: 'column',
     justifyContent: 'center'
 };
 
@@ -132,32 +124,22 @@ export default function Home() {
                             />
                         </div>
                     </section>
-
-                    <section
-                        id="Consolidate Financial Features"
-                        style={SECTION2_STYLE}
-                    >
-                        <div className={styles.landing_page_container_2}>
-                            {/* add images */}
-                        </div>
-                    </section>
-
                     <section
                         id="Consolidate Financial Features"
                         style={SECTION2_STYLE}
                     >
                         <div className={styles.landing_page_container_2}>
                             <div className={styles.description_container}>
-                                <h1> Calculate Net Worth </h1>
+                                <p> Calculate Net Worth </p>
                             </div>
                             <div className={styles.description_container}>
-                                <h1> 2+ Banks 1 Card </h1>
+                                <p> 2+ Banks 1 Card </p>
                             </div>
                             <div className={styles.description_container}>
-                                <h1> Learn. Create. Earn.</h1>
+                                <p> Pool Network Configurations</p>
                             </div>
                             <div className={styles.description_container}>
-                                <h1> Group Pools </h1>
+                                <p> Group Pools </p>
                             </div>
                         </div>
                     </section>
@@ -165,33 +147,18 @@ export default function Home() {
                         id="Consolidate Financial Features"
                         style={SECTION2_STYLE}
                     >
-                        <div className={styles.landing_page_container_3}>
+                        <div className={styles.landing_page_container_2}>
                             <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    Easily connect your financial accounts to
-                                    track your real-time net worth.{' '}
-                                </p>
+                                <p> Calculate Net Worth </p>
                             </div>
                             <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    Get on-demand debit cards that split shared
-                                    payments your way, everytime.{' '}
-                                </p>
+                                <p> 2+ Banks 1 Card </p>
                             </div>
                             <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    Configure your own personalized pool network
-                                    and you decide who gets to see it.
-                                </p>
+                                <p> Pool Network Configurations</p>
                             </div>
                             <div className={styles.description_container}>
-                                <p>
-                                    {' '}
-                                    Choose who can join and access your pool.
-                                </p>
+                                <p> Group Pools </p>
                             </div>
                         </div>
                     </section>

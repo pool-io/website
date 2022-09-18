@@ -10,23 +10,9 @@
 
 .landing_page_container_2 {
     position: relative;
-    width: 90%;
+    width: 100%;
     display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 20px 20px 20px 20px;
-    grid-template-areas: 'primary features info';
-    z-index: 2;
-}
-
-.landing_page_container_3 {
-    position: relative;
-    width: 90%;
-    display: grid;
-    align-items: center;
-    justify-content: center;
+    // align-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     gap: 20px 20px 20px 20px;

@@ -178,7 +178,23 @@ function MobileTabs(props: MobileTabsProps) {
                     </div>
                 </div>
                 {props.isExpanded ? (
-                    <div style={{ margin: 30, color: color }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            position: 'absolute',
+                            right: '0px',
+                            flexDirection: 'column',
+                            justifyContent: 'right',
+                            alignItems: 'right',
+                            margin: 55,
+                            borderRadius: '10px',
+                            marginTop: 60,
+                            color: color,
+                            background: '#02809010',
+                            padding: '10',
+                            fontSize: 10
+                        }}
+                    >
                         <Link href="/learn">
                             <h1>Learn</h1>
                         </Link>

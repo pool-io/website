@@ -10,12 +10,9 @@
 .landing_page_container_2 {
     position: relative;
     width: 100%;
-    display: grid;
+    display: flex;
     // align-items: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
     gap: 20px 20px 20px 20px;
-    grid-template-areas: 'primary features info';
     z-index: 2;
 }
 
@@ -52,12 +49,12 @@
 }
 .description_container {
     display: flex;
-    width: 90%;
-    height: 50%;
+    flex: 1;
+
     align-items: center;
     justify-content: center;
+    position: 'relative';
     z-index: 2;
-    grid-template-areas: 'description';
 }
 
 @media (max-width: 700px) {

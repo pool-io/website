@@ -137,7 +137,12 @@ export default function Home() {
                         id="Consolidate Financial Features"
                         style={SECTION2_STYLE}
                     >
-                        <div className={styles.landing_page_container_2}>
+                        <div
+                            className={styles.landing_page_container_2}
+                            style={{
+                                flexDirection: isMoblie ? 'column' : 'row'
+                            }}
+                        >
                             <div className={styles.description_container}>
                                 <p> Calculate Net Worth </p>
                             </div>

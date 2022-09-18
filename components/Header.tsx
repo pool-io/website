@@ -192,7 +192,7 @@ function MobileTabs(props: MobileTabsProps) {
                             <h1>Sign In</h1>
                         </Link>
                         <Link href="/portal?signup">
-                            <h1 style={{ color: '#71bbff' }}>Get Started</h1>
+                            <h1 style={{ color: '#71bbff' }}>Try Free</h1>
                         </Link>
                     </div>
                 ) : null}
@@ -252,10 +252,12 @@ function AuthTab() {
                             padding: 10,
                             margin: '0px 10px 0px 10px',
                             borderRadius: 10,
-                            background: '#71bbff'
+                            background: '#02809077',
+                            border: '1px solid #028090',
+                            color: 'white'
                         }}
                     >
-                        <Tab title="GET STARTED" url="/portal?signup" />
+                        <Tab title="TRY FREE" url="/portal?signup" />
                     </div>
                 </>
             )}
@@ -403,7 +405,7 @@ function DesktopTabs(props: DesktopTabsProps) {
                 }}
             >
                 <Spacer />
-                <Tab
+                {/* <Tab
                     title="LEARN"
                     url="/learn"
                     isSelected={route === '/learn'}
@@ -423,7 +425,7 @@ function DesktopTabs(props: DesktopTabsProps) {
                     isSelected={route === '/about'}
                     style={{ color: color }}
                     expanded={ExpandedAbout}
-                />
+                /> */}
                 <Spacer />
             </div>
             <div

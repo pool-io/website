@@ -1,11 +1,10 @@
 .landing_page_container_1 {
     position: relative;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 30px 30px;
-    grid-template-areas: 'login info';
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .landing_page_container_2 {
@@ -21,30 +20,22 @@
 }
 
 .login_container {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    grid-row-start: login;
-    grid-column-start: login;
-    grid-row-end: login;
-    grid-column-end: login;
     z-index: 2;
-    grid-template-areas: 'login';
 }
 
 .info_container {
+    flex: 1;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     align-self: center;
     position: relative;
-    grid-row-start: info;
-    grid-column-start: info;
-    grid-row-end: info;
-    grid-column-end: info;
     z-index: 2;
-    grid-template-areas: 'info';
     span {
         color: black;
         width: 60%;

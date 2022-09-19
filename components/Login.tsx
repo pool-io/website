@@ -72,7 +72,7 @@ function Form(props: FormProps) {
                 padding: '15px',
                 borderRadius: '20px',
                 backgroundColor: '#f5f2f2c7',
-                border: '1px solid #028090',
+                border: '5px solid #c4ff78',
                 //opacity: '20%'
                 zIndex: 1
             }}
@@ -230,7 +230,7 @@ function Signup() {
                 <Link href={{ pathname: '/portal?signup' }}>
                     <a
                         style={{
-                            color: 'white',
+                            color: '#c4ff78',
                             marginLeft: '5px'
                         }}
                     >

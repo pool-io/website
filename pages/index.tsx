@@ -151,7 +151,11 @@ export default function Home() {
                         style={SECTION2_STYLE}
                     >
                         <div
-                            className={styles.landing_page_container_2}
+                            className={
+                                isMoblie
+                                    ? styles.list
+                                    : styles.landing_page_container_2
+                            }
                             style={{
                                 color: 'white',
                                 display: 'flex',
@@ -159,15 +163,19 @@ export default function Home() {
                             }}
                         >
                             <div
-                                className={styles.description_container}
-                                style={{
-                                    display: 'flex',
-                                    flex: 1,
-                                    paddingLeft: '1vw',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    textAlign: 'center'
-                                }}
+                                className={
+                                    isMoblie
+                                        ? styles.item
+                                        : styles.description_container
+                                }
+                                // style={{
+                                //     display: 'flex',
+                                //     flex: 1,
+                                //     paddingLeft: '1vw',
+                                //     flexDirection: 'column',
+                                //     justifyContent: 'center',
+                                //     textAlign: 'center'
+                                // }}
                             >
                                 <img
                                     style={{
@@ -185,15 +193,19 @@ export default function Home() {
                                 </p>
                             </div>
                             <div
-                                className={styles.description_container}
-                                style={{
-                                    display: 'flex',
-                                    flex: 1,
-                                    paddingLeft: '1vw',
-                                    justifyContent: 'center',
-                                    flexDirection: 'column',
-                                    textAlign: 'center'
-                                }}
+                                className={
+                                    isMoblie
+                                        ? styles.item
+                                        : styles.description_container
+                                }
+                                // style={{
+                                //     display: 'flex',
+                                //     flex: 1,
+                                //     paddingLeft: '1vw',
+                                //     justifyContent: 'center',
+                                //     flexDirection: 'column',
+                                //     textAlign: 'center'
+                                // }}
                             >
                                 <img
                                     style={{
@@ -211,15 +223,19 @@ export default function Home() {
                                 </p>
                             </div>
                             <div
-                                className={styles.description_container}
-                                style={{
-                                    display: 'flex',
-                                    flex: 1,
-                                    paddingLeft: '1vw',
-                                    justifyContent: 'center',
-                                    flexDirection: 'column',
-                                    textAlign: 'center'
-                                }}
+                                className={
+                                    isMoblie
+                                        ? styles.item
+                                        : styles.description_container
+                                }
+                                // style={{
+                                //     display: 'flex',
+                                //     flex: 1,
+                                //     paddingLeft: '1vw',
+                                //     justifyContent: 'center',
+                                //     flexDirection: 'column',
+                                //     textAlign: 'center'
+                                // }}
                             >
                                 <img
                                     style={{
@@ -236,15 +252,11 @@ export default function Home() {
                                 </p>
                             </div>
                             <div
-                                className={styles.description_container}
-                                style={{
-                                    display: 'flex',
-                                    flex: 1,
-                                    paddingLeft: '1vw',
-                                    justifyContent: 'center',
-                                    flexDirection: 'column',
-                                    textAlign: 'center'
-                                }}
+                                className={
+                                    isMoblie
+                                        ? styles.item
+                                        : styles.description_container
+                                }
                             >
                                 <h1> Group Pools </h1>
                                 <p>

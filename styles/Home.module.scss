@@ -51,17 +51,79 @@
 .description_container {
     display: flex;
     flex: 1;
-
-    align-items: center;
+    padding-left: 1vw;
     justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    // paddingleft: '1vw';
+    // justifycontent: 'center';
+    // flexdirection: 'column';
+    // textalign: 'center';
+    align-items: center;
     position: 'relative';
     z-index: 2;
 }
 
-@media (max-width: 700px) {
-    .landing_page_container_1 {
-        grid-template-rows:
-            'login'
-            'info';
-    }
+.list {
+    display: flex;
+    overflow-x: scroll;
+
+    /* prevent accidentally going back or triggering other swipe events */
+    overscroll-behavior: contain;
+
+    /* hide scroll bar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    /* momentum scroll on iOS */
+    -webkit-overflow-scrolling: touch;
+
+    /* disbable vertical scroll for touch */
+    touch-action: pan-x;
+
+    /* scroll snapping */
+    scroll-snap-type: x mandatory;
+}
+
+/* hide scroll bar */
+.list::-webkit-scrollbar {
+    display: none;
+}
+
+.item {
+    height: 420px;
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
+    flex-direction: column;
+
+    /* scroll snapping */
+    scroll-snap-align: start;
+
+    /* maybe this will work in the future 🤷‍♂️ */
+    scroll-snap-stop: always;
+}
+
+/* 
+    The styling below is only for the decoration of this demo, 
+    it has no impact on scrolling or scroll behavior
+  */
+.list {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #ffffff33;
+    border-radius: 4px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 1);
+    width: 100%;
+    margin-top: 70px;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    color: #fff;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 1);
 }

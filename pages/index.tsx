@@ -241,8 +241,8 @@ export default function Home() {
                                     style={{
                                         height: '10vh'
                                     }}
-                                    src="/images/library-icon.svg"
-                                    alt="library icon"
+                                    src="/images/pool-network-icon.svg"
+                                    alt="pool network icon"
                                 ></img>
                                 <h1> Learn. Create. Earn.</h1>
                                 <p>
@@ -258,6 +258,13 @@ export default function Home() {
                                         : styles.description_container
                                 }
                             >
+                                <img
+                                    style={{
+                                        height: '10vh'
+                                    }}
+                                    src="/images/add-user.svg"
+                                    alt="add user icon"
+                                ></img>
                                 <h1> Group Pools </h1>
                                 <p>
                                     {' '}

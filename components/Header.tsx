@@ -51,7 +51,7 @@ function Username() {
     }
 
     if (error) {
-        console.log(error);
+        console.log('[Username]', error);
         return <div>Error</div>;
     }
     return (

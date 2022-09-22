@@ -268,9 +268,8 @@ function AuthTab() {
                             padding: '10px 30px 10px 30px',
                             margin: '0px 10px 0px 10px',
                             borderRadius: 10,
-                            background: '#c4ff78',
-                            border: '1px solid #028090',
-                            color: 'black'
+                            background: '#14a0dc',
+                            color: 'white'
                         }}
                     >
                         <Tab title="TRY FREE" url="/portal?signup" />

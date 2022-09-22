@@ -43,7 +43,7 @@ const particleParams = {
     fpsLimit: 60,
     particles: {
         number: {
-            value: 137,
+            value: 0,
             density: {
                 enable: false
             }
@@ -58,7 +58,7 @@ const particleParams = {
         },
         line_linked: {
             enable: true,
-            color: '#ffffff'
+            color: '#f0f0f077'
         },
         move: {
             directions: 'bottom',
@@ -115,12 +115,7 @@ export default function Home() {
                             )}
                             <div className={styles.info_container}>
                                 <span>
-                                    <span
-                                        className={styles.underlined_span}
-                                        style={{
-                                            color: 'white'
-                                        }}
-                                    >
+                                    <span className={styles.underlined_span}>
                                         Consolidating and Personalizing
                                         Financial Services
                                     </span>{' '}
@@ -157,7 +152,7 @@ export default function Home() {
                                     : styles.landing_page_container_2
                             }
                             style={{
-                                color: 'white',
+                                color: 'black',
                                 display: 'flex',
                                 marginTop: '150px'
                             }}
@@ -260,7 +255,7 @@ export default function Home() {
                             >
                                 <img
                                     style={{
-                                        height: '10vh'
+                                        height: '7vh'
                                     }}
                                     src="/images/add-user.svg"
                                     alt="add user icon"

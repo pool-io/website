@@ -33,7 +33,7 @@
     align-self: center;
     position: relative;
     z-index: 2;
-    color: white;
+    color: black;
     span {
         color: black;
         width: 60%;
@@ -42,9 +42,9 @@
 
     .underlined_span {
         color: black;
-        --extra-underlineNumber: 3;
-        --extra-underlineColor: #c4ff78;
-        --extra-underlineWidth: 2;
+        --extra-underlineNumber: 2;
+        --extra-underlineColor: #000000;
+        --extra-underlineWidth: 1;
         background: paint(extra-superUnderline);
     }
 }
@@ -123,7 +123,7 @@
     justify-content: center;
     align-items: center;
     font-size: 32px;
-    color: #fff;
+    color: #000;
     text-shadow: 0 2px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 0 2px 1px rgba(0, 0, 0, 1);
 }

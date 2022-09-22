@@ -21,7 +21,7 @@ const SECTION_STYLE = {
 
 const SECTION2_STYLE = {
     width: '100%',
-    height: '10vh',
+    height: '30vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
@@ -29,7 +29,7 @@ const SECTION2_STYLE = {
 
 const SECTION3_STYLE = {
     width: '100%',
-    height: '10vh',
+    height: '30vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
@@ -153,8 +153,8 @@ export default function Home() {
                             }
                             style={{
                                 color: 'black',
-                                display: 'flex',
-                                marginTop: '150px'
+                                display: 'flex'
+                                //marginTop: '150px'
                             }}
                         >
                             <div
@@ -163,14 +163,15 @@ export default function Home() {
                                         ? styles.item
                                         : styles.description_container
                                 }
-                                // style={{
-                                //     display: 'flex',
-                                //     flex: 1,
-                                //     paddingLeft: '1vw',
-                                //     flexDirection: 'column',
-                                //     justifyContent: 'center',
-                                //     textAlign: 'center'
-                                // }}
+                                style={{
+                                    display: 'flex',
+                                    //     flex: 1,
+                                    //     paddingLeft: '1vw',
+                                    //     flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    textAlign: 'center',
+                                    padding: '10px'
+                                }}
                             >
                                 <img
                                     style={{
@@ -268,6 +269,7 @@ export default function Home() {
                             </div>
                         </div>
                     </section>
+                    <section id="space" style={SECTION3_STYLE}></section>
                 </div>
             </Layout>
         </>

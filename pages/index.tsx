@@ -158,17 +158,7 @@ export default function Home() {
                                 marginTop: '150px'
                             }}
                         >
-                            <div
-                                className={styles.description_container}
-                                style={{
-                                    display: 'flex',
-                                    flex: 1,
-                                    paddingLeft: '1vw',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    textAlign: 'center'
-                                }}
-                            >
+                            <DescriptionContainer>
                                 <img
                                     style={{
                                         height: '10vh',
@@ -183,18 +173,8 @@ export default function Home() {
                                     Easily connect your financial accounts to
                                     track your real-time net worth.{' '}
                                 </p>
-                            </div>
-                            <div
-                                className={styles.description_container}
-                                style={{
-                                    display: 'flex',
-                                    flex: 1,
-                                    paddingLeft: '1vw',
-                                    justifyContent: 'center',
-                                    flexDirection: 'column',
-                                    textAlign: 'center'
-                                }}
-                            >
+                            </DescriptionContainer>
+                            <DescriptionContainer>
                                 <img
                                     style={{
                                         height: '10vh',
@@ -209,21 +189,12 @@ export default function Home() {
                                     Get on-demand debit cards that split shared
                                     payments your way, everytime.{' '}
                                 </p>
-                            </div>
-                            <div
-                                className={styles.description_container}
-                                style={{
-                                    display: 'flex',
-                                    flex: 1,
-                                    paddingLeft: '1vw',
-                                    justifyContent: 'center',
-                                    flexDirection: 'column',
-                                    textAlign: 'center'
-                                }}
-                            >
+                            </DescriptionContainer>
+                            <DescriptionContainer>
                                 <img
                                     style={{
-                                        height: '10vh'
+                                        height: '10vh',
+                                        width: '10vw'
                                     }}
                                     src="/images/pool-network-icon.svg"
                                     alt="pool network icon"
@@ -234,21 +205,12 @@ export default function Home() {
                                     Configure your own personalized pool network
                                     and you decide who gets to see it.
                                 </p>
-                            </div>
-                            <div
-                                className={styles.description_container}
-                                style={{
-                                    display: 'flex',
-                                    flex: 1,
-                                    paddingLeft: '1vw',
-                                    justifyContent: 'center',
-                                    flexDirection: 'column',
-                                    textAlign: 'center'
-                                }}
-                            >
+                            </DescriptionContainer>
+                            <DescriptionContainer>
                                 <img
                                     style={{
-                                        height: '10vh'
+                                        height: '75px',
+                                        width: '10vw'
                                     }}
                                     src="/images/add-user.svg"
                                     alt="add user icon"
@@ -258,11 +220,33 @@ export default function Home() {
                                     {' '}
                                     Choose who can join and access your pool.
                                 </p>
-                            </div>
+                            </DescriptionContainer>
                         </div>
                     </section>
                 </div>
             </Layout>
         </>
+    );
+}
+
+type DescriptionContainerProps = {
+    children: ReactNode;
+};
+
+function DescriptionContainer(props: DescriptionContainerProps) {
+    return (
+        <div
+            className={styles.description_container}
+            style={{
+                display: 'flex',
+                flex: 1,
+                margin: 10,
+                justifyContent: 'center',
+                flexDirection: 'column',
+                textAlign: 'center'
+            }}
+        >
+            {props.children}
+        </div>
     );
 }

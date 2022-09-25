@@ -151,14 +151,32 @@ export default function Home() {
                         style={SECTION2_STYLE}
                     >
                         <div
-                            className={styles.landing_page_container_2}
+                            className={
+                                isMoblie
+                                    ? styles.list
+                                    : styles.landing_page_container_2
+                            }
                             style={{
                                 color: 'white',
                                 display: 'flex',
                                 marginTop: '150px'
                             }}
                         >
-                            <DescriptionContainer>
+                            <div
+                                className={
+                                    isMoblie
+                                        ? styles.item
+                                        : styles.description_container
+                                }
+                                // style={{
+                                //     display: 'flex',
+                                //     flex: 1,
+                                //     paddingLeft: '1vw',
+                                //     flexDirection: 'column',
+                                //     justifyContent: 'center',
+                                //     textAlign: 'center'
+                                // }}
+                            >
                                 <img
                                     style={{
                                         height: '10vh',
@@ -173,8 +191,22 @@ export default function Home() {
                                     Easily connect your financial accounts to
                                     track your real-time net worth.{' '}
                                 </p>
-                            </DescriptionContainer>
-                            <DescriptionContainer>
+                            </div>
+                            <div
+                                className={
+                                    isMoblie
+                                        ? styles.item
+                                        : styles.description_container
+                                }
+                                // style={{
+                                //     display: 'flex',
+                                //     flex: 1,
+                                //     paddingLeft: '1vw',
+                                //     justifyContent: 'center',
+                                //     flexDirection: 'column',
+                                //     textAlign: 'center'
+                                // }}
+                            >
                                 <img
                                     style={{
                                         height: '10vh',
@@ -189,8 +221,22 @@ export default function Home() {
                                     Get on-demand debit cards that split shared
                                     payments your way, everytime.{' '}
                                 </p>
-                            </DescriptionContainer>
-                            <DescriptionContainer>
+                            </div>
+                            <div
+                                className={
+                                    isMoblie
+                                        ? styles.item
+                                        : styles.description_container
+                                }
+                                // style={{
+                                //     display: 'flex',
+                                //     flex: 1,
+                                //     paddingLeft: '1vw',
+                                //     justifyContent: 'center',
+                                //     flexDirection: 'column',
+                                //     textAlign: 'center'
+                                // }}
+                            >
                                 <img
                                     style={{
                                         height: '10vh',
@@ -205,8 +251,14 @@ export default function Home() {
                                     Configure your own personalized pool network
                                     and you decide who gets to see it.
                                 </p>
-                            </DescriptionContainer>
-                            <DescriptionContainer>
+                            </div>
+                            <div
+                                className={
+                                    isMoblie
+                                        ? styles.item
+                                        : styles.description_container
+                                }
+                            >
                                 <img
                                     style={{
                                         height: '75px',
@@ -220,7 +272,7 @@ export default function Home() {
                                     {' '}
                                     Choose who can join and access your pool.
                                 </p>
-                            </DescriptionContainer>
+                            </div>
                         </div>
                     </section>
                 </div>

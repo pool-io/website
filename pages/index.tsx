@@ -21,7 +21,7 @@ const SECTION_STYLE = {
 
 const SECTION2_STYLE = {
     width: '100%',
-    height: '10vh',
+    height: '30vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
@@ -29,7 +29,7 @@ const SECTION2_STYLE = {
 
 const SECTION3_STYLE = {
     width: '100%',
-    height: '10vh',
+    height: '30vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
@@ -43,7 +43,7 @@ const particleParams = {
     fpsLimit: 60,
     particles: {
         number: {
-            value: 137,
+            value: 0,
             density: {
                 enable: false
             }
@@ -58,7 +58,7 @@ const particleParams = {
         },
         line_linked: {
             enable: true,
-            color: '#ffffff'
+            color: '#f0f0f077'
         },
         move: {
             directions: 'bottom',
@@ -115,12 +115,7 @@ export default function Home() {
                             )}
                             <div className={styles.info_container}>
                                 <span>
-                                    <span
-                                        className={styles.underlined_span}
-                                        style={{
-                                            color: 'white'
-                                        }}
-                                    >
+                                    <span className={styles.underlined_span}>
                                         Consolidating and Personalizing
                                         Financial Services
                                     </span>{' '}
@@ -157,9 +152,9 @@ export default function Home() {
                                     : styles.landing_page_container_2
                             }
                             style={{
-                                color: 'white',
-                                display: 'flex',
-                                marginTop: '150px'
+                                color: 'black',
+                                display: 'flex'
+                                //marginTop: '150px'
                             }}
                         >
                             <div
@@ -168,14 +163,15 @@ export default function Home() {
                                         ? styles.item
                                         : styles.description_container
                                 }
-                                // style={{
-                                //     display: 'flex',
-                                //     flex: 1,
-                                //     paddingLeft: '1vw',
-                                //     flexDirection: 'column',
-                                //     justifyContent: 'center',
-                                //     textAlign: 'center'
-                                // }}
+                                style={{
+                                    display: 'flex',
+                                    //     flex: 1,
+                                    //     paddingLeft: '1vw',
+                                    //     flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    textAlign: 'center',
+                                    padding: '10px'
+                                }}
                             >
                                 <img
                                     style={{
@@ -261,8 +257,7 @@ export default function Home() {
                             >
                                 <img
                                     style={{
-                                        height: '75px',
-                                        width: '10vw'
+                                        height: '7vh'
                                     }}
                                     src="/images/add-user.svg"
                                     alt="add user icon"
@@ -275,6 +270,7 @@ export default function Home() {
                             </div>
                         </div>
                     </section>
+                    <section id="space" style={SECTION3_STYLE}></section>
                 </div>
             </Layout>
         </>

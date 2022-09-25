@@ -116,7 +116,7 @@ export default function Plaid() {
                 <div
                     style={{
                         margin: 10,
-                        background: '#ACC2D6',
+                        background: '#f0f0f077',
                         borderRadius: 10
                     }}
                 >

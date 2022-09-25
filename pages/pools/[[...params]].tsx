@@ -18,14 +18,14 @@ export default function Pools() {
             <div
                 style={{
                     margin: 10,
-                    background: 'black',
+                    background: '#f0f0f077',
                     borderRadius: 10
                 }}
             >
                 <div
                     style={{
                         paddingLeft: 10,
-                        color: 'white'
+                        color: 'black'
                     }}
                 >
                     <h1>Pools</h1>
@@ -166,7 +166,7 @@ function PoolListEntry(props: PoolListEntryProps) {
                         <div
                             style={{
                                 cursor: 'pointer',
-                                background: '#00ffc0'
+                                background: '#ffffff'
                             }}
                             onClick={(e) => {
                                 e.stopPropagation();

@@ -33,7 +33,7 @@
     align-self: center;
     position: relative;
     z-index: 2;
-    color: white;
+    color: black;
     span {
         color: black;
         width: 60%;
@@ -42,9 +42,9 @@
 
     .underlined_span {
         color: black;
-        --extra-underlineNumber: 3;
-        --extra-underlineColor: #c4ff78;
-        --extra-underlineWidth: 2;
+        --extra-underlineNumber: 2;
+        --extra-underlineColor: #000000;
+        --extra-underlineWidth: 1;
         background: paint(extra-superUnderline);
     }
 }
@@ -92,8 +92,10 @@
 
 .item {
     height: 420px;
-    width: 100%;
+    width: 85vw;
     margin-top: auto;
+    padding-left: 5%;
+    padding-right: 7%;
     flex-shrink: 0;
     flex-direction: column;
 
@@ -110,11 +112,11 @@
   */
 .list {
     list-style: none;
-    padding: 0;
-    border: 1px solid #ffffff33;
+    //padding: 0;
+    // border: 0px solid #ffffff33;
     border-radius: 4px;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, 1);
-    width: 100%;
+    //box-shadow: 0 2px 1px rgba(0, 0, 0, 1);
+    width: 85vw;
     margin-top: 70px;
 }
 
@@ -122,8 +124,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
-    color: #fff;
-    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.4);
-    box-shadow: 0 2px 1px rgba(0, 0, 0, 1);
+    font-size: 24px;
+    color: #000;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    //box-shadow: 0 2px 1px rgba(0, 0, 0, 1);
 }

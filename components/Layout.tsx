@@ -49,7 +49,7 @@ export default function Layout(props: LayoutProps) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'stretch',
-                    background: '#000000',
+                    background: '#ffffff',
                     height: '100vh',
                     width: '100vw',
                     overflow: 'auto'

@@ -37,7 +37,7 @@
     span {
         color: black;
         width: 60%;
-        font-size: 45px;
+        font-size: 27px;
     }
 
     .underlined_span {
@@ -45,6 +45,7 @@
         --extra-underlineNumber: 2;
         --extra-underlineColor: #000000;
         --extra-underlineWidth: 1;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
         background: paint(extra-superUnderline);
     }
 }
@@ -126,6 +127,6 @@
     align-items: center;
     font-size: 24px;
     color: #000;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    //text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     //box-shadow: 0 2px 1px rgba(0, 0, 0, 1);
 }

@@ -13,7 +13,7 @@ import Head from 'next/head';
 
 const SECTION_STYLE = {
     width: '100%',
-    height: '70vh',
+    height: '100vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
@@ -119,9 +119,6 @@ export default function Home() {
                                         Consolidating and Personalizing
                                         Financial Services
                                     </span>{' '}
-                                    {/* It is a long established fact that a reader
-                                    will be distracted by the readable content
-                                    of a page when looking at its layout. */}
                                 </span>
                             </div>
                         </div>

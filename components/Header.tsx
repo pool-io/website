@@ -104,6 +104,7 @@ function Tab(props: TabProps) {
                         alignItems: 'center',
                         textAlign: 'center',
                         cursor: 'pointer',
+                        marginRight: '10px',
                         ...props.style
                     }}
                 >

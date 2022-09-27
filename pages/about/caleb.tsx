@@ -11,12 +11,13 @@ export default function Caleb() {
                     justifyContent: 'flex-start',
                     alignItems: 'center',
                     marginTop: 100,
+                    backgroundColor: 'black',
                     width: '100vw',
                     height: '100vh'
                 }}
             >
                 <h1>CALEB PARK</h1>
-                <h2>GIMME YO MOONEY</h2>
+                <h2>Hi</h2>
                 <div
                     style={{
                         display: 'flex',

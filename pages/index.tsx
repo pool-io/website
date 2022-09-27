@@ -257,9 +257,9 @@ export default function Home() {
                             >
                                 <img
                                     style={{
-                                        height: '7vh'
+                                        height: '10vh'
                                     }}
-                                    src="/images/add-user.svg"
+                                    src="/images/add-user1.svg"
                                     alt="add user icon"
                                 ></img>
                                 <h1> Group Pools </h1>

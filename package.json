@@ -21,7 +21,8 @@
         "react-google-button": "^0.7.2",
         "react-plaid-link": "^3.3.2",
         "react-tsparticles": "^2.2.4",
-        "tsparticles": "^2.2.4"
+        "tsparticles": "^2.2.4",
+        "yarn": "^1.22.19"
     },
     "devDependencies": {
         "@types/node": "^17.0.13",
